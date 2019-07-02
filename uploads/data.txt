@@ -1,0 +1,412 @@
+[
+  {
+    "title": "Spawn",
+    "customPin": "#ed8400",
+    "customHead": "Noobie",
+    "clickable": false,
+    "displayPin": false,
+    "builders": [
+      "JarPlayGo"
+    ],
+    "description": "The place where you spawn.",
+    "images": [
+      "uploads/images/spawn_1.png",
+      "uploads/images/spawn_2.png"
+    ],
+    "coords": {
+      "x": -81,
+      "z": 5
+    },
+    "type": {
+      "radius": 0
+    }
+  },
+  {
+    "title": "Eelek's Base",
+    "builders": [
+      "Eelek"
+    ],
+    "description": "The base of Eelek, a tall tower.",
+    "netherProjectTitle": "Eelek's Portal",
+    "clickable": true,
+    "displayPin": true,
+    "images": [
+        "uploads/images/eelek0.png",
+        "uploads/images/eelek1.png"
+    ],
+    "coords": {
+      "x": 1252,
+      "z": -1053
+    },
+    "type": {
+      "radius": 250,
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "Gelderland's Base",
+    "builders": [
+      "gelderland"
+    ],
+    "description": "The base of gelderland, a nuclear city. No government inspectors allowed!",
+    "netherProjectTitle": "Gelderland's Portal", 
+    "clickable": true,
+    "displayPin": true,
+    "images": [
+      "uploads/images/gelderlandsBase_1.png",
+      "uploads/images/gelderlandsBase_2.png",
+      "uploads/images/gelderlandsBase_3.png"
+    ],
+    "coords": {
+      "x": -295,
+      "z": -628
+    },
+    "type": {
+      "radius": 280,
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "JarPlayGo's Base",
+    "builders": [
+      "JarPlayGo"
+    ],
+    "description": "An underground T-shape. No really, it is.",
+    "netherProjectTitle": "Spawn and Jarplaygo portal",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": -71,
+      "z": -8
+    },
+    "type": {
+      "radius": 225,
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "Dirkloop's base",
+    "builders": [
+      "dirkloop"
+    ],
+    "description": "dirkloop has decided to claim a village.",
+    "netherProjectTitle": "Dirkloop's Portal",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": 1636,
+      "z": -312
+    },
+    "type": {
+      "radius": 0,
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "Shadorf's base",
+    "builders": [
+      "shadorf"
+    ],
+    "description": "One colourful arc, on a mesa, far, far away...",
+    "netherProjectTitle": "Shadorf's and sensei_shibata's Portal",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": -4566,
+      "z": 5332
+    },
+    "type": {
+      "radius": 0,
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "Sensei_shibata's base",
+    "builders": [
+      "sensei_shibata"
+    ],
+    "description": "A castle on a snowy outpost, far, far away...",
+    "netherProjectTitle": "Shadorf's and sensei_shibata's Portal",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": -4613,
+      "z": 5256
+    },
+    "type": {
+      "radius": 0,
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "Bl1tzAssass1ns base",
+    "builders": [
+      "Bl1tzAssass1n"
+    ],
+    "description": "He's got an ambitious project!",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": 4100,
+      "z": 860
+    },
+    "type": {
+      "radius": 400,
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "Goldengigabite's base",
+    "builders":[
+      "goldengigabite"
+    ],
+    "description": "His boat can't go on ice.",
+    "netherProjectTitle": "Goldengigabite's Portal",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": 788,
+      "z": 380
+    },
+    "type": {
+      "radius": 0,
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "Zvox's base",
+    "builders":[
+      "Zvox"
+    ],
+    "description": "Bill Gates would like to know his location.",
+    "netherProjectTitle": "Zvox's Portal",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": 1919,
+      "z": -800
+    },
+    "type": {
+      "radius": 0,
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "Ivarremanski and meeskmooney's Base",
+    "builders":[
+      "Ivarremanski",
+      "meeskmooney"
+    ],
+    "description": "A cozy house, on some plains, far, far away...",
+    "netherProjectTitle": "Ivarremanski and meeskmooney's Portal",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": 3614,
+      "z": -688
+    },
+    "type": {
+      "radius": 0,
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "Iron farm",
+    "builders": [
+      "Eelek",
+      "JarPlayGo"
+    ],
+    "customHead": "MHF_Golem",
+    "displayPin": true,
+    "description": "The server poppy farm. Legend has it that it also produces iron.",
+    "netherProjectTitle": "Iron Farm",
+    "clickable": true,
+    "images": [],
+    "coords": {
+      "x": 1232,
+      "z": 1965
+    },
+    "type": {
+      "radius": 0,
+      "typeName": "Farm"
+    }
+  },
+  {
+    "title": "Guardian farm",
+    "builders": [
+      "Eelek",
+      "JarPlayGo"
+    ],
+    "customHead": "Guardian",
+    "displayPin": true,
+    "description": "The guardian farm is what makes the server glow. Also lanterns.",
+    "netherProjectTitle": "Guardian Farm",
+    "clickable": true,
+    "images": [],
+    "coords": {
+      "x": 168,
+      "z": -280
+    },
+    "type": {
+      "radius": 0,
+      "typeName": "Farm"
+    }
+  },
+  {
+    "title": "Villager area",
+    "builders": [
+      "JarPlayGo",
+      "Eelek"
+    ],
+    "customHead": "MHF_Villager",
+    "displayPin": true,
+    "description": "They like the green stuff.",
+    "netherProjectTitle": "Villager Area",
+    "clickable": true,
+    "images": [],
+    "coords": {
+      "x": 1141,
+      "z": 1870
+    },
+    "type": {
+      "radius": 0,
+      "typeName": "Farm"
+    }
+  },
+  {
+    "title": "Mob and Slime farm",
+    "builders": [
+      "JarPlayGo"
+    ],
+    "customHead": "MHF_Slime",
+    "displayPin": true,
+    "description": "It is actually two adjacent slime chunks with a seperate mobfarm.",
+    "netherProjectTitle": "Mob and Slime farm",
+    "clickable": true,
+    "images": [],
+    "coords": {
+      "x": 1320,
+      "z": 2127
+    },
+    "type": {
+      "radius": 0,
+      "typeName": "Farm"
+    }
+  },
+  {
+    "title": "Industrial district",
+    "builders": [
+      ""
+    ],
+    "displayPin": false,
+    "customHead": "Davenator911",
+    "customPin": "#777777",
+    "description": "It does not produce greenhouse gasses.",
+    "clickable": false,
+    "images": [],
+    "coords": {
+      "x": 1232,
+      "z": 1965
+    },
+    "type": {
+      "radius": 1000,
+      "typeName": "Area"
+    }
+  },
+  {
+    "title": "Mushroom-and-Mesa island",
+    "builders": [
+      ""
+    ],
+    "displayPin": true,
+    "customHead": "MushroomCassette",
+    "customPin": "#d4332a",
+    "description": "It is the best of both worlds.",
+    "netherProjectTitle": "Mesa and Mushroom Portal",
+    "clickable": true,
+    "images": [],
+    "coords": {
+      "x": -697,
+      "z": 1092
+    },
+    "type": {
+      "radius": 325,
+      "typeName": "Area"
+    }
+  },
+  {
+    "title": "Johnchaser123's base",
+    "builders": [
+      "Johnchaser123"
+    ],
+    "description": "Johnchaser's base, which has a great view, I'm sure :D",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": 983,
+      "z": -25
+    },
+    "type": {
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "1.14 taiga Village",
+    "builders": [],
+    "customHead": "villager",
+    "description": "",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": -5000,
+      "z": 0
+    },
+    "type": {
+      "typeName": "Village"
+    }
+  },
+  {
+    "title": "Tony_Chocolony's base",
+    "builders": ["Tony_Chocolony"],
+    "description": "",
+    "clickable": true,
+    "displayPin": true,
+    "images": [],
+    "coords": {
+      "x": 1947,
+      "z": 209
+    },
+    "type": {
+      "typeName": "Base"
+    }
+  },
+  {
+    "title": "Jarplaygo's city",
+    "builders": ["jarplaygo"],
+    "description": "",
+    "clickable": true,
+    "displayPin": true,
+    "images": [
+      "uploads/images/jarCity_1.png"
+    ],
+    "coords": {
+      "x": -2992,
+      "z": 977
+    },
+    "type": {
+      "typeName": "City"
+    }
+  }
+
+
+]
