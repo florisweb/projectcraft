@@ -1,1 +1,0 @@
-{"refresh-time":5,"left":[{"uuid":"99e474c4-4748-4ecd-8a1d-a2f8b86accbe","username":"Eelek"}],"joined":[],"players":[],"current-time":1559848612637}
