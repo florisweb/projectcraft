@@ -85,6 +85,29 @@
       "typeName": "Base"
     }
   },
+   {
+    "title": "Shopping district",
+    "customPin": "#00ff00",
+    "displayPin": true,
+    "clickable": true,
+    "netherProjectTitle": "Shopping district portal",
+    "builders": [
+      "Eelek",
+      "Gelderland",
+      "Dirkloop"
+    ],
+    "description": "The place where you can change diamonds for goods or sell your soul to the devil. \n\n currently featuring: \n - the Endershop\n - the Supersmeltershop",
+    "images": [
+    ],
+    "coords": {
+      "x": -906,
+      "z": -136
+    },
+    "type": {
+      "radius": 130,
+      "typeName": "Area"
+    }
+  },
   {
     "title": "Dirkloop's base",
     "builders": [
@@ -407,6 +430,4 @@
       "typeName": "City"
     }
   }
-
-
 ]
