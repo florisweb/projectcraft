@@ -86,7 +86,7 @@ function _App_infoMenu() {
 		setTextToElement(projectPage_titleHolder, item.title);
 		setTextToElement(projectPage_coordHolder, "Coords: (" + item.coords.x + ", " + item.coords.z + ")");
 		setTextToElement(projectPage_builderNames, item.builders.join(", "));
-		setTextToElement(projectPage_description, item.description);
+		setDescriptionText(item.description);
 		_addImagesToPage(item.images);
 
 		this.openPageByIndex(1);
@@ -112,5 +112,22 @@ function _App_infoMenu() {
 			HTML.imagesHeader.style.display = "block";
 			if (!_item.images[0]) HTML.imagesHeader.style.display = "none";
 		}
+
+		function setDescriptionText(_text) {
+			projectPage_description.innerHTML = "";
+			
+			let descriptionTextLines = _text.split("\n");
+			for (line of descriptionTextLines)
+			{	
+				let lineHolder = document.createElement("div");
+				setTextToElement(lineHolder, line);
+				lineHolder.innerHTML += "<br>";
+				projectPage_description.append(lineHolder);
+			}
+		}
+
+
+
+
 }
 
