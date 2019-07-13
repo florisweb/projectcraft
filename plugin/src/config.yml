@@ -1,0 +1,13 @@
+#Config file
+
+#The url to the webserver.
+api-url: https://example.com/
+
+#Number of seconds between each update.
+delay-time: 5
+
+#Enable logging.
+logging: false
+
+#Send chat messsages to server.
+send-chat: false
