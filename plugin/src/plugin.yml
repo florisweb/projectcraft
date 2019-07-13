@@ -1,0 +1,6 @@
+name: ProjectCraftMcUpdater
+main: tk.projectcraftmc.updater.PCMCUpdaterMain
+api-version: 1.13
+author: Eelek
+version: 1.0
+description: Location updater for the ProjectCraftMC.tk world map.
