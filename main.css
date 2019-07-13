@@ -45,7 +45,7 @@ body {
 	font-size: 80px;
 	font-weight: bolder;
 
-	animation: homeScreen_showLogo 5s 1;
+	animation: homeScreen_showLogo 0s 1;
 	animation-fill-mode: forwards;
 }
 
@@ -68,7 +68,8 @@ body {
 	width: 120vw;
 	height: auto;
 	opacity: 0.6;
-	animation: homeScreen_backgroundImage 3s 1;
+	animation: homeScreen_backgroundImage 1s 1;
+    animation-delay: 0s;
 }
 
 
@@ -172,8 +173,9 @@ a.discord {
 		height: 260px;
 		padding-bottom: 100px;
 
-		animation: homeScreen_navigationHolderIn 5s 1;
+		animation: homeScreen_navigationHolderIn 2s 1;
 		animation-fill-mode: forwards;
+        animation-delay: 0s;
 	}
 
 		#homeScreen_navigationHolder .navigationItem {
@@ -377,7 +379,7 @@ a.discord {
 	float: bottom;
 	bottom: 20px;
 	
-	width: 75px;
+	width: auto;
 	height: 30px;
 	
 	padding: 3px;
@@ -428,6 +430,8 @@ a.discord {
 	width: auto;
 
 	padding: 5px;
+    
+    background: url('../images/netherPortal.gif');
 
 	text-align: center;
 	font-weight: bold;
