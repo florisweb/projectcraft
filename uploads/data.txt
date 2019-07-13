@@ -96,7 +96,7 @@
       "Gelderland",
       "Dirkloop"
     ],
-    "description": "The place where you can change diamonds for goods or sell your soul to the devil. \n\n currently featuring: \n - the Endershop\n - the Supersmeltershop",
+    "description": "The place where you can exchange diamonds for goods or sell your soul to the devil. \n\n currently featuring: \n - the Endershop\n - the Supersmeltershop",
     "images": [
     ],
     "coords": {
