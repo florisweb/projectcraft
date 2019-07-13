@@ -9,10 +9,7 @@
       "JarPlayGo"
     ],
     "description": "The place where you spawn.",
-    "images": [
-      "uploads/images/spawn_1.png",
-      "uploads/images/spawn_2.png"
-    ],
+    "images": [],
     "coords": {
       "x": -81,
       "z": 5
