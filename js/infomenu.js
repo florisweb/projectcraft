@@ -1,4 +1,4 @@
-function _App_infoMenu() {
+function _infoMenu() {
 	let HTML = {
 		projectList: projectListHolder,
 		pages: $(".infoMenuPage"),
@@ -19,10 +19,12 @@ function _App_infoMenu() {
 
 	this.open = function() {
 		this.openState = true;
+		
 		zoomButtonHolder.classList.remove("infoMenuHidden");
         coordinatesHolder.classList.remove("infoMenuHidden");
 		mapCanvas.classList.remove("infoMenuHidden");
 		infoMenu.classList.remove("hide");
+		
 		$(".button.infoMenuIcon").hide();
 	}
 

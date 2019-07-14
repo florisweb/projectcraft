@@ -135,7 +135,7 @@ function _map() {
 	this.handleClick = function(_x, _y) {
         for(c in clickboxes) {
             if(_x >= clickboxes[c].x && _y >= clickboxes[c].y && _x <= clickboxes[c].rx && _y <= clickboxes[c].ry) {
-                App.infoMenu.openProjectPageById(clickboxes[c].root);
+                InfoMenu.openProjectPageById(clickboxes[c].root);
                 this.focusItem(clickboxes[c].root);
                 break;
             }
@@ -419,7 +419,7 @@ function _App_infoMenu() {
 		html.children[0].setAttribute("src", imageUrl);
 		
 		html.onclick = function () {
-			App.infoMenu.openProjectPageByTitle(_info.title);
+			InfoMenu.openProjectPageByTitle(_info.title);
 			Map.focusItem(_info.id);
 		};
 	}
@@ -449,7 +449,7 @@ function _App_infoMenu() {
 		HTML.netherPortalButton.style.display = "block";
 		if (!item.overworldProjectTitle) HTML.netherPortalButton.style.display = "none";
 		HTML.netherPortalButton.onclick = function() {
-			App.infoMenu.goThroughPortal(item.overworldProjectTitle);
+			InfoMenu.goThroughPortal(item.overworldProjectTitle);
 		};
 
 
@@ -472,7 +472,7 @@ function _App_infoMenu() {
 		HTML.netherPortalButton.style.display = "block";
 		if (!item.overworldProjectTitle) HTML.netherPortalButton.style.display = "none";
 		HTML.netherPortalButton.onclick = function() {
-			App.infoMenu.goThroughPortal(item.overworldProjectTitle);
+			InfoMenu.goThroughPortal(item.overworldProjectTitle);
 		};
 
 
@@ -517,7 +517,7 @@ function _App() {
 
   this.update = function() {
     Server.getData().then(function () {
-      App.infoMenu.createItemsByList(Server.getPortals());
+      InfoMenu.createItemsByList(Server.getPortals());
       Map.init();
       if (executeUrlCommands) executeUrlCommands();
     }, function () {});
@@ -525,7 +525,7 @@ function _App() {
 
   this.openProject = function(_title) {
     _title = _title.toLowerCase();
-    App.infoMenu.openProjectPageByTitle(_title);
+    InfoMenu.openProjectPageByTitle(_title);
     let item = Server.getItemByTitle(_title);
     if (item.id) Map.focusItem(item.id);
   }
@@ -536,7 +536,7 @@ function _App() {
 	    let mapCanvas = document.getElementById("mapCanvas");
 	    let mapHolder = document.getElementById("mapHolder");
 
-	    let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * App.infoMenu.openState);
+	    let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
 	    let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
 	    let x = mouseX * mapCanvas.width;
 	    let y = mouseY * mapCanvas.height;
@@ -548,7 +548,7 @@ function _App() {
         let mapCanvas = document.getElementById("mapCanvas");
         let mapHolder = document.getElementById("mapHolder");
 
-        let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * App.infoMenu.openState);
+        let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
         let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
         let x = Map.DOMToMC(mouseX * mapCanvas.width);
         let y = Map.DOMToMC(mouseY * mapCanvas.height);
@@ -561,8 +561,8 @@ function _App() {
 	  document.body.addEventListener("keydown", function(_e) {
 	    if (_e.key == "Escape")
 	    {
-	      if (App.infoMenu.pageIndex == 1) return App.infoMenu.openPageByIndex(0);
-	      if (App.infoMenu.openState) return App.infoMenu.close();
+	      if (InfoMenu.pageIndex == 1) return InfoMenu.openPageByIndex(0);
+	      if (InfoMenu.openState) return InfoMenu.close();
 	    }
 	    if (_e.key == "+") Map.zoomIn(); 
 	    if (_e.key == "-") Map.zoomOut();

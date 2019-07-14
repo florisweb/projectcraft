@@ -121,7 +121,7 @@ function _map() {
         {
             if (_x < clickboxes[c].x || _y < clickboxes[c].y || _x > clickboxes[c].rx || _y > clickboxes[c].ry) continue;
            
-            App.infoMenu.openProjectPageByTitle(clickboxes[c].root);
+            InfoMenu.openProjectPageByTitle(clickboxes[c].root);
             this.focusItem(clickboxes[c].root);
             break;
         }

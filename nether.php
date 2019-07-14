@@ -8,7 +8,7 @@
 	<body style="overflow: hidden;" class="noselect">
         <div id="topBar">
 			<img src="images/homeIcon.svg" class="button" onclick="window.location.replace('../')">
-			<img src="images/menuIcon.png" class="button infoMenuIcon" style="display: none" onclick="App.infoMenu.open()">
+			<img src="images/menuIcon.png" class="button infoMenuIcon" style="display: none" onclick="InfoMenu.open()">
 			<div class="shadowBackground"></div>
 		</div>
 
@@ -35,13 +35,13 @@
 		<div id="infoMenu" class="h ide">
 			<div class="infoMenuPage">
 				<div class="headerText preventTextOverflow">PORTALS</div>
-				<img class="exitIcon" src="images/exitIcon.png" onclick="App.infoMenu.close()">
+				<img class="exitIcon" src="images/exitIcon.png" onclick="InfoMenu.close()">
 				<div id="projectListHolder"></div>
 			</div>
 
 			<div class="infoMenuPage hide" style="color: white">
 				<div class="headerText preventTextOverflow" id="projectPage_titleHolder">PORTAL</div>
-				<img class="exitIcon" src="images/exitIcon.png" onclick="App.infoMenu.openPageByIndex(0)">
+				<img class="exitIcon" src="images/exitIcon.png" onclick="InfoMenu.openPageByIndex(0)">
                 
 				<div class="text" id="projectPage_coordHolder"></div>
 				<div class="text subHeader"><br>BUILDERS</div>
