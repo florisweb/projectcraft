@@ -1,0 +1,551 @@
+[
+  {
+    "title": "Spawn and JarPlayGo portal",
+    "clickable": true,
+    "displayPin": true,
+    "displayPoint": true,
+    "throughPortalProjectTitle": "JarPlayGo's Base",
+    "builders": [
+      "JarPlayGo"
+    ],
+    "coords": {
+      "x": -10,
+      "z": 8
+    },
+    "neighbours": [
+      ["EelekTunnelBend0", 0],
+      ["IndustrialBend0", 1],
+      ["DarkOakBend", 0]
+    ]
+  },
+  {
+    "title": "EelekTunnelBend0",
+    "coords": {
+      "x": -1,
+      "z": 8
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["Spawn and JarPlayGo portal", 0],
+      ["EelekTunnelBend1", 0]
+    ]
+  },
+  {
+    "title": "EelekTunnelBend1",
+    "coords": {
+      "x": -1,
+      "z": -1
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["EelekTunnelBend0", 0],
+      ["GuardianFarmBend", 1]
+    ]
+  },
+  {
+    "title": "GuardianFarmBend",
+    "coords": {
+      "x": 15,
+      "z": -1
+    },
+    "displayPoint": true,
+    "neighbours": [
+      ["EelekTunnelBend1", 1],
+      ["Guardian farm", 0],
+      ["EelekTunnelBend2", 1]
+    ]
+  },
+  {
+    "title": "Guardian farm",
+    "builders": [
+      "Eelek",
+      "JarPlayGo"
+    ],
+    "customHead": "Guardian",
+    "displayPin": true,
+    "throughPortalProjectTitle": "Guardian farm",
+    "clickable": true,
+    "coords": {
+      "x": 15,
+      "z": -46
+    },
+    "neighbours": [
+      ["GuardianFarmBend", 0]
+    ]
+  },
+  {
+    "title": "EelekTunnelBend2",
+    "coords": {
+      "x": 156,
+      "z": -2
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["GuardianFarmBend", 1],
+      ["Northern Junction", 1]
+    ]
+  },
+  {
+    "title": "Northern Junction",
+    "coords": {
+      "x": 158,
+      "z": -72
+    },
+    "displayPoint": true,
+    "neighbours": [
+      ["EelekTunnelBend2", 1],
+      ["DirkloopBend0", 0],
+      ["IMBend", 0]
+    ]
+  },
+  {
+    "title": "DirkloopBend0",
+    "coords": {
+      "x": 200,
+      "z": -72 
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["Northern Junction", 0],
+      ["Dirkloop's Portal", 0]
+    ]
+  },
+  {
+    "title": "IMBend",
+    "coords": {
+      "x": 158,
+      "z": -85
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["Northern Junction", 0],
+      ["FinnBend", 0],
+      ["Ivarremanski and meeskmooney's Portal", 0]
+    ]
+  },
+  {
+    "title": "FinnBend",
+    "coords": {
+      "x": 158,
+      "z": -102
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["IMBend", 0],
+      ["Eelek's Portal", 0],
+      ["Zvox's Portal", 0]
+    ]
+  },
+  {
+    "title": "Eelek's Portal",
+    "builders": [
+      "Eelek"
+    ],
+    "clickable": true,
+    "displayPin": true,
+    "throughPortalProjectTitle": "Eelek's Base",
+    "coords": {
+      "x": 157,
+      "z": -132
+    },
+    "neighbours": [
+      ["FinnBend", 0]
+    ]
+  },
+  {
+    "title": "Gelderland's Portal",
+    "builders": [
+      "gelderland"
+    ],
+    "clickable": true,
+    "displayPin": true,
+    "throughPortalProjectTitle": "Gelderland's Base",
+    "coords": {
+      "x": -38,
+      "z": -82
+    },
+    "neighbours": [
+      ["GelderlandBend", 1]
+    ]
+  },
+  {
+    "title": "Dirkloop's Portal",
+    "builders": [
+      "dirkloop"
+    ],
+    "clickable": true,
+    "displayPin": true,
+    "throughPortalProjectTitle": "Dirkloop's Base",
+    "coords": {
+      "x": 200,
+      "z": -36
+    },
+    "neighbours": [
+      ["DirkloopBend0", 0]
+    ]
+  },
+  {
+    "title": "Zvox's Portal",
+    "builders": [
+      "Zvox"
+    ],
+    "clickable": true,
+    "displayPin": true,
+    "throughPortalProjectTitle": "Zvox's Base",
+    "coords": {
+      "x": 236,
+      "z": -102
+    },
+    "neighbours": [
+      ["FinnBend", 0]
+    ]
+  },
+  {
+    "title": "Ivarremanski and meeskmooney's Portal",
+    "builders": [
+      "Ivarremanski",
+      "meeskmooney"
+    ],
+    "clickable": true,
+    "displayPin": true,
+    "throughPortalProjectTitle": "Ivarremanski and meeskmooney's Base",
+    "coords": {
+      "x": 451,
+      "z": -85
+    },
+    "neighbours": [
+      ["IMBend", 0]
+    ]
+  },
+  {
+    "title": "IndustrialBend0",
+    "coords": {
+      "x": -10,
+      "z": 225
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["Spawn and JarPlayGo portal", 1],
+      ["Industrial Junction", 1]
+    ]
+  },
+  {
+    "title": "Industrial Junction",
+    "coords": {
+      "x": 135,
+      "z": 225
+    },
+    "displayPoint": true,
+    "neighbours": [
+      ["IndustrialBend0", 1],
+      ["IndustrialBend1", 1],
+      ["Villager area", 1]
+    ]
+  },
+  {
+    "title": "Villager area",
+    "builders": [
+      "JarPlayGo",
+      "Eelek"
+    ],
+    "customHead": "MHF_Villager",
+    "throughPortalProjectTitle": "Villager area",
+    "displayPin": true,
+    "clickable": true,
+    "coords": {
+      "x": 138,
+      "z": 225
+    },
+    "neighbours": [
+      ["Industrial Junction", 1]
+    ]
+  },
+  {
+    "title": "IndustrialBend1",
+    "coords": {
+      "x": 135,
+      "z": 246
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["Industrial Junction", 1],
+      ["Iron farm", 1],
+      ["ThomasBend0", 1]
+    ]
+  },
+  {
+    "title": "Iron farm",
+    "builders": [
+      "Eelek",
+      "JarPlayGo"
+    ],
+    "customHead": "MHF_Golem",
+    "throughPortalProjectTitle": "Iron farm",
+    "displayPin": true,
+    "clickable": true,
+    "coords": {
+      "x": 155,
+      "z": 246
+    },
+    "neighbours": [
+      ["IndustrialBend1", 1]
+    ]
+  },
+  {
+    "title": "IndustrialBend2",
+    "coords": {
+      "x": 135,
+      "z": 267
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["ThomasBend0", 1],
+      ["Mob and Slime farm", 1]
+    ]
+  },
+  {
+    "title": "Mob and Slime farm",
+    "builders": [
+      "JarPlayGo"
+    ],
+    "customHead": "MHF_Slime",
+    "displayPin": true,
+    "throughPortalProjectTitle": "Mob and Slime farm",
+    "clickable": true,
+    "coords": {
+      "x": 162,
+      "z": 267
+    },
+    "neighbours": [
+      ["IndustrialBend2", 1]
+    ]
+  },
+  {
+    "title": "ThomasMuller04's Base",
+    "builders": [
+      "ThomasMuller04"
+    ],
+    "displayPin": true,
+    "clickable": true,
+    "coords": {
+      "x": 215,
+      "z": 156
+    },
+    "neighbours": [
+        ["ThomasBend1", 0]
+    ]
+  },
+  {
+    "title": "ThomasBend1",
+    "displayPoint": false,
+    "coords": {
+      "x": 215,
+      "z": 252
+    },
+    "neighbours": [
+        ["ThomasMuller04's Base", 0]
+    ]
+  },
+  {
+    "title": "ThomasBend1",
+    "displayPoint": false,
+    "coords": {
+      "x": 215,
+      "z": 252
+    },
+    "neighbours": [
+        ["ThomasMuller04's Base", 0]
+    ]
+  },
+  {
+    "title": "ThomasBend0",
+    "coords": {
+      "x": 135,
+      "z": 252
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["ThomasBend1", 0],
+      ["IndustrialBend1", 1],
+      ["IndustrialBend2", 1]
+    ]
+  },
+  {
+    "title": "DarkOakBend",
+    "coords": {
+      "x": -21,
+      "z": 8
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["Spawn and JarPlayGo portal", 0],
+      ["GelderlandBend", 1],
+      ["Dark Oak Forest Portal", 0]
+    ]
+  },
+  
+  {
+    "title": "Dark Oak Forest Portal",
+    "builders": [],
+    "customHead": "Azel",
+    "displayPin": true,
+    "clickable": true,
+    "coords": {
+      "x": -22,
+      "z": -230
+    },
+    "neighbours": [
+      ["DarkOakBend", 0]
+    ]
+  },
+  {
+    "title": "GelderlandBend",
+    "coords": {
+      "x": -38,
+      "z": 8
+    },
+    "displayPoint": true,
+    "neighbours": [
+      ["DarkOakBend", 1],
+      ["Gelderland's Portal", 1],
+      ["MesaBend", 1]
+    ]
+  },
+  {
+    "title": "MesaBend",
+    "coords": {
+      "x": -88,
+      "z": 8
+    },
+    "displayPoint": true,
+    "neighbours": [
+      ["GelderlandBend", 1],
+      ["Mesa and Mushroom Portal", 1],
+      ["Western Junction", 1]
+    ]
+  },
+  {
+    "title": "Mesa and Mushroom Portal",
+    "builders": [],
+    "customHead": "MushroomCassette",
+    "throughPortalProjectTitle": "Mushroom-and-Mesa island",
+    "displayPin": true,
+    "clickable": true,
+    "coords": {
+      "x": -88,
+      "z": 142
+    },
+    "neighbours": [
+      ["MesaBend", 1]
+    ]
+  },
+  {
+    "title": "Western Junction",
+    "coords": {
+      "x": -128,
+      "z": 8
+    },
+    "displayPoint": true,
+    "neighbours": [
+      ["MesaBend", 1],
+      ["Stronghold Portal", 1],
+      ["ShadorfBend", 1]
+    ]
+  },
+  {
+    "title": "Stronghold Portal",
+    "builders": [],
+    "customHead": "gumballuke",
+    "displayPin": true,
+    "clickable": true,
+    "coords": {
+      "x": -128,
+      "z": -140
+    },
+    "neighbours": [
+      ["Western Junction", 1]
+    ]
+  },
+  {
+    "title": "ShadorfBend",
+    "coords": {
+      "x": -562,
+      "z": 7
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["Western Junction", 1],
+      ["Shadorf's and sensei_shibata's Portal", 1]
+    ]
+  },
+  {
+    "title": "Shadorf's and sensei_shibata's Portal",
+    "builders": [
+      "shadorf",
+      "sensei_shibata"
+    ],
+    "clickable": true,
+    "throughPortalProjectTitle": "Shadorf's base",
+    "displayPin": true,
+    "displayPoint": true,
+    "coords": {
+      "x": -562,
+      "z": 681
+    },
+    "neighbours": [
+      ["ShadorfBend", 1],
+      ["SecondStrongHoldBend01", 0]
+    ]
+  },
+  {
+    "title": "SecondStrongHoldBend01",
+    "coords": {
+      "x": -562,
+      "z": 775
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["Shadorf's and sensei_shibata's Portal", 0],
+      ["SecondStrongHoldBend02", 0]
+    ]
+  },
+  {
+    "title": "SecondStrongHoldBend02",
+    "coords": {
+      "x": -658,
+      "z": 775
+    },
+    "displayPoint": false,
+    "neighbours": [
+      ["Second Stronghold Portal", 0],
+      ["SecondStrongHoldBend01", 0]
+    ]
+  },
+  {
+    "title": "Second Stronghold Portal",
+    "builders": [],
+    "customHead": "gumballuke",
+    "clickable": true,
+    "displayPin": true,
+    "coords": {
+      "x": -658,
+      "z": 764
+    },
+    "neighbours": [
+      ["SecondStrongHoldBend02", 0]
+    ]
+  },
+  {
+    "title": "Goldengigabite's Portal",
+    "builders": [
+      "goldengigabite"
+    ],
+    "clickable": true,
+    "throughPortalProjectTitle": "Goldengigabite's base",
+    "displayPin": true,
+    "coords": {
+      "x": 99,
+      "z": 47
+    }
+  }
+]

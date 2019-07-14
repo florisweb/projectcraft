@@ -22,8 +22,6 @@
 
 
 
-
-
 function _InfoMenu() {
 	let HTML = {
 		projectList: 			projectListHolder,
@@ -109,6 +107,7 @@ function _InfoMenu_mapJsExtender() {
 		builderHeader: 			$(".infoMenuPage .text.subHeader")[0],
 		descriptionHeader: 		$(".infoMenuPage .text.subHeader")[1],
 		imagesHeader: 			$(".infoMenuPage .text.subHeader")[2],
+		netherPortalButton: 	$(".infoMenuPage .netherPortalButton")[0],
 	}
 
 
@@ -135,10 +134,39 @@ function _InfoMenu_mapJsExtender() {
 		setTextToElement(projectPage_titleHolder, item.title);
 		setTextToElement(projectPage_coordHolder, "Coords: (" + item.coords.x + ", " + item.coords.z + ")");
 		setTextToElement(projectPage_builderNames, item.builders.join(", "));
+		
 		setDescriptionText(item.description);
 		addImagesToPage(item.images);
 
 		this.openPageByIndex(1);
+	}
+
+	this.goThroughPortal = function(_title) {
+		window.location.replace("nether.php?project=" + _title);
+	}
+
+	function updateHeaderVisibility(_item) {
+		HTML.builderHeader.style.display = "block";
+		if (!_item.builders[0]) HTML.builderHeader.style.display = "none";
+
+		HTML.descriptionHeader.style.display = "block";
+		if (!_item.description) HTML.descriptionHeader.style.display = "none";
+
+		HTML.imagesHeader.style.display = "block";
+		if (!_item.images[0]) HTML.imagesHeader.style.display = "none";
+
+		HTML.imagesHeader.style.display = "block";
+		if (!_item.images[0]) HTML.imagesHeader.style.display = "none";
+
+
+		HTML.netherPortalButton.style.display = "block";
+		if (!_item.throughPortalProjectTitle) HTML.netherPortalButton.style.display = "none";
+		HTML.netherPortalButton.onclick = function() {
+			InfoMenu.goThroughPortal(_item.throughPortalProjectTitle);
+		};
+
+
+	
 	}
 
 
@@ -166,23 +194,13 @@ function _InfoMenu_mapJsExtender() {
 		}
 	}
 
-	function updateHeaderVisibility(_item) {
-		HTML.builderHeader.style.display = "block";
-		if (!_item.builders[0]) HTML.builderHeader.style.display = "none";
-
-		HTML.descriptionHeader.style.display = "block";
-		if (!_item.description) HTML.descriptionHeader.style.display = "none";
-
-		HTML.imagesHeader.style.display = "block";
-		if (!_item.images[0]) HTML.imagesHeader.style.display = "none";
-	}
-
 
 
 	function getHeadUrl(_info) {
 		let builderName = _info.builders[0];
 		if (_info.builders.length > 1) builderName = "MHF_Exclamation";
 		if (_info.customHead) builderName = _info.customHead;
+		
 		return "heads.php?type=avatar&username=" + builderName;
 	}
 }

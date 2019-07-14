@@ -24,7 +24,7 @@
       "Eelek"
     ],
     "description": "The base of Eelek, a tall tower.",
-    "netherProjectTitle": "Eelek's Portal",
+    "throughPortalProjectTitle": "Eelek's Portal",
     "clickable": true,
     "displayPin": true,
     "images": [
@@ -46,7 +46,7 @@
       "gelderland"
     ],
     "description": "The base of gelderland, a nuclear city. No government inspectors allowed!",
-    "netherProjectTitle": "Gelderland's Portal", 
+    "throughPortalProjectTitle": "Gelderland's Portal", 
     "clickable": true,
     "displayPin": true,
     "images": [
@@ -69,7 +69,7 @@
       "JarPlayGo"
     ],
     "description": "An underground T-shape. No really, it is.",
-    "netherProjectTitle": "Spawn and Jarplaygo portal",
+    "throughPortalProjectTitle": "Spawn and Jarplaygo portal",
     "clickable": true,
     "displayPin": true,
     "images": [],
@@ -87,7 +87,7 @@
     "customPin": "#00ff00",
     "displayPin": true,
     "clickable": true,
-    "netherProjectTitle": "Shopping district portal",
+    "throughPortalProjectTitle": "Shopping district portal",
     "builders": [
       "Eelek",
       "Gelderland",
@@ -111,7 +111,7 @@
       "dirkloop"
     ],
     "description": "dirkloop has decided to claim a village.",
-    "netherProjectTitle": "Dirkloop's Portal",
+    "throughPortalProjectTitle": "Dirkloop's Portal",
     "clickable": true,
     "displayPin": true,
     "images": [],
@@ -130,7 +130,7 @@
       "shadorf"
     ],
     "description": "One colourful arc, on a mesa, far, far away...",
-    "netherProjectTitle": "Shadorf's and sensei_shibata's Portal",
+    "throughPortalProjectTitle": "Shadorf's and sensei_shibata's Portal",
     "clickable": true,
     "displayPin": true,
     "images": [],
@@ -149,7 +149,7 @@
       "sensei_shibata"
     ],
     "description": "A castle on a snowy outpost, far, far away...",
-    "netherProjectTitle": "Shadorf's and sensei_shibata's Portal",
+    "throughPortalProjectTitle": "Shadorf's and sensei_shibata's Portal",
     "clickable": true,
     "displayPin": true,
     "images": [],
@@ -186,7 +186,7 @@
       "goldengigabite"
     ],
     "description": "His boat can't go on ice.",
-    "netherProjectTitle": "Goldengigabite's Portal",
+    "throughPortalProjectTitle": "Goldengigabite's Portal",
     "clickable": true,
     "displayPin": true,
     "images": [],
@@ -205,7 +205,7 @@
       "Zvox"
     ],
     "description": "Bill Gates would like to know his location.",
-    "netherProjectTitle": "Zvox's Portal",
+    "throughPortalProjectTitle": "Zvox's Portal",
     "clickable": true,
     "displayPin": true,
     "images": [],
@@ -225,7 +225,7 @@
       "meeskmooney"
     ],
     "description": "A cozy house, on some plains, far, far away...",
-    "netherProjectTitle": "Ivarremanski and meeskmooney's Portal",
+    "throughPortalProjectTitle": "Ivarremanski and meeskmooney's Portal",
     "clickable": true,
     "displayPin": true,
     "images": [],
@@ -247,7 +247,7 @@
     "customHead": "MHF_Golem",
     "displayPin": true,
     "description": "The server poppy farm. Legend has it that it also produces iron.",
-    "netherProjectTitle": "Iron Farm",
+    "throughPortalProjectTitle": "Iron Farm",
     "clickable": true,
     "images": [],
     "coords": {
@@ -268,7 +268,7 @@
     "customHead": "Guardian",
     "displayPin": true,
     "description": "The guardian farm is what makes the server glow. Also lanterns.",
-    "netherProjectTitle": "Guardian Farm",
+    "throughPortalProjectTitle": "Guardian Farm",
     "clickable": true,
     "images": [],
     "coords": {
@@ -289,7 +289,7 @@
     "customHead": "MHF_Villager",
     "displayPin": true,
     "description": "They like the green stuff.",
-    "netherProjectTitle": "Villager Area",
+    "throughPortalProjectTitle": "Villager Area",
     "clickable": true,
     "images": [],
     "coords": {
@@ -309,7 +309,7 @@
     "customHead": "MHF_Slime",
     "displayPin": true,
     "description": "It is actually two adjacent slime chunks with a seperate mobfarm.",
-    "netherProjectTitle": "Mob and Slime farm",
+    "throughPortalProjectTitle": "Mob and Slime farm",
     "clickable": true,
     "images": [],
     "coords": {
@@ -350,7 +350,7 @@
     "customHead": "MushroomCassette",
     "customPin": "#d4332a",
     "description": "It is the best of both worlds.",
-    "netherProjectTitle": "Mesa and Mushroom Portal",
+    "throughPortalProjectTitle": "Mesa and Mushroom Portal",
     "clickable": true,
     "images": [],
     "coords": {
