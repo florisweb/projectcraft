@@ -15,11 +15,6 @@
 		<div id="mapHolder">
 			<canvas id="mapCanvas" width="3062" height="3062"></canvas>
 		</div>
-		
-		<div class="buttonHolder" id="zoomButtonHolder">
-			<div class="zoomButton" onclick="Map.zoomIn()" style="border-right: 1px solid rgba(255, 255, 255, 0.2)">+</div>
-			<div class="zoomButton" onclick="Map.zoomOut()" style="font-size: 55px; line-height: 24px">-</div>
-		</div>
         
         <div class="coordinatesHolder" id="coordinatesHolder">
             <span id="current_x"></span>

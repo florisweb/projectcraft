@@ -376,8 +376,6 @@ function _App_infoMenu() {
 	this.openState = true;
 	this.close = function() {
 		this.openState = false;
-		zoomButtonHolder.classList.add("infoMenuHidden");
-        coordinatesHolder.classList.add("infoMenuHidden");
 		mapCanvas.classList.add("infoMenuHidden");
 		infoMenu.classList.add("hide");
 		$(".button.infoMenuIcon").show();

@@ -419,15 +419,6 @@ a.discord {
 	transition: all 0.3s;
 }
 
-#zoomButtonHolder {
-	left: calc(100% - 95px - 400px);
-}
-
-#zoomButtonHolder.infoMenuHidden {
-	left: calc(100% - 95px);
-}
-
-
 
 #dimensionButtonHolder {
 	height: 25px;
