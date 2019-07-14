@@ -1,16 +1,16 @@
 function _InfoMenu() {
 	let HTML = {
-		projectList: projectListHolder,
-		pages: $(".infoMenuPage"),
-		builderHeader: $(".infoMenuPage .text.subHeader")[0],
-		descriptionHeader: $(".infoMenuPage .text.subHeader")[1],
-		imagesHeader: $(".infoMenuPage .text.subHeader")[2],
+		projectList: 			projectListHolder,
+		pages: 					$(".infoMenuPage"),
+		builderHeader: 			$(".infoMenuPage .text.subHeader")[0],
+		descriptionHeader: 		$(".infoMenuPage .text.subHeader")[1],
+		imagesHeader: 			$(".infoMenuPage .text.subHeader")[2],
 	}
 
 	this.openState = true;
 	this.close = function() {
 		this.openState = false;
-		zoomButtonHolder.classList.add("infoMenuHidden");
+		
         coordinatesHolder.classList.add("infoMenuHidden");
 		mapCanvas.classList.add("infoMenuHidden");
 		infoMenu.classList.add("hide");
@@ -20,7 +20,6 @@ function _InfoMenu() {
 	this.open = function() {
 		this.openState = true;
 		
-		zoomButtonHolder.classList.remove("infoMenuHidden");
         coordinatesHolder.classList.remove("infoMenuHidden");
 		mapCanvas.classList.remove("infoMenuHidden");
 		infoMenu.classList.remove("hide");

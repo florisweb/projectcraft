@@ -28,11 +28,7 @@
 			<canvas id="mapCanvas" width="3062" height="3062"></canvas>
             <div id="chatlog"></div>
 		</div>
-		
-		<div class="buttonHolder" id="zoomButtonHolder">
-			<div class="zoomButton" onclick="Map.zoomIn()" style="border-right: 1px solid rgba(255, 255, 255, 0.2)">+</div>
-			<div class="zoomButton" onclick="Map.zoomOut()" style="font-size: 55px; line-height: 24px">-</div>
-		</div>
+	
         
         <div class="coordinatesHolder" id="coordinatesHolder">
             <span id="current_x"></span>
@@ -54,7 +50,6 @@
 			</div>
 
 			<div class="infoMenuPage hide" style="color: white">
-
 				<div class="headerText preventTextOverflow" id="projectPage_titleHolder">PROJECTS</div>
 				<img class="exitIcon" src="images/exitIcon.png" onclick="InfoMenu.openPageByIndex(0)">
 

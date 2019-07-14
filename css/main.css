@@ -419,22 +419,6 @@ a.discord {
 	transition: all 0.3s;
 }
 
-.buttonHolder .zoomButton {
-	position: relative;
-	float: left;
-	width: calc(50% - 1px);
-	
-	font-size: 30px;
-	font-weight: 30px;
-	color: #eee;
-
-	text-align: center;
-	line-height: 28px;
-
-	cursor: pointer;
-}
-
-
 #zoomButtonHolder {
 	left: calc(100% - 95px - 400px);
 }
