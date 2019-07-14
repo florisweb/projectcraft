@@ -1,4 +1,4 @@
-function _infoMenu() {
+function _InfoMenu() {
 	let HTML = {
 		projectList: projectListHolder,
 		pages: $(".infoMenuPage"),

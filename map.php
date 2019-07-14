@@ -113,10 +113,10 @@
 	var Server;
 	var Map;
 	var Chat;
+	var InfoMenu;
 	var App = new _App();
 
 	function _App() {
-	  this.infoMenu = new _App_infoMenu();
 
 	  this.update = function() {
 	    Server.getData().then(function () {
@@ -133,10 +133,13 @@
 	    Map.focusItem(_title);
 	  }
 
+
+
 	  this.setup = function() {
-	    Server = new _server();
-	    Map = new _map();
-	    Chat = new _chat();
+	    Server 		= new _server();
+	    Map 		= new _map();
+	    Chat 		= new _chat();
+	    InfoMenu 	= new _InfoMenu();
 	    
 
 
