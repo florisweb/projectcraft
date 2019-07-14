@@ -83,13 +83,15 @@
             $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
 			$.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
 			$.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
-			$.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {});
-			$.getScript("js/app.js?antiCache="				+ antiCache, function() {
+			$.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
 				App.setup()
-			}
-   		</script>	
+			});
+   		</script>
 	</body>
 </html>
+
+
+
 
 
 <script>
@@ -117,7 +119,6 @@
 	var App = new _App();
 
 	function _App() {
-
 	  this.update = function() {
 	    Server.getData().then(function () {
 	      InfoMenu.createItemsByList(Server.items);
@@ -186,11 +187,6 @@
 	    this.update();
 	  }
 	}
-
-
-
-
-
 
 
 
