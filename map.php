@@ -74,12 +74,13 @@
 		<script>
 			// temperarelly so things don't get cached
 			let antiCache = Math.random() * 100000000;
-            $.getScript("js/chat.js?antiCache=" 	+ antiCache, function() {});
-			$.getScript("js/map.js?antiCache=" 		+ antiCache, function() {});
-			$.getScript("js/server.js?antiCache=" 	+ antiCache, function() {});
-			$.getScript("js/infomenu.js?antiCache=" + antiCache, function() {});
-			$.getScript("js/app.js?antiCache=" 		+ antiCache, function() {});
-   		</script>
+			$.getScript("js/handyFunctions.js?antiCache=" 	+ antiCache, function() {});
+            $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
+			$.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
+			$.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
+			$.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {});
+			$.getScript("js/app.js?antiCache="				+ antiCache, function() {});
+   		</script>	
 	</body>
 </html>
 

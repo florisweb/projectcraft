@@ -3,6 +3,8 @@ var Server;
 var Map;
 var Chat;
 
+
+
 function _App() {
   this.infoMenu = new _App_infoMenu();
 
@@ -22,15 +24,12 @@ function _App() {
   }
 
   this.setup = function() {
-    console.log("0");
     Server = new _server();
     Map = new _map();
     Chat = new _chat();
     
-    console.log("1");
 
     document.getElementById("mapCanvas").addEventListener("click", function(e) {
-      console.log("test0");
       let mapCanvas = document.getElementById("mapCanvas");
       let mapHolder = document.getElementById("mapHolder");
 
@@ -42,7 +41,6 @@ function _App() {
       Map.handleClick(x, y);
     });
     
-    console.log("2");
 
 
     document.onkeydown = function(_e) {
@@ -56,31 +54,9 @@ function _App() {
       if (_e.key == "+" || _e.key == "-" || _e.key == "Escape") _e.preventDefault();
     };
     
-    console.log("3");
-
 
     this.update();
-    console.log("4");
   }
 }
-
-
-
-
-
-
-
-
-
-function setTextToElement(_element, _text) {
-  if (!_element) return console.error("- setTextToElement: the element (", _element, ") doesn't exist.");
-  _element.innerHTML = "";
-  let a = document.createElement('a');
-  a.text = String(_text);
-  _element.append(a);
-}
-
-
-
 
 
