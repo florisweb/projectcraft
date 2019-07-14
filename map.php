@@ -33,6 +33,11 @@
 			<div class="zoomButton" onclick="Map.zoomIn()" style="border-right: 1px solid rgba(255, 255, 255, 0.2)">+</div>
 			<div class="zoomButton" onclick="Map.zoomOut()" style="font-size: 55px; line-height: 24px">-</div>
 		</div>
+        
+        <div class="coordinatesHolder" id="coordinatesHolder">
+            <span id="current_x"></span>
+            <span id="current_z"></span>
+        </div>
 
 		<div class="buttonHolder" id="dimensionButtonHolder">
 			<div class="text netherPortalButton" onclick="window.location.replace('nether.php')">

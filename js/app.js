@@ -40,8 +40,21 @@ function _App() {
 
       Map.handleClick(x, y);
     });
-    
 
+
+    document.onmousemove = function(e) {
+      let mapCanvas = document.getElementById("mapCanvas");
+      let mapHolder = document.getElementById("mapHolder");
+
+      let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * App.infoMenu.openState);
+      let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
+      let x = Map.DOMToMC(mouseX * mapCanvas.width);
+      let y = Map.DOMToMC(mouseY * mapCanvas.height);
+      
+      document.getElementById("current_x").innerHTML = Math.round(x);
+      document.getElementById("current_z").innerHTML = Math.round(y);
+    }
+  
 
     document.onkeydown = function(_e) {
       if (_e.key == "Escape")

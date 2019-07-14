@@ -377,6 +377,7 @@ function _App_infoMenu() {
 	this.close = function() {
 		this.openState = false;
 		zoomButtonHolder.classList.add("infoMenuHidden");
+        coordinatesHolder.classList.add("infoMenuHidden");
 		mapCanvas.classList.add("infoMenuHidden");
 		infoMenu.classList.add("hide");
 		$(".button.infoMenuIcon").show();
@@ -385,6 +386,7 @@ function _App_infoMenu() {
 	this.open = function() {
 		this.openState = true;
 		zoomButtonHolder.classList.remove("infoMenuHidden");
+        coordinatesHolder.classList.remove("infoMenuHidden");
 		mapCanvas.classList.remove("infoMenuHidden");
 		infoMenu.classList.remove("hide");
 		$(".button.infoMenuIcon").hide();
@@ -483,7 +485,7 @@ function _App_infoMenu() {
 	}
 
 	this.goThroughPortal = function(_title) {
-		window.location.replace("index.php?project=" + _title);
+		window.location.replace("map.php?project=" + _title);
 	}
 }
 
@@ -541,6 +543,19 @@ function _App() {
 
 	    Map.handleClick(x, y);
 	  });
+      
+      document.onmousemove = function(e) {
+        let mapCanvas = document.getElementById("mapCanvas");
+        let mapHolder = document.getElementById("mapHolder");
+
+        let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * App.infoMenu.openState);
+        let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
+        let x = Map.DOMToMC(mouseX * mapCanvas.width);
+        let y = Map.DOMToMC(mouseY * mapCanvas.height);
+      
+        document.getElementById("current_x").innerHTML = Math.round(x);
+        document.getElementById("current_z").innerHTML = Math.round(y);
+      }
 
 
 	  document.body.addEventListener("keydown", function(_e) {

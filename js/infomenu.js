@@ -11,6 +11,7 @@ function _App_infoMenu() {
 	this.close = function() {
 		this.openState = false;
 		zoomButtonHolder.classList.add("infoMenuHidden");
+        coordinatesHolder.classList.add("infoMenuHidden");
 		mapCanvas.classList.add("infoMenuHidden");
 		infoMenu.classList.add("hide");
 		$(".button.infoMenuIcon").show();
@@ -19,6 +20,7 @@ function _App_infoMenu() {
 	this.open = function() {
 		this.openState = true;
 		zoomButtonHolder.classList.remove("infoMenuHidden");
+        coordinatesHolder.classList.remove("infoMenuHidden");
 		mapCanvas.classList.remove("infoMenuHidden");
 		infoMenu.classList.remove("hide");
 		$(".button.infoMenuIcon").hide();
