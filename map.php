@@ -42,6 +42,8 @@
 		</div>
 
 
+
+		<!-- InfoMenu html includecode -->
 		<div id="infoMenu">
 			<div class="infoMenuPage">
 				<div class="headerText preventTextOverflow">PROJECTS</div>
@@ -66,6 +68,10 @@
 				<div id="projectPage_imageHolder"></div>
 			</div>
 		</div>
+
+
+
+
 
 		<script type="text/javascript" src="https://florisweb.tk/JS/jQuery.js"></script>
 		<script type="text/javascript" src="https://florisweb.tk/JS/request2.js"></script>

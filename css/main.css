@@ -362,7 +362,7 @@ a.discord {
 	padding-right: 390px;
 	transition: padding-right 0.3s;
 }
-#mapCanvas.infoMenuHidden {
+body.infoMenuHidden #mapCanvas {
 	padding-right: 0;
 }
 
@@ -394,7 +394,7 @@ a.discord {
     left: calc((100% - 400px) / 2 - 40px);
 }
 
-#coordinatesHolder.infoMenuHidden {
+body.infoMenuHidden #coordinatesHolder {
     left: calc(50vw - 40px);
 }
 

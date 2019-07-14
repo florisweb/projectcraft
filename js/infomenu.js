@@ -10,18 +10,17 @@ function _InfoMenu() {
 	this.openState = true;
 	this.close = function() {
 		this.openState = false;
-		
-        coordinatesHolder.classList.add("infoMenuHidden");
-		mapCanvas.classList.add("infoMenuHidden");
+
+		document.body.classList.add("infoMenuHidden");
+
 		infoMenu.classList.add("hide");
 		$(".button.infoMenuIcon").show();
 	}
 
 	this.open = function() {
 		this.openState = true;
-		
-        coordinatesHolder.classList.remove("infoMenuHidden");
-		mapCanvas.classList.remove("infoMenuHidden");
+
+		document.body.classList.remove("infoMenuHidden");
 		infoMenu.classList.remove("hide");
 		
 		$(".button.infoMenuIcon").hide();
