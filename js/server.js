@@ -16,9 +16,10 @@ function _server() {
   }
 
   this.getItemByTitle = function(_title) {
+    _title = _title.toLowerCase();
     for (let i = 0; i < this.items.length; i++)
     {
-      if (this.items[i].title == _title) return this.items[i];
+      if (this.items[i].title.toLowerCase() == _title) return this.items[i];
     }
     return false;
   }

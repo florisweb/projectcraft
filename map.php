@@ -112,7 +112,6 @@
 
 
 
-
 	var Server;
 	var Map;
 	var Chat;
@@ -120,73 +119,64 @@
 	var App = new _App();
 
 	function _App() {
-	  this.update = function() {
-	    Server.getData().then(function () {
-	      InfoMenu.createItemsByList(Server.items);
-	      Map.init();
-	      if (executeUrlCommands) executeUrlCommands()
-	    }, function () {});
-	  }
+	  	this.update = function() {
+		    Server.getData().then(function () {
+		      InfoMenu.createItemsByList(Server.items);
+		      Map.init();
+		      if (executeUrlCommands) executeUrlCommands()
+		    }, function () {});
+		 }
+
+	  	this.setup = function() {
+		    Server 		= new _server();
+		    Map 		= new _map();
+		    Chat 		= new _chat();
+		    InfoMenu 	= new _InfoMenu_mapJsExtender();
+		    
 
 
-	  this.openProject = function(_title) {
-	    _title = _title.toLowerCase();
-	    InfoMenu.openProjectPageByTitle(_title);
-	    Map.focusItem(_title);
-	  }
+		  	this.update();
 
 
+		  	// assign the eventhandlers
+		    document.getElementById("mapCanvas").addEventListener("click", function(e) {
+				let mapCanvas = document.getElementById("mapCanvas");
+				let mapHolder = document.getElementById("mapHolder");
 
-	  this.setup = function() {
-	    Server 		= new _server();
-	    Map 		= new _map();
-	    Chat 		= new _chat();
-	    InfoMenu 	= new _InfoMenu();
-	    
+				let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
+				let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
+				let x = mouseX * mapCanvas.width;
+				let y = mouseY * mapCanvas.height;
 
-
-	    // handlers have to be added somewhere else perhaps?
-	    document.getElementById("mapCanvas").addEventListener("click", function(e) {
-	      let mapCanvas = document.getElementById("mapCanvas");
-	      let mapHolder = document.getElementById("mapHolder");
-
-	      let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
-	      let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
-	      let x = mouseX * mapCanvas.width;
-	      let y = mouseY * mapCanvas.height;
-
-	      Map.handleClick(x, y);
-	    });
+				Map.handleClick(x, y);
+		    });
 
 
-	    document.onmousemove = function(e) {
-	      let mapCanvas = document.getElementById("mapCanvas");
-	      let mapHolder = document.getElementById("mapHolder");
+		    document.onmousemove = function(e) {
+				let mapCanvas = document.getElementById("mapCanvas");
+				let mapHolder = document.getElementById("mapHolder");
 
-	      let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
-	      let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
-	      let x = Map.DOMToMC(mouseX * mapCanvas.width);
-	      let y = Map.DOMToMC(mouseY * mapCanvas.height);
-	      
-	      document.getElementById("current_x").innerHTML = Math.round(x);
-	      document.getElementById("current_z").innerHTML = Math.round(y);
-	    }
-	  
+				let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
+				let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
+				let x = Map.DOMToMC(mouseX * mapCanvas.width);
+				let y = Map.DOMToMC(mouseY * mapCanvas.height);
 
-	    document.onkeydown = function(_e) {
-	      if (_e.key == "Escape")
-	      {
-	        if (InfoMenu.pageIndex == 1) return InfoMenu.openPageByIndex(0);
-	        if (InfoMenu.openState) return InfoMenu.close();
-	      }
-	      if (_e.key == "+") Map.zoomIn(); 
-	      if (_e.key == "-") Map.zoomOut();
-	      if (_e.key == "+" || _e.key == "-" || _e.key == "Escape") _e.preventDefault();
-	    };
-	    
+				document.getElementById("current_x").innerHTML = Math.round(x);
+				document.getElementById("current_z").innerHTML = Math.round(y);
+		    }
+		  
 
-	    this.update();
-	  }
+		    document.onkeydown = function(_e) {
+		      	if (_e.key == "Escape")
+		      	{
+		        	if (InfoMenu.pageIndex == 1) return InfoMenu.openPageByIndex(0);
+		        	if (InfoMenu.openState) return InfoMenu.close();
+		      	}
+		      	if (_e.key == "+") Map.zoomIn(); 
+		      	if (_e.key == "-") Map.zoomOut();
+		    	if (_e.key == "+" || _e.key == "-" || _e.key == "Escape") _e.preventDefault();
+		    };
+		 }
 	}
 
 
