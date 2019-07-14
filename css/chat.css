@@ -1,0 +1,98 @@
+
+#chatHolder {
+	position: fixed;
+	float: bottom;
+
+	left: 0;
+	bottom: 0;
+	
+	height: auto;
+	max-height: 60vh;
+	width: 450px;
+
+	overflow: auto;
+	z-index: 10000;
+	transition: all 0.3s;
+}
+
+
+#chatHolder.hide {
+	left: -450px;
+	border-right: 5px solid red;
+}
+
+
+	#chatHolder .shadowHolder {
+		position: absolute;
+		left: 0;
+		float: bottom;
+		height: 100%;
+		width: 0;
+		box-shadow: 0px 0 300px 300px rgba(0, 0, 0, .8);
+		pointer-events: none;
+	}
+
+
+
+
+
+	#chatHolder .messageHolder {
+		position: relative;
+		float: left;
+		
+		width: calc(100% - 20px - 5px);
+		height: auto;
+
+		max-height: 100vh;
+		padding: 5px 10px;
+		border-left: 5px solid transparent;
+
+		transition: all 0.5s;
+
+		pointer-events: none;
+	}
+
+	#chatHolder .messageHolder.fadeOut {
+		max-height: 0;
+		opacity: 0;
+		padding: 0 10px;
+	}
+
+	#chatHolder .messageHolder.leaveJoinEvent {
+		border-left: 5px solid #fa0;
+	}
+	
+
+
+
+		#chatHolder .messageHolder .messageText {
+			position: relative;
+			width: auto;
+
+			float: left;
+			font-size: 18px;
+			color: #eee;
+		}
+
+		#chatHolder .messageHolder .messageText.senderName {
+			color: #aaa;
+			font-weight: bold;
+			margin-right: 10px;
+		}
+
+
+		#chatHolder .messageHolder.leaveJoinEvent .messageText {
+			color: #fa0;
+		}
+
+		#chatHolder .messageHolder.leaveJoinEvent .messageText.senderName {
+			color: #c80;
+		}
+
+
+		
+
+
+
+
+
