@@ -403,7 +403,7 @@ body.infoMenuHidden #coordinatesHolder {
 .buttonHolder {
 	position: absolute;
 	float: bottom;
-	bottom: 20px;
+	bottom: 15px;
 	
 	width: auto;
 	height: 30px;

@@ -165,10 +165,7 @@ function _InfoMenu_mapJsExtender() {
 		if (!_item.description) HTML.descriptionHeader.style.display = "none";
 
 		HTML.imagesHeader.style.display = "block";
-		if (!_item.images) HTML.imagesHeader.style.display = "none";
-
-		HTML.imagesHeader.style.display = "block";
-		if (!_item.images) HTML.imagesHeader.style.display = "none";
+		if (!_item.images || _item.images.length == 0) HTML.imagesHeader.style.display = "none";
 
 
 		HTML.netherPortalButton.style.display = "block";

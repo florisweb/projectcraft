@@ -62,6 +62,7 @@
 				<div class="text subHeader"><br>DESCRIPTION</div>
 				<div class="text" id="projectPage_description"></div>
                 
+                <br>
                 <div class="text netherPortalButton">TO THE NETHER</div>
 
 				<div class="text subHeader"><br>IMAGES</div>
