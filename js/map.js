@@ -46,9 +46,9 @@ this._map = function () {
         document.addEventListener("keydown", function (_e) {
         	if (_e.key == "+")
         		Map.zoomIn();
-        	if (_e.key == "-")
+        	if (_e.key == "_")
         		Map.zoomOut();
-        	if (_e.key == "+" || _e.key == "-")
+        	if (_e.key == "+" || _e.key == "_")
         		_e.preventDefault();
         });
 	}
