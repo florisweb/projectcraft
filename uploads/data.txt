@@ -4,7 +4,7 @@
     "customPin": "#ed8400",
     "customHead": "Noobie",
     "clickable": false,
-    "displayPin": false,
+    "displayPoint": false,
     "builders": [
       "JarPlayGo"
     ],
@@ -26,7 +26,7 @@
     "description": "The base of Eelek, a tall tower.",
     "throughPortalProjectTitle": "Eelek's Portal",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [
         "uploads/images/eelek0.png",
         "uploads/images/eelek1.png"
@@ -48,7 +48,7 @@
     "description": "The base of gelderland, a nuclear city. No government inspectors allowed!",
     "throughPortalProjectTitle": "Gelderland's Portal", 
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [
       "uploads/images/gelderlandsBase_1.png",
       "uploads/images/gelderlandsBase_2.png",
@@ -71,7 +71,7 @@
     "description": "An underground T-shape. No really, it is.",
     "throughPortalProjectTitle": "Spawn and Jarplaygo portal",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": -71,
@@ -85,7 +85,7 @@
    {
     "title": "Shopping district",
     "customPin": "#00ff00",
-    "displayPin": true,
+    "displayPoint": true,
     "clickable": true,
     "throughPortalProjectTitle": "Shopping district portal",
     "builders": [
@@ -113,7 +113,7 @@
     "description": "dirkloop has decided to claim a village.",
     "throughPortalProjectTitle": "Dirkloop's Portal",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": 1636,
@@ -132,7 +132,7 @@
     "description": "One colourful arc, on a mesa, far, far away...",
     "throughPortalProjectTitle": "Shadorf's and sensei_shibata's Portal",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": -4566,
@@ -151,7 +151,7 @@
     "description": "A castle on a snowy outpost, far, far away...",
     "throughPortalProjectTitle": "Shadorf's and sensei_shibata's Portal",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": -4613,
@@ -169,7 +169,7 @@
     ],
     "description": "He's got an ambitious project!",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": 4100,
@@ -188,7 +188,7 @@
     "description": "His boat can't go on ice.",
     "throughPortalProjectTitle": "Goldengigabite's Portal",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": 788,
@@ -207,7 +207,7 @@
     "description": "Bill Gates would like to know his location.",
     "throughPortalProjectTitle": "Zvox's Portal",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": 1919,
@@ -227,7 +227,7 @@
     "description": "A cozy house, on some plains, far, far away...",
     "throughPortalProjectTitle": "Ivarremanski and meeskmooney's Portal",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": 3614,
@@ -245,7 +245,7 @@
       "JarPlayGo"
     ],
     "customHead": "MHF_Golem",
-    "displayPin": true,
+    "displayPoint": true,
     "description": "The server poppy farm. Legend has it that it also produces iron.",
     "throughPortalProjectTitle": "Iron Farm",
     "clickable": true,
@@ -266,7 +266,7 @@
       "JarPlayGo"
     ],
     "customHead": "Guardian",
-    "displayPin": true,
+    "displayPoint": true,
     "description": "The guardian farm is what makes the server glow. Also lanterns.",
     "throughPortalProjectTitle": "Guardian Farm",
     "clickable": true,
@@ -287,7 +287,7 @@
       "Eelek"
     ],
     "customHead": "MHF_Villager",
-    "displayPin": true,
+    "displayPoint": true,
     "description": "They like the green stuff.",
     "throughPortalProjectTitle": "Villager Area",
     "clickable": true,
@@ -307,7 +307,7 @@
       "JarPlayGo"
     ],
     "customHead": "MHF_Slime",
-    "displayPin": true,
+    "displayPoint": true,
     "description": "It is actually two adjacent slime chunks with a seperate mobfarm.",
     "throughPortalProjectTitle": "Mob and Slime farm",
     "clickable": true,
@@ -326,7 +326,7 @@
     "builders": [
       ""
     ],
-    "displayPin": false,
+    "displayPoint": false,
     "customHead": "Davenator911",
     "customPin": "#777777",
     "description": "It does not produce greenhouse gasses.",
@@ -346,7 +346,7 @@
     "builders": [
       ""
     ],
-    "displayPin": true,
+    "displayPoint": true,
     "customHead": "MushroomCassette",
     "customPin": "#d4332a",
     "description": "It is the best of both worlds.",
@@ -369,7 +369,7 @@
     ],
     "description": "Johnchaser's base, which has a great view, I'm sure :D",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": 983,
@@ -385,7 +385,7 @@
     "customHead": "villager",
     "description": "",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": -5000,
@@ -400,7 +400,7 @@
     "builders": ["Tony_Chocolony"],
     "description": "",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [],
     "coords": {
       "x": 1947,
@@ -415,7 +415,7 @@
     "builders": ["jarplaygo"],
     "description": "",
     "clickable": true,
-    "displayPin": true,
+    "displayPoint": true,
     "images": [
       "uploads/images/jarCity_1.png"
     ],
