@@ -422,7 +422,7 @@ body.infoMenuHidden #coordinatesHolder {
 
 #dimensionButtonHolder {
 	height: 25px;
-	background: url('../images/netherPortal.gif');
+	
 }
 
 
@@ -431,6 +431,8 @@ body.infoMenuHidden #coordinatesHolder {
 	width: auto;
 
 	padding: 5px;
+	
+	background: url('../images/netherPortal.gif');
 
 	text-align: center;
 	font-weight: bold;

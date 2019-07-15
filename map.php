@@ -36,7 +36,7 @@
         </div>
 
 		<div class="buttonHolder" id="dimensionButtonHolder">
-			<div class="text netherPortalButton" onclick="window.location.replace('nether.php')">
+			<div class="text" onclick="window.location.replace('nether.php')">
 				NETHER
 			</div>
 		</div>
