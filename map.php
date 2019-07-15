@@ -117,6 +117,22 @@
 	var Chat;
 	var InfoMenu;
 	var App = new _App();
+    
+    /*this.drawJunctionPoint = function (x, z, _color, _large) {
+		let r = 3;
+		if (_large)
+			r = 5;
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = "white";
+		ctx.fillStyle = "white";
+		if (_color)
+			ctx.fillStyle = _color;
+
+		ctx.beginPath();
+		ctx.arc(x, z, r, 0, 2 * Math.PI);
+		ctx.fill();
+		ctx.stroke();
+	}*/
 
 
 
@@ -157,35 +173,6 @@
 
 
 		  	this.update();
-
-
-		  	// assign the eventhandlers
-		    document.getElementById("mapCanvas").addEventListener("click", function(e) {
-				let mapCanvas = document.getElementById("mapCanvas");
-				let mapHolder = document.getElementById("mapHolder");
-
-				let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
-				let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
-				let x = mouseX * mapCanvas.width;
-				let y = mouseY * mapCanvas.height;
-
-				Map.handleClick(x, y);
-		    });
-
-
-		    document.onmousemove = function(e) {
-				let mapCanvas = document.getElementById("mapCanvas");
-				let mapHolder = document.getElementById("mapHolder");
-
-				let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
-				let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
-				let x = Map.DOMToMC(mouseX * mapCanvas.width);
-				let y = Map.DOMToMC(mouseY * mapCanvas.height);
-
-				document.getElementById("current_x").innerHTML = Math.round(x);
-				document.getElementById("current_z").innerHTML = Math.round(y);
-		    }
-		  
 
 		    document.onkeydown = function(_e) {
 		      	if (_e.key == "Escape")
