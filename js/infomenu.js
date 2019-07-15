@@ -85,7 +85,7 @@ function _InfoMenu() {
 		html.children[0].setAttribute("src", _info.imageUrl);
 		
 		html.onclick = function () {_info.onclick(_info);}
-		html.addEventHandler("click", function () {InfoMenu.onItemClick(_info);})
+		html.addEventListener("click", function () {InfoMenu.onItemClick(_info);})
 
 		if (!_info.typeName) return;
 		html.insertAdjacentHTML("beforeend", '<div class="typeName headerText preventTextOverflow"></div>');
@@ -95,7 +95,7 @@ function _InfoMenu() {
 
 	this.onItemClick = function() {};
 	
-	document.addEventHandler("keyDown", function(_e) {
+	document.addEventListener("keyDown", function(_e) {
 		if (_e.key != "Escape") return;
 		
 		_e.preventDefault();

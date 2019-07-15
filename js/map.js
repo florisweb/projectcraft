@@ -22,7 +22,7 @@ this._map = function () {
 			this.registerPoint(_points[i]);
 		}
 
-		this.focusItem(_points[0]);
+		this.panToItem(_points[0]);
         
         document.getElementById("mapCanvas").addEventListener("click", function (e) {
         	let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
@@ -194,7 +194,7 @@ this._map = function () {
 	this.panToItem = function(_point) {
 		if (this.zoomPercentage <= 1.5)
 			this.zoom(2);
-		this.DOMPanTo(MCToDOM(_point.x), MCToDOM(_point.z));
+		this.DOMPanTo(this.MCToDOM(_point.x), this.MCToDOM(_point.z));
 	}
 
 	this.findClickbox = function (_x, _y) {

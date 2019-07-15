@@ -22,5 +22,4 @@ function _server() {
     return false;
   }
    
-  this.getData();
 }

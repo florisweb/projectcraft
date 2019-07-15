@@ -88,6 +88,8 @@
 				setup()
 			});
    		</script>
+   		<!-- <script type="text/javascript" src="js/server.js?antiCache=4"></script> -->
+   		<!-- <script type="text/javascript" src="js/infomenu.js?antiCache=2"></script> -->
 	</body>
 </html>
 
