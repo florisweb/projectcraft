@@ -373,7 +373,7 @@ body.infoMenuHidden #mapCanvas {
 .coordinatesHolder {
     position: absolute;
     float: bottom;
-    bottom: 20px;
+    bottom: 15px;
     
     width: 80px;
     height: 20px;
@@ -386,16 +386,16 @@ body.infoMenuHidden #mapCanvas {
     -webkit-backdrop-filter: blur(40px);
 	backdrop-filter: blur(40px);
     
-    padding: 3px;
+    padding: 5px;
     transition: all 0.3s;
 }
 
 #coordinatesHolder {
-    left: calc((100% - 400px) / 2 - 40px);
+	right: calc(390px + 20px);
 }
 
 body.infoMenuHidden #coordinatesHolder {
-    left: calc(50vw - 40px);
+    right: 20px;
 }
 
 

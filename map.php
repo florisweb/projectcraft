@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=1">
+		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=2">
         <link rel="stylesheet" type="text/css" href="css/chat.css?antiCache=1">
 		<title>ProjectCraftMC | World Map</title>
 	</head>
@@ -100,16 +100,17 @@
 <script>
 	function executeUrlCommands() {
 		<?php
-			$_openProjectByTitle = $_GET["openProjectByTitle"];
+            $project = $_GET["project"];
+            $project = explode('"', $project);
+            $project = implode("", $project);
 
-			if ($_openProjectByTitle)
-			{
-				echo "InfoMenu.openProjectPageByTitle(\"" . (string)$_openProjectByTitle . "\");";				
-				$commandFound = true;
-			}
-
-		?>
-		// executeUrlCommands = null;
+            if (!empty($project))
+            {
+                echo "InfoMenu.openProjectPageByTitle(\"" . (string)$project . "\");";
+                echo "Map.panToItem(Server.getItemByTitle(\"" . (string)$project . "\"));";
+            }
+        ?>
+		executeUrlCommands = null;
 	}
 
 	var Server;
