@@ -98,8 +98,6 @@ function _InfoMenu() {
 
 
 
-
-
 function _InfoMenu_mapJsExtender() {
 	_InfoMenu.call(this);
 	let Inheriter = new _InfoMenu();
