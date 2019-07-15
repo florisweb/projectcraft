@@ -2,10 +2,10 @@
 
 # Guidelines
   <h3>Global Parameters</h3>
-  - title* STRING
-  - builders* JSON_ARRAY default: [].
-  - coords* JSON_OBJECT
-  - type* JSON_OBJECT
+  - title STRING REQUIRED
+  - builders JSON_ARRAY default: []. REQUIRED
+  - coords JSON_OBJECT REQUIRED
+  - type JSON_OBJECT REQUIRED
   
   - clickable BOOLEAN default: true
   - customHead STRING
@@ -15,11 +15,11 @@
   - images JSON_ARRAY
   
   {coords}:
-    - x* INT
-    - z* INT
+    - x INT REQUIRED
+    - z INT REQUIRED
     
   {type}:
-    - name* STRING
+    - name STRING REQUIRED
     - radius INT
     
   [images]:
@@ -29,11 +29,11 @@
   - None.
   
   <h4>nether.txt specific:</h4>
-  - neighbours JSON_ARRAY
+  - neighbours JSON_ARRAY REQUIRED
   
   [neighbours]:
     - neighbour JSON_OBJECT
     
  {neighbour}:
-    - name* STRING
-    - type* STRING
+    - name STRING REQUIRED
+    - type STRING REQUIRED
