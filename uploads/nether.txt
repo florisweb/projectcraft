@@ -678,7 +678,7 @@
   {
     "title": "1.14 Snowy Village Portal",
     "builders": [],
-    "dimensionLink: "1.14 Snowy Village",
+    "dimensionLink": "1.14 Snowy Village",
     "coords": {
       "x": 155,
       "z": 597
