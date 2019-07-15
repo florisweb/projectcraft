@@ -162,7 +162,6 @@ function _InfoMenu_mapJsExtender() {
 		if (!_item.builders || _item.builders.length == 0) HTML.builderHeader.style.display = "none";
 
 		HTML.descriptionHeader.style.display = "block";
-		console.log(_item);
 		if (!_item.description) HTML.descriptionHeader.style.display = "none";
 
 		HTML.imagesHeader.style.display = "block";

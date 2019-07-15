@@ -45,9 +45,16 @@ body {
 	font-size: 80px;
 	font-weight: bolder;
 
-	animation: homeScreen_showLogo 0s 1;
+	animation: homeScreen_showLogo 2.5s 1;
 	animation-fill-mode: forwards;
+	-webkit-animation-fill-mode: forwards;
 }
+
+body.quickStartAnimation #homescreen_projectCraftLogo {
+	/*animation: homeScreen_showLogo 2.5s 1;*/
+	animation-duration: .0s;
+}
+
 
 .homescreen_projectCraftInfo {
     position: absolute;
@@ -173,9 +180,11 @@ a.discord {
 		height: 260px;
 		padding-bottom: 100px;
 
-		animation: homeScreen_navigationHolderIn 2s 1;
+		animation: homeScreen_navigationHolderIn 2.5s 1;
 		animation-fill-mode: forwards;
-        animation-delay: 0s;
+	}
+	body.quickStartAnimation #homeScreen_navigationHolder {
+		animation-duration: 1.5s;
 	}
 
 		#homeScreen_navigationHolder .navigationItem {

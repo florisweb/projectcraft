@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=1">
+		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=2">
 		<title>ProjectCraftMC</title>
 	</head>
 
@@ -43,12 +43,7 @@
         
         <script type="text/javascript">
             window.onload = function() {
-                if(getCookie("visit") == "") {
-                    document.getElementById("homescreen_projectCraftLogo").style.animationDuration = "5s";
-                    document.getElementById("homeScreen_backgroundImage").style.animationDuration = "3s";
-                    document.getElementById("homeScreen_navigationHolder").style.animationDelay = "5s";
-                    document.cookie = "visit=true";
-                }
+                if (getCookie("visit") != "") document.body.classList.add("quickStartAnimation");
             }
             
             function getCookie(cname) {
