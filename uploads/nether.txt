@@ -13,7 +13,10 @@
       ["EelekTunnelBend0", 0],
       ["IndustrialBend0", 1],
       ["DarkOakBend", 0]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "EelekTunnelBend0",
@@ -27,7 +30,10 @@
     "neighbours": [
       ["Spawn and JarPlayGo portal", 0],
       ["EelekTunnelBend1", 0]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "EelekTunnelBend1",
@@ -41,7 +47,10 @@
     "neighbours": [
       ["EelekTunnelBend0", 0],
       ["GuardianFarmBend", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "GuardianFarmBend",
@@ -56,7 +65,10 @@
       ["EelekTunnelBend1", 1],
       ["Guardian farm", 0],
       ["EelekTunnelBend2", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Guardian farm",
@@ -72,7 +84,10 @@
     },
     "neighbours": [
       ["GuardianFarmBend", 0]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "EelekTunnelBend2",
@@ -86,7 +101,10 @@
     "neighbours": [
       ["GuardianFarmBend", 1],
       ["Northern Junction", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Northern Junction",
@@ -101,7 +119,10 @@
       ["EelekTunnelBend2", 1],
       ["DirkloopBend0", 0],
       ["IMBend", 0]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "DirkloopBend0",
@@ -115,7 +136,10 @@
     "neighbours": [
       ["Northern Junction", 0],
       ["Dirkloop's Portal", 0]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "IMBend",
@@ -130,7 +154,10 @@
       ["Northern Junction", 0],
       ["FinnBend", 0],
       ["Ivarremanski and meeskmooney's Portal", 0]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "FinnBend",
@@ -145,7 +172,10 @@
       ["IMBend", 0],
       ["Eelek's Portal", 0],
       ["Zvox's Portal", 0]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Eelek's Portal",
@@ -159,7 +189,10 @@
     },
     "neighbours": [
       ["FinnBend", 0]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "Gelderland's Portal",
@@ -173,7 +206,10 @@
     },
     "neighbours": [
       ["GelderlandBend", 1]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "End Portal #3",
@@ -186,7 +222,10 @@
     },
     "neighbours": [
       ["DirkloopBend0", 0]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "Zvox's Portal",
@@ -200,7 +239,10 @@
     },
     "neighbours": [
       ["FinnBend", 0]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "Ivarremanski and meeskmooney's Portal",
@@ -215,7 +257,10 @@
     },
     "neighbours": [
       ["IMBend", 0]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "IndustrialBend0",
@@ -229,7 +274,10 @@
     "neighbours": [
       ["Spawn and JarPlayGo portal", 1],
       ["Industrial Junction", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Industrial Junction",
@@ -244,7 +292,10 @@
       ["IndustrialBend0", 1],
       ["IndustrialBend1", 1],
       ["Villager area", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Villager area",
@@ -260,7 +311,10 @@
     },
     "neighbours": [
       ["Industrial Junction", 1]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "IndustrialBend1",
@@ -275,7 +329,10 @@
       ["Industrial Junction", 1],
       ["Iron farm", 1],
       ["ThomasBend0", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Iron farm",
@@ -291,7 +348,10 @@
     },
     "neighbours": [
       ["IndustrialBend1", 1]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "IndustrialBend2",
@@ -305,7 +365,10 @@
     "neighbours": [
       ["ThomasBend0", 1],
       ["Mob and Slime farm", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Mob and Slime farm",
@@ -320,7 +383,10 @@
     },
     "neighbours": [
       ["IndustrialBend2", 1]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "ThomasMuller04's Base",
@@ -333,7 +399,10 @@
     },
     "neighbours": [
         ["ThomasBend1", 0]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "ThomasBend1",
@@ -346,7 +415,10 @@
     },
     "neighbours": [
         ["ThomasMuller04's Base", 0]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "ThomasBend1",
@@ -359,7 +431,10 @@
     },
     "neighbours": [
         ["ThomasMuller04's Base", 0]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "ThomasBend0",
@@ -374,7 +449,10 @@
       ["ThomasBend1", 0],
       ["IndustrialBend1", 1],
       ["IndustrialBend2", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "DarkOakBend",
@@ -389,7 +467,10 @@
       ["Spawn and JarPlayGo portal", 0],
       ["GelderlandBend", 1],
       ["Dark Oak Forest Portal", 0]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   
   {
@@ -402,7 +483,10 @@
     },
     "neighbours": [
       ["DarkOakBend", 0]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "GelderlandBend",
@@ -417,7 +501,10 @@
       ["DarkOakBend", 1],
       ["Gelderland's Portal", 1],
       ["MesaBend", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "MesaBend",
@@ -432,7 +519,10 @@
       ["GelderlandBend", 1],
       ["Mesa and Mushroom Portal", 1],
       ["Western Junction", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Mesa and Mushroom Portal",
@@ -445,7 +535,10 @@
     },
     "neighbours": [
       ["MesaBend", 1]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "Western Junction",
@@ -460,7 +553,10 @@
       ["MesaBend", 1],
       ["Stronghold Portal", 1],
       ["ShadorfBend", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Stronghold Portal",
@@ -472,7 +568,10 @@
     },
     "neighbours": [
       ["Western Junction", 1]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "ShadorfBend",
@@ -486,7 +585,10 @@
     "neighbours": [
       ["Western Junction", 1],
       ["Shadorf's and sensei_shibata's Portal", 1]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Shadorf's and sensei_shibata's Portal",
@@ -502,7 +604,10 @@
     "neighbours": [
       ["ShadorfBend", 1],
       ["SecondStrongHoldBend01", 0]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "SecondStrongHoldBend01",
@@ -516,7 +621,10 @@
     "neighbours": [
       ["Shadorf's and sensei_shibata's Portal", 0],
       ["SecondStrongHoldBend02", 0]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "SecondStrongHoldBend02",
@@ -530,7 +638,10 @@
     "neighbours": [
       ["Second Stronghold Portal", 0],
       ["SecondStrongHoldBend01", 0]
-    ]
+    ],
+    "type": {
+      "name": "Bend"
+    }
   },
   {
     "title": "Second Stronghold Portal",
@@ -542,7 +653,10 @@
     },
     "neighbours": [
       ["SecondStrongHoldBend02", 0]
-    ]
+    ],
+    "type": {
+      "name": "Portal"
+    }
   },
   {
     "title": "Goldengigabite's Portal",
@@ -553,6 +667,9 @@
     "coords": {
       "x": 99,
       "z": 47
+    },
+    "type": {
+      "name": "Portal"
     }
   }
 ]
