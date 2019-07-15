@@ -87,9 +87,9 @@ function _InfoMenu() {
 		html.onclick = function () {_info.onclick(_info);}
 		html.addEventListener("click", function () {InfoMenu.onItemClick(_info);})
 
-		if (!_info.typeName) return;
+		if (!_info.type.name) return;
 		html.insertAdjacentHTML("beforeend", '<div class="typeName headerText preventTextOverflow"></div>');
-		setTextToElement(html.children[2], _info.typeName);
+		setTextToElement(html.children[2], _info.type.name);
 	}
 
 
@@ -125,6 +125,7 @@ function _InfoMenu_mapJsExtender() {
 
 
 	this.addItem = function (_info) {
+		if (_info.displayInList === false) return;
 		_info.imageUrl 	= getHeadUrl(_info);
 		_info.typeName 	= _info.type ? _info.type.typeName : "";
 		_info.onclick 	= function () {
@@ -175,9 +176,6 @@ function _InfoMenu_mapJsExtender() {
 		HTML.netherPortalButton.onclick = function() {
 			InfoMenu.goThroughPortal(_item.throughPortalProjectTitle);
 		};
-
-
-	
 	}
 
 
@@ -208,11 +206,12 @@ function _InfoMenu_mapJsExtender() {
 
 
 	function getHeadUrl(_info) {
-		let builderName = _info.builders[0];
-		if (_info.builders.length > 1) builderName = "MHF_Exclamation";
-		if (_info.customHead) builderName = _info.customHead;
+		let headName = "";
+		if (_info.builders) headName = _info.builders[0]; 
+		if (_info.builders && _info.builders.length > 1) headName = "MHF_Exclamation";
+		if (_info.customHead) headName = _info.customHead;
 		
-		return "heads.php?type=avatar&username=" + builderName;
+		return "heads.php?type=avatar&username=" + headName;
 	}
 }
 
