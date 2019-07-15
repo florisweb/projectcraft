@@ -127,15 +127,16 @@
  		InfoMenu 	= new _InfoMenu_mapJsExtender();
 		
 		Map.onItemClick 		= function(_item) {InfoMenu.openProjectPageByTitle(_item.title)}
-		InfoMenu.onItemClick 	= function(_item) {
-			let item = Server.getItemById(_item);
-			Map.panToItem(_item)
-		}
+		InfoMenu.onItemClick 	= function(_item) {Map.panToItem(_item)}
 
-		Server.
+		Server.getData("uploads/data.txt").then(function (_data) {
+			InfoMenu.createItemsByList(_data);
+			Map.init(_data, 4);
+			if (executeUrlCommands) executeUrlCommands()
+		});
 
 	}
-
+	setup();
 
 
 	function _App() {
@@ -143,7 +144,7 @@
 		    Server.getData().then(function () {
 		      InfoMenu.createItemsByList(Server.items);
 		      Map.init();
-		      if (executeUrlCommands) executeUrlCommands()
+		      
 		    }, function () {});
 		 }
 

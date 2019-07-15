@@ -1,18 +1,17 @@
 function _server() {
   this.items = [];
 
-  this.getData = function() {
-    return new Promise(function (resolve, fail) {
-      REQUEST.send("uploads/data.txt", "").then(
-        function (_data) {  
-          if (typeof _data != "object") return console.error("data.txt: there's a problem in your json syntax");
-          Server.items = _data;
-          resolve(Server.items);
-        }, function (_e) {console.error("An error accured while trying to get data.txt:", _e);}
-      );
-      
-    });
+   this.getData = function(_filePath) {
+      return new Promise(function (resolve, fail) {
+          REQUEST.send(_filePath, "").then(function (_data) {  
+              if (typeof _data != "object") return console.error(_filePath + ": there's a problem in your json syntax");
+              resolve(_data);
+          }, function (_e) {
+              console.error("An error accured while trying to get " + _filePath, _e);
+          });
+      });
   }
+
 
   this.getItemByTitle = function(_title) {
     _title = _title.toLowerCase();

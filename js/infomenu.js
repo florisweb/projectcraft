@@ -93,7 +93,15 @@ function _InfoMenu() {
 	}
 
 
-	this.onItemClick = function() {}
+	this.onItemClick = function() {};
+	
+	document.addEventHandler("keyDown", function(_e) {
+		if (_e.key != "Escape") return;
+		
+		_e.preventDefault();
+		if (InfoMenu.pageIndex == 1) 	return InfoMenu.openPageByIndex(0);
+		if (InfoMenu.openState) 		return InfoMenu.close();
+	};
 }
 
 
