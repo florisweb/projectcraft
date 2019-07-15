@@ -162,6 +162,7 @@ function _InfoMenu_mapJsExtender() {
 		if (!_item.builders || _item.builders.length == 0) HTML.builderHeader.style.display = "none";
 
 		HTML.descriptionHeader.style.display = "block";
+		console.log(_item);
 		if (!_item.description) HTML.descriptionHeader.style.display = "none";
 
 		HTML.imagesHeader.style.display = "block";
@@ -177,8 +178,8 @@ function _InfoMenu_mapJsExtender() {
 
 
 	function setDescriptionText(_text) {
-		if (!_text) return false;
 		projectPage_description.innerHTML = "";
+		if (!_text) return false;
 		
 		let descriptionTextLines = _text.split("\n");
 		for (line of descriptionTextLines)
@@ -192,8 +193,8 @@ function _InfoMenu_mapJsExtender() {
 
 
 	function addImagesToPage(_imageUrls) {
-		if (!_imageUrls) return false;
 		projectPage_imageHolder.innerHTML = "";
+		if (!_imageUrls) return false;
 
 		for (let i = 0; i < _imageUrls.length; i++)
 		{
