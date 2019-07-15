@@ -33,7 +33,7 @@ this._map = function () {
         	Map.handleClick(x, y);
         });
 
-        document.onmousemove = function (e) {
+        document.addEventListener("mousemove", function (e) {
         	let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
         	let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
         	let x = Map.DOMToMC(mouseX * canvas.width);
@@ -41,6 +41,15 @@ this._map = function () {
 
         	document.getElementById("current_x").innerHTML = Math.round(x);
         	document.getElementById("current_z").innerHTML = Math.round(y);
+        });
+        
+        document.addEventListener("keydown", function (_e) {
+        	if (_e.key == "+")
+        		Map.zoomIn();
+        	if (_e.key == "-")
+        		Map.zoomOut();
+        	if (_e.key == "+" || _e.key == "-")
+        		_e.preventDefault();
         }
 	}
 
@@ -171,7 +180,7 @@ this._map = function () {
 		if (box == null)
 			return;
 
-		this.onItemClick(box.point);
+        this.onItemClick(box.point);
 
 		if (this.zoomPercentage <= 1.5)
 			this.zoom(2);
