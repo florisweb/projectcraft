@@ -10,8 +10,6 @@
 
 
 
-<br>
-
 
 <h2>InfoMenu [InfoMenu]</h2>
   InfoMenu is the window on the right side of the screen, responsible for showing a list of all projects and their information.
@@ -22,6 +20,7 @@
     - InfoMenu.close
     - InfoMenu.createItemsByList(infoItem array)
     - InfoMenu.addItem(infoItem)
+    - InfoMenu.openPageByIndex(PageIndex INT)
 
 
 
@@ -33,8 +32,10 @@
     - typeName  STRING
 
 
+<h3>Variables</h3>
 
-
+    - InfoMenu.openState BOOLEAN
+    - InfoMenu.pageIndex INT
 
 
 
