@@ -17,6 +17,7 @@
     - InfoMenu.createItemsByList(infoItem array)
     - InfoMenu.addItem(infoItem)
     - InfoMenu.openPageByIndex(PageIndex INT)
+    - InfoMenu.onItemClick(infoItem)                - HANDLER (has to be assigned)
 
 
 

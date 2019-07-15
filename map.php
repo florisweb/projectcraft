@@ -118,6 +118,26 @@
 	var InfoMenu;
 	var App = new _App();
 
+
+
+	function setup() {
+		Server 		= new _server();
+		Map 		= new _map();
+		Chat 		= new _chat();
+ 		InfoMenu 	= new _InfoMenu_mapJsExtender();
+		
+		Map.onItemClick 		= function(_item) {InfoMenu.openProjectPageByTitle(_item.title)}
+		InfoMenu.onItemClick 	= function(_item) {
+			let item = Server.getItemById(_item);
+			Map.panToItem(_item)
+		}
+
+		Server.
+
+	}
+
+
+
 	function _App() {
 	  	this.update = function() {
 		    Server.getData().then(function () {

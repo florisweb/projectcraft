@@ -85,11 +85,15 @@ function _InfoMenu() {
 		html.children[0].setAttribute("src", _info.imageUrl);
 		
 		html.onclick = function () {_info.onclick(_info);}
+		html.addEventHandler("click", function () {InfoMenu.onItemClick(_info);})
 
 		if (!_info.typeName) return;
 		html.insertAdjacentHTML("beforeend", '<div class="typeName headerText preventTextOverflow"></div>');
 		setTextToElement(html.children[2], _info.typeName);
 	}
+
+
+	this.onItemClick = function() {}
 }
 
 
@@ -115,7 +119,6 @@ function _InfoMenu_mapJsExtender() {
 		_info.typeName 	= _info.type ? _info.type.typeName : "";
 		_info.onclick 	= function () {
 			InfoMenu.openProjectPageByTitle(_info.title);
-			Map.focusItem(_info.title);
 		}
 		
 		return Inheriter.addItem(_info);

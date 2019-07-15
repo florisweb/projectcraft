@@ -3,7 +3,6 @@ function _server() {
 
   this.getData = function() {
     return new Promise(function (resolve, fail) {
-      
       REQUEST.send("uploads/data.txt", "").then(
         function (_data) {  
           if (typeof _data != "object") return console.error("data.txt: there's a problem in your json syntax");
