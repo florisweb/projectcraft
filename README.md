@@ -7,6 +7,7 @@
     - type JSON_OBJECT REQUIRED
     
     - displayPoint BOOLEAN default: true
+    - displayInList BOOLEAN default: true
     - clickable BOOLEAN default: true
     - customHead STRING
     - customPin HEX_COLOR
