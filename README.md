@@ -1,5 +1,3 @@
-# ProjectCraft Code Documentation
-
 # Guidelines
   <h3>Global Parameters</h3>
   
@@ -45,23 +43,6 @@
     
     - name STRING REQUIRED
     - type STRING REQUIRED
-
-
-
-
-
-
-
-
-
-# Module guidelines
-    - Title (global object's name, for example: Map)
-    - Description
-    - Functions
-    - Variables
-
-
-
 
 
 
