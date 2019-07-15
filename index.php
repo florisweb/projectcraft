@@ -13,7 +13,7 @@
 	<body style="overflow: hidden;" class="noselect">
 		<div id="homeScreen">
 			<img style="animation-fill-mode: forwards;" id="homeScreen_backgroundImage" src="<?php
-                    $files = glob("uploads/images/homescreen/*.png");
+                    $files = glob("uploads/images/*.png");
 					$length = sizeof($files);
 					$index = rand(0, $length-1);
                     echo $files[$index];
