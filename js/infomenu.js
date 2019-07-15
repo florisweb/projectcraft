@@ -172,9 +172,9 @@ function _InfoMenu_mapJsExtender() {
 
 
 		HTML.netherPortalButton.style.display = "block";
-		if (!_item.throughPortalProjectTitle) HTML.netherPortalButton.style.display = "none";
+		if (!_item.dimensionLink) HTML.netherPortalButton.style.display = "none";
 		HTML.netherPortalButton.onclick = function() {
-			InfoMenu.goThroughPortal(_item.throughPortalProjectTitle);
+			InfoMenu.goThroughPortal(_item.dimensionLink);
 		};
 	}
 

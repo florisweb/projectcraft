@@ -75,7 +75,8 @@
 
                     if (!empty($project))
                     {
-                        echo "App.openProject(\"" . $project . "\");";
+                        echo "InfoMenu.openProjectPageByTitle(\"" . (string)$project . "\");";
+                        echo "Map.panToItem(Server.getItemByTitle(\"" . (string)$project . "\"));";
                     }
                 ?>
                 executeUrlCommands = null;
@@ -106,6 +107,9 @@
                     
 					if (executeUrlCommands) executeUrlCommands();
 				});
+				InfoMenu.goThroughPortal = function(_title) {
+					window.location.replace("map.php?project=" + _title);
+				}
 			}
             
             function drawLines(data) {

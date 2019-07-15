@@ -100,16 +100,17 @@
 <script>
 	function executeUrlCommands() {
 		<?php
-			$_openProjectByTitle = $_GET["openProjectByTitle"];
+            $project = $_GET["project"];
+            $project = explode('"', $project);
+            $project = implode("", $project);
 
-			if ($_openProjectByTitle)
-			{
-				echo "InfoMenu.openProjectPageByTitle(\"" . (string)$_openProjectByTitle . "\");";				
-				$commandFound = true;
-			}
-
-		?>
-		// executeUrlCommands = null;
+            if (!empty($project))
+            {
+                echo "InfoMenu.openProjectPageByTitle(\"" . (string)$project . "\");";
+                echo "Map.panToItem(Server.getItemByTitle(\"" . (string)$project . "\"));";
+            }
+        ?>
+		executeUrlCommands = null;
 	}
 
 	var Server;
