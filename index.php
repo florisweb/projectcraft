@@ -44,6 +44,7 @@
         <script type="text/javascript">
             window.onload = function() {
                 if (getCookie("visit") != "") document.body.classList.add("quickStartAnimation");
+                document.cookie = "visit=true";
             }
             
             function getCookie(cname) {
