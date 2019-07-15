@@ -62,7 +62,7 @@ Requires: nothing.
     - Map.registerPoint(point):
       Call to register a point.
     
-    - Map.drawPoint(point):
+    - Map.drawPoint(x, z, radius, username, colour):
       Call to draw a point.
     
     - Map.drawLine(startX, startZ, endX, endZ, colour):

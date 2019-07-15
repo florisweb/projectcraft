@@ -5,7 +5,8 @@
     - builders JSON_ARRAY default: []. REQUIRED
     - coords JSON_OBJECT REQUIRED
     - type JSON_OBJECT REQUIRED
-  
+    
+    - displayPoint BOOLEAN default: true
     - clickable BOOLEAN default: true
     - customHead STRING
     - customPin HEX_COLOR
