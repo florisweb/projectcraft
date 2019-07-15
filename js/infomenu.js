@@ -86,10 +86,10 @@ function _InfoMenu() {
 		
 		html.onclick = function () {_info.onclick(_info);}
 		html.addEventListener("click", function () {InfoMenu.onItemClick(_info);})
-
-		if (!_info.type.name) return;
+		
+		if (!_info.typeName) return;
 		html.insertAdjacentHTML("beforeend", '<div class="typeName headerText preventTextOverflow"></div>');
-		setTextToElement(html.children[2], _info.type.name);
+		setTextToElement(html.children[2], _info.typeName);
 	}
 
 
@@ -126,8 +126,9 @@ function _InfoMenu_mapJsExtender() {
 
 	this.addItem = function (_info) {
 		if (_info.displayInList === false) return;
+		console.log(_info);
 		_info.imageUrl 	= getHeadUrl(_info);
-		_info.typeName 	= _info.type ? _info.type.typeName : "";
+		_info.typeName 	= _info.type ? _info.type.name : "";
 		_info.onclick 	= function () {
 			InfoMenu.openProjectPageByTitle(_info.title);
 		}
@@ -145,7 +146,7 @@ function _InfoMenu_mapJsExtender() {
 		
 		setTextToElement(projectPage_titleHolder, item.title);
 		setTextToElement(projectPage_coordHolder, "Coords: (" + item.coords.x + ", " + item.coords.z + ")");
-		setTextToElement(projectPage_builderNames, item.builders.join(", "));
+		if (item.builders) setTextToElement(projectPage_builderNames, item.builders.join(", "));
 		
 		setDescriptionText(item.description);
 		addImagesToPage(item.images);
@@ -159,16 +160,16 @@ function _InfoMenu_mapJsExtender() {
 
 	function updateHeaderVisibility(_item) {
 		HTML.builderHeader.style.display = "block";
-		if (!_item.builders[0]) HTML.builderHeader.style.display = "none";
+		if (!_item.builders) HTML.builderHeader.style.display = "none";
 
 		HTML.descriptionHeader.style.display = "block";
 		if (!_item.description) HTML.descriptionHeader.style.display = "none";
 
 		HTML.imagesHeader.style.display = "block";
-		if (!_item.images[0]) HTML.imagesHeader.style.display = "none";
+		if (!_item.images) HTML.imagesHeader.style.display = "none";
 
 		HTML.imagesHeader.style.display = "block";
-		if (!_item.images[0]) HTML.imagesHeader.style.display = "none";
+		if (!_item.images) HTML.imagesHeader.style.display = "none";
 
 
 		HTML.netherPortalButton.style.display = "block";

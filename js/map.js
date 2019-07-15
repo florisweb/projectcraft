@@ -1,4 +1,5 @@
 this._map = function () {
+	let This = this;
 	let canvas = document.getElementById("mapCanvas");
 	let ctx = canvas.getContext("2d");
 	let mapHolder = document.getElementById("mapHolder");
@@ -54,8 +55,8 @@ this._map = function () {
 	}
 
 	function registerPoint(_point) {
-		let x = this.MCToDOM(_point.coords.x);
-		let z = this.MCToDOM(_point.coords.z);
+		let x = This.MCToDOM(_point.coords.x);
+		let z = This.MCToDOM(_point.coords.z);
 
 		let username = "ddrl46";
 		if (_point.builders && _point.builders.length == 1)
@@ -149,8 +150,8 @@ this._map = function () {
 		ctx.lineWidth = 3;
 
 		ctx.beginPath();
-		ctx.moveTo(this.MCToDOM(startX), this.MCToDOM(startZ));
-		ctx.lineTo(this.MCToDOM(endX), this.MCToDOM(endZ));
+		ctx.moveTo(This.MCToDOM(startX), This.MCToDOM(startZ));
+		ctx.lineTo(This.MCToDOM(endX), This.MCToDOM(endZ));
 		ctx.stroke();
 	}
 
