@@ -110,13 +110,6 @@
 		executeUrlCommands = null;
 	}
 
-
-
-	var Server;
-	var Map;
-	var Chat;
-	var InfoMenu;
-	var App = new _App();
     
     /*this.drawJunctionPoint = function (x, z, _color, _large) {
 		let r = 3;
@@ -134,7 +127,10 @@
 		ctx.stroke();
 	}*/
 
-
+	var Server;
+	var Map;
+	var Chat;
+	var InfoMenu;
 
 	function setup() {
 		Server 		= new _server();
@@ -152,39 +148,6 @@
 		});
 
 	}
+
 	setup();
-
-
-	function _App() {
-	  	this.update = function() {
-		    Server.getData().then(function () {
-		      InfoMenu.createItemsByList(Server.items);
-		      Map.init();
-		      
-		    }, function () {});
-		 }
-
-	  	this.setup = function() {
-		    Server 		= new _server();
-		    Map 		= new _map();
-		    Chat 		= new _chat();
-		    InfoMenu 	= new _InfoMenu_mapJsExtender();
-		    
-
-
-		  	this.update();
-
-		    document.onkeydown = function(_e) {
-		      	if (_e.key == "Escape")
-		      	{
-		        	if (InfoMenu.pageIndex == 1) return InfoMenu.openPageByIndex(0);
-		        	if (InfoMenu.openState) return InfoMenu.close();
-		      	}
-		      	if (_e.key == "+") Map.zoomIn(); 
-		      	if (_e.key == "-") Map.zoomOut();
-		    	if (_e.key == "+" || _e.key == "-" || _e.key == "Escape") _e.preventDefault();
-		    };
-		 }
-	}
-
 </script>
