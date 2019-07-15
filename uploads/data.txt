@@ -402,5 +402,18 @@
     "type": {
       "name": "City"
     }
+  },
+  {
+    "title": "1.14 Snowy Village",
+    "builders": [],
+    "description": "Another Snowy outpost, perfect for a good 'ol beach holiday.",
+    "images": [],
+    "coords": {
+      "x": 1225,
+      "z": 4766
+    },
+    "type": {
+      "name": "Area"
+    }
   }
 ]
