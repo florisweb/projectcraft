@@ -1,5 +1,3 @@
-# ProjectCraft Code Documentation
-
 # Guidelines
   <h3>Global Parameters</h3>
   
@@ -44,5 +42,9 @@
  {neighbour}:
     
     - name STRING REQUIRED
-    
     - type STRING REQUIRED
+
+
+
+
+
