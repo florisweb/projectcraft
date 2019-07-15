@@ -126,7 +126,6 @@ function _InfoMenu_mapJsExtender() {
 
 	this.addItem = function (_info) {
 		if (_info.displayInList === false) return;
-		console.log(_info);
 		_info.imageUrl 	= getHeadUrl(_info);
 		_info.typeName 	= _info.type ? _info.type.name : "";
 		_info.onclick 	= function () {

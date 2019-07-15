@@ -22,7 +22,7 @@
         </div>
         
         <div class="buttonHolder" id="dimensionButtonHolder">
-			<div class="text netherPortalButton" onclick="window.location.replace('map.php')">
+			<div class="text" onclick="window.location.replace('map.php')">
 				OVERWORLD
 			</div>
 		</div>
@@ -98,11 +98,34 @@
 
 				Server.getData("uploads/nether.txt").then(function (_data) {		
 					InfoMenu.createItemsByList(_data);
+                    
+                    drawLines(_data);
 
 					Map.init(_data, 1);
+                    
 					if (executeUrlCommands) executeUrlCommands();
 				});
 			}
+            
+            function drawLines(data) {
+            	for (let i = 0; i < data.length; i++) {
+            		if (data[i].updated)
+            			continue;
+
+            		data[i].updated = false;
+
+            		for (let j = 0; j < data[i].neighbours.length; j++) {
+            			let neighbour = Server.getItemByTitle(data[i].neighbours[j][0]);
+
+            			//if (neighbour.updated)
+            				//continue;
+
+            			Map.drawLine(data[i].coords.x, data[i].coords.z, neighbour.coords.x, neighbour.coords.z, "#999");
+            		}
+
+            		data[i].updated = true;
+            	}
+            }
    		</script>
 	</body>
 </html>
