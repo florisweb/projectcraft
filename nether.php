@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css?x=1">
         <link rel="stylesheet" type="text/css" href="css/nether.css">
 		<title>ProjectCraftMC | Nether Map.</title>
 	</head>
@@ -23,7 +23,7 @@
         </div>
         
         <div class="buttonHolder" id="dimensionButtonHolder">
-			<div class="text" onclick="window.location.replace('map.php')">
+			<div class="text netherPortalButton" onclick="window.location.replace('map.php')">
 				OVERWORLD
 			</div>
 		</div>
