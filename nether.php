@@ -96,15 +96,11 @@
 				Map.onItemClick 		= function(_item) {InfoMenu.openProjectPageByTitle(_item.title)}
 				InfoMenu.onItemClick 	= function(_item) {Map.panToItem(_item)}
 
-				Server.getData("uploads/nether.txt").then(function (_data) {
-		
+				Server.getData("uploads/nether.txt").then(function (_data) {		
 					InfoMenu.createItemsByList(_data);
 
-
-					Map.init(_data, 4);
+					Map.init(_data, 1);
 					if (executeUrlCommands) executeUrlCommands();
-
-
 				});
 			}
    		</script>

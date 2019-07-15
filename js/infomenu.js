@@ -160,7 +160,7 @@ function _InfoMenu_mapJsExtender() {
 
 	function updateHeaderVisibility(_item) {
 		HTML.builderHeader.style.display = "block";
-		if (!_item.builders) HTML.builderHeader.style.display = "none";
+		if (!_item.builders || _item.builders.length == 0) HTML.builderHeader.style.display = "none";
 
 		HTML.descriptionHeader.style.display = "block";
 		if (!_item.description) HTML.descriptionHeader.style.display = "none";
@@ -181,6 +181,7 @@ function _InfoMenu_mapJsExtender() {
 
 
 	function setDescriptionText(_text) {
+		if (!_text) return false;
 		projectPage_description.innerHTML = "";
 		
 		let descriptionTextLines = _text.split("\n");
@@ -195,7 +196,9 @@ function _InfoMenu_mapJsExtender() {
 
 
 	function addImagesToPage(_imageUrls) {
+		if (!_imageUrls) return false;
 		projectPage_imageHolder.innerHTML = "";
+
 		for (let i = 0; i < _imageUrls.length; i++)
 		{
 			projectPage_imageHolder.innerHTML += "<img class='infoImage'>";
