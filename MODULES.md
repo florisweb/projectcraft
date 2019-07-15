@@ -9,11 +9,22 @@
 
 
 
-<h3>InfoMenu [InfoMenu]</h3>
+<h2>InfoMenu [InfoMenu]</h2>
   InfoMenu is the window on the right side of the screen, responsible for showing a list of all projects and their information.
 
-<h4>Functions</h4>
-    - x
+<h3>Functions</h3>
+    - InfoMenu.open
+    - InfoMenu.close
+    - InfoMenu.createItemsByList(infoItem array)
+    - InfoMenu.addItem(infoItem)
+
+{infoItem}
+    - title     STRING REQUIRED
+    - imageUrl  PATH_STRING
+    - onclick   FUNCTION(this)
+    - typeName  STRING
+
+
 
 
 
