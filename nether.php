@@ -3,6 +3,7 @@
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/nether.css">
 		<title>ProjectCraftMC | Nether Map.</title>
 	</head>
 	<body style="overflow: hidden;" class="noselect">
@@ -117,10 +118,11 @@
             		for (let j = 0; j < data[i].neighbours.length; j++) {
             			let neighbour = Server.getItemByTitle(data[i].neighbours[j][0]);
 
-            			//if (neighbour.updated)
-            				//continue;
+            			if (neighbour.updated || !neighbour)
+            				continue;
 
             			Map.drawLine(data[i].coords.x, data[i].coords.z, neighbour.coords.x, neighbour.coords.z, "#999");
+                        console.log(data[i].coords.x + " " + data[i].coords.z + " " + neighbour.coords.x + " " +  neighbour.coords.z)
             		}
 
             		data[i].updated = true;

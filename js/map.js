@@ -18,7 +18,6 @@ this._map = function () {
 	this.init = function (_points, _factor) {
 		factor = _factor;
         
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		for (i = 0; i < _points.length; i++) {
 			registerPoint(_points[i]);
 		}

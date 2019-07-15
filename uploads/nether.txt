@@ -430,7 +430,8 @@
       "z": 252
     },
     "neighbours": [
-        ["ThomasMuller04's Base", 0]
+        ["ThomasMuller04's Base", 0],
+        ["ThomasBend0", 0]
     ],
     "type": {
       "name": "Bend"
