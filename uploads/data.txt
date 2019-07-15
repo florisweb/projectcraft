@@ -407,6 +407,7 @@
     "title": "1.14 Snowy Village",
     "builders": [],
     "description": "Another Snowy outpost, perfect for a good 'ol beach holiday.",
+    "dimensionLink": "1.14 Snowy Village Portal",
     "images": [],
     "coords": {
       "x": 1225,
