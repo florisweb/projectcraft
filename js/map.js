@@ -66,12 +66,12 @@ this._map = function () {
 			username = _point.customHead;
 
 		let colour = "#006bed";
-		if (_point.type.typeName == "Farm")
+		if (_point.type.name == "Farm")
 			colour = "#8200ed";
 		if (_point.customPin)
 			colour = _point.customPin;
 
-		if (!_point.displayPoint)
+		if (_point.displayPoint == false)
             return;
 		
         this.drawPoint(x, z, _point.type.radius, username, colour);
@@ -79,7 +79,7 @@ this._map = function () {
 		if (_point.clickable == false)
 			return;
 
-		this.clickboxes.push({
+		clickboxes.push({
             point: _point,
 			x: x - 24,
 			y: z - 60,
@@ -111,9 +111,6 @@ this._map = function () {
 		};
         
 		img.src = "heads.php?type=head&scale=2&username=" + username;
-
-		if (!displayPin)
-			return;
         
 		ctx.fillStyle = "white";
 		ctx.beginPath();
@@ -198,8 +195,8 @@ this._map = function () {
 	}
 
 	this.findClickbox = function (_x, _y) {
-		for (c in this.clickboxes) {
-			if (_x < this.clickboxes[c].x || _y < this.clickboxes[c].y || _x > this.clickboxes[c].rx || _y > this.clickboxes[c].ry)
+		for (c in clickboxes) {
+			if (_x < clickboxes[c].x || _y < clickboxes[c].y || _x > clickboxes[c].rx || _y > clickboxes[c].ry)
 				continue;
 
 			return clickboxes[c];
