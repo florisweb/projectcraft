@@ -182,7 +182,7 @@ this._map = function () {
 		if (this.zoomPercentage <= 1.5)
 			this.zoom(2);
 
-		this.DOMPanTo(MCToDOM(_x), MCToDOM(_y));
+		this.DOMPanTo(this.MCToDOM(_x), this.MCToDOM(_y));
 	}
     
     //Handler code for page-specific execution.
