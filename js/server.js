@@ -5,6 +5,7 @@ function _server() {
       return new Promise(function (resolve, fail) {
           REQUEST.send(_filePath, "").then(function (_data) {  
               if (typeof _data != "object") return console.error(_filePath + ": there's a problem in your json syntax");
+              Server.items = _data;
               resolve(_data);
           }, function (_e) {
               console.error("An error accured while trying to get " + _filePath, _e);

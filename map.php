@@ -104,12 +104,12 @@
 
 			if ($_openProjectByTitle)
 			{
-				echo "App.openProject(\"" . (string)$_openProjectByTitle . "\");";				
+				echo "InfoMenu.openProjectPageByTitle(\"" . (string)$_openProjectByTitle . "\");";				
 				$commandFound = true;
 			}
 
 		?>
-		executeUrlCommands = null;
+		// executeUrlCommands = null;
 	}
 
     
@@ -148,7 +148,6 @@
 			Map.init(_data, 4);
 			if (executeUrlCommands) executeUrlCommands()
 		});
-
 	}
 
 </script>
