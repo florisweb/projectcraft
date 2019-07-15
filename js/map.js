@@ -19,7 +19,7 @@ this._map = function () {
         
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		for (i = 0; i < _points.length; i++) {
-			this.registerPoint(_points[i]);
+			registerPoint(_points[i]);
 		}
         
 		this.panToItem(_points[0]);
@@ -53,7 +53,7 @@ this._map = function () {
         });
 	}
 
-	this.registerPoint = function (_point) {
+	function registerPoint(_point) {
 		let x = this.MCToDOM(_point.coords.x);
 		let z = this.MCToDOM(_point.coords.z);
 
@@ -71,7 +71,7 @@ this._map = function () {
 		if (_point.customPin)
 			colour = _point.customPin;
 		
-        this.drawPoint(x, z, _point.type.radius, username, colour, _point.displayPoint);
+        drawPoint(x, z, _point.type.radius, username, colour, _point.displayPoint);
 
 		if (_point.clickable == false || _point.displayPoint == false)
 			return;
@@ -85,7 +85,7 @@ this._map = function () {
 		});
 	}
 
-	this.drawPoint = function (x, z, radius, username, colour, display) {
+	function drawPoint(x, z, radius, username, colour, display) {
 		let r = 20;
 		ctx.fillStyle = "white";
 		ctx.strokeStyle = "white";
@@ -141,7 +141,7 @@ this._map = function () {
 		ctx.textAlign = "center";
 	}
 
-	this.drawLine = function (startX, startZ, endX, endZ, colour) {
+	function drawLine(startX, startZ, endX, endZ, colour) {
 		ctx.fillStyle = "white";
 		ctx.strokeStyle = "white";
 		if (colour)

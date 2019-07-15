@@ -60,15 +60,6 @@ Requires: nothing.
     - Map.init(points, factor):
       Call Map.init with an array of points which need to be drawn and a displacement factor. (4 for overworld, 1 for nether)
     
-    - Map.registerPoint(point):
-      Call to register a point.
-    
-    - Map.drawPoint(x, z, radius, username, colour):
-      Call to draw a point.
-    
-    - Map.drawLine(startX, startZ, endX, endZ, colour):
-      Call to draw a line.
-    
     - Map.MCToDOM(x):
       Convert Minecraft coördinates to DOM coördinates
     
