@@ -50,7 +50,7 @@ this._map = function () {
         		Map.zoomOut();
         	if (_e.key == "+" || _e.key == "-")
         		_e.preventDefault();
-        }
+        });
 	}
 
 	this.registerPoint = function (_point) {
@@ -189,9 +189,9 @@ this._map = function () {
 	}
     
     //Handler code for page-specific execution.
-    this.onItemClick = function(){};
+    this.onItemClick = function() {};
 
-	this.panToItem(_point) {
+	this.panToItem = function(_point) {
 		if (this.zoomPercentage <= 1.5)
 			this.zoom(2);
 		this.DOMPanTo(MCToDOM(_point.x), MCToDOM(_point.z));

@@ -101,7 +101,7 @@ function _InfoMenu() {
 		_e.preventDefault();
 		if (InfoMenu.pageIndex == 1) 	return InfoMenu.openPageByIndex(0);
 		if (InfoMenu.openState) 		return InfoMenu.close();
-	};
+	});
 }
 
 

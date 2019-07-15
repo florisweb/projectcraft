@@ -85,7 +85,7 @@
 			$.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
 			$.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
 			$.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
-				App.setup()
+				setup()
 			});
    		</script>
 	</body>
@@ -149,5 +149,4 @@
 
 	}
 
-	setup();
 </script>
