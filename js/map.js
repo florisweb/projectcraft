@@ -70,13 +70,10 @@ this._map = function () {
 			colour = "#8200ed";
 		if (_point.customPin)
 			colour = _point.customPin;
-
-		if (_point.displayPoint == false)
-            return;
 		
-        this.drawPoint(x, z, _point.type.radius, username, colour);
+        this.drawPoint(x, z, _point.type.radius, username, colour, _point.displayPoint);
 
-		if (_point.clickable == false)
+		if (_point.clickable == false || _point.displayPoint == false)
 			return;
 
 		clickboxes.push({
@@ -88,7 +85,7 @@ this._map = function () {
 		});
 	}
 
-	this.drawPoint = function (x, z, radius, username, colour) {
+	this.drawPoint = function (x, z, radius, username, colour, display) {
 		let r = 20;
 		ctx.fillStyle = "white";
 		ctx.strokeStyle = "white";
@@ -104,13 +101,16 @@ this._map = function () {
 			ctx.fill();
 			ctx.globalAlpha = 1;
 		}
+        
+        if(display == false)
+            return;
 
 		let img = new Image();
 		img.onload = function () {
 			ctx.drawImage(img, x - 16, z - 56, 32, 32);
 		};
         
-		img.src = "heads.php?type=head&scale=2&username=" + username;
+		img.src = "heads.php?type=head&scale=2&username=" + username;        
         
 		ctx.fillStyle = "white";
 		ctx.beginPath();
