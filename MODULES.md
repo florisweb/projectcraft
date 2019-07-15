@@ -82,6 +82,9 @@ Requires: nothing.
     
     - Map.handleClick(x, z):
       Handle a click on the map at the specified clicking positions
+      
+    - Map.onItemClick(point): HANDLER
+      This is a handler for page-specific code execution.
     
     - Map.findClickbox(x, z):
       Check if there's a clickbox at the specified DOM coördinates

@@ -71,7 +71,7 @@ this._map = function () {
 			return;
 
 		this.clickboxes.push({
-			root: _point.title,
+            point: _point,
 			x: x - 24,
 			y: z - 60,
 			rx: x + 24,
@@ -171,13 +171,16 @@ this._map = function () {
 		if (box == null)
 			return;
 
-		//Call infomenu to open.
+		this.onItemClick(box.point);
 
 		if (this.zoomPercentage <= 1.5)
 			this.zoom(2);
 
 		this.DOMPanTo(MCToDOM(_x), MCToDOM(_y));
 	}
+    
+    //Handler code for page-specific execution.
+    this.onItemClick = function(){};
 
 	this.panToItem(_point) {
 		if (this.zoomPercentage <= 1.5)
