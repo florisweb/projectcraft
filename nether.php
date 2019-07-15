@@ -120,12 +120,23 @@
             		data[i].updated = false;
 
             		for (let j = 0; j < data[i].neighbours.length; j++) {
-            			let neighbour = Server.getItemByTitle(data[i].neighbours[j][0]);
+            			let neighbour = Server.getItemByTitle(data[i].neighbours[j]["name"]);
 
             			if (neighbour.updated || !neighbour)
             				continue;
+                        
+                        let colour = "#777"
+                        
+                        switch(data[i].neighbours[j]["type"].toLowerCase()) {
+                            case "iceway":
+                                colour = "#748ebe";
+                                break;
+                            default:
+                                colour = "#777";
+                                break;
+                        }
 
-            			Map.drawLine(data[i].coords.x, data[i].coords.z, neighbour.coords.x, neighbour.coords.z, "#999");
+            			Map.drawLine(data[i].coords.x, data[i].coords.z, neighbour.coords.x, neighbour.coords.z, colour);
                         console.log(data[i].coords.x + " " + data[i].coords.z + " " + neighbour.coords.x + " " +  neighbour.coords.z)
             		}
 
