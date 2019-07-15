@@ -112,23 +112,6 @@
 		// executeUrlCommands = null;
 	}
 
-    
-    /*this.drawJunctionPoint = function (x, z, _color, _large) {
-		let r = 3;
-		if (_large)
-			r = 5;
-		ctx.lineWidth = 2;
-		ctx.strokeStyle = "white";
-		ctx.fillStyle = "white";
-		if (_color)
-			ctx.fillStyle = _color;
-
-		ctx.beginPath();
-		ctx.arc(x, z, r, 0, 2 * Math.PI);
-		ctx.fill();
-		ctx.stroke();
-	}*/
-
 	var Server;
 	var Map;
 	var Chat;

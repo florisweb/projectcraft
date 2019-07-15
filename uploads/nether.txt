@@ -135,7 +135,7 @@
     "displayInList": false,
     "neighbours": [
       ["Northern Junction", 0],
-      ["Dirkloop's Portal", 0]
+      ["End Portal #3", 0]
     ],
     "type": {
       "name": "Bend"
@@ -668,6 +668,8 @@
       "x": 99,
       "z": 47
     },
+    "neighbours": [
+    ],
     "type": {
       "name": "Portal"
     }

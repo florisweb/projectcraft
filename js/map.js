@@ -142,7 +142,7 @@ this._map = function () {
 		ctx.textAlign = "center";
 	}
 
-	function drawLine(startX, startZ, endX, endZ, colour) {
+	this.drawLine = function(startX, startZ, endX, endZ, colour) {
 		ctx.fillStyle = "white";
 		ctx.strokeStyle = "white";
 		if (colour)
@@ -150,8 +150,8 @@ this._map = function () {
 		ctx.lineWidth = 3;
 
 		ctx.beginPath();
-		ctx.moveTo(This.MCToDOM(startX), This.MCToDOM(startZ));
-		ctx.lineTo(This.MCToDOM(endX), This.MCToDOM(endZ));
+		ctx.moveTo(this.MCToDOM(startX), this.MCToDOM(startZ));
+		ctx.lineTo(this.MCToDOM(endX), this.MCToDOM(endZ));
 		ctx.stroke();
 	}
 

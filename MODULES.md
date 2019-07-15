@@ -59,6 +59,9 @@ Requires: nothing.
 
     - Map.init(points, factor):
       Call Map.init with an array of points which need to be drawn and a displacement factor. (4 for overworld, 1 for nether)
+      
+    - Map.drawLine(startX, startZ, endX, endZ, colour):
+      Draw a line from some point to some point with a colour.
     
     - Map.MCToDOM(x):
       Convert Minecraft coördinates to DOM coördinates
