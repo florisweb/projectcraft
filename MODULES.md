@@ -33,10 +33,9 @@
     - InfoMenu.openState BOOLEAN
     - InfoMenu.pageIndex INT
     
-EXTENDERS
+
 
 EXTENDERS
-
 
 <h2>InfoMenu_mapJsExtender [InfoMenu] - EXTENDS InfoMenu</h2>
 InfoMenu is the window on the right side of the screen, responsible for showing a list of all projects and their information.
@@ -47,18 +46,6 @@ InfoMenu is the window on the right side of the screen, responsible for showing 
     - InfoMenu.openProjectPageByTitle(infoItem)
     - InfoMenu.goThroughPortal(ProjectTitle STRING)
 
-{infoItem}: 
-Documentation at README.md
-
-
-<h2>InfoMenu_mapJsExtender [InfoMenu] - EXTENDS InfoMenu</h2>
-InfoMenu is the window on the right side of the screen, responsible for showing a list of all projects and their information.
-
-
-<h3>Functions</h3>
-
-    - InfoMenu.openProjectPageByTitle(infoItem)
-    - InfoMenu.goThroughPortal(ProjectTitle STRING)
 
 {infoItem}: 
 Documentation at README.md
