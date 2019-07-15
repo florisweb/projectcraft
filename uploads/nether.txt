@@ -10,9 +10,9 @@
       "z": 8
     },
     "neighbours": [
-      ["EelekTunnelBend0", 0],
-      ["IndustrialBend0", 1],
-      ["DarkOakBend", 0]
+      {"name": "EelekTunnelBend0", "type": "ICEWAY"},
+      {"name": "IndustrialBend0", "type": "ICEWAY"},
+      {"name": "DarkOakBend", "type": "PATH"}
     ],
     "type": {
       "name": "Portal"
@@ -28,8 +28,8 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["Spawn and JarPlayGo portal", 0],
-      ["EelekTunnelBend1", 0]
+      {"name": "Spawn and JarPlayGo portal", "type": "PATH"},
+      {"name": "EelekTunnelBend1", "type": "PATH"}
     ],
     "type": {
       "name": "Bend"
@@ -45,8 +45,8 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["EelekTunnelBend0", 0],
-      ["GuardianFarmBend", 1]
+      {"name": "EelekTunnelBend0", "type": "PATH"},
+      {"name": "GuardianFarmBend", "type": "PATH"}
     ],
     "type": {
       "name": "Bend"
@@ -62,9 +62,9 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["EelekTunnelBend1", 1],
-      ["Guardian farm", 0],
-      ["EelekTunnelBend2", 1]
+      {"name": "EelekTunnelBend1", "type": "ICEWAY"},
+      {"name": "Guardian farm", "type": "ICEWAY"},
+      {"name": "EelekTunnelBend2", "type": "ICEWAY"}
     ],
     "type": {
       "name": "Bend"
@@ -83,7 +83,7 @@
       "z": -46
     },
     "neighbours": [
-      ["GuardianFarmBend", 0]
+      {"name": "GuardianFarmBend", "type": "path"}
     ],
     "type": {
       "name": "Portal"
@@ -99,8 +99,8 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["GuardianFarmBend", 1],
-      ["Northern Junction", 1]
+      {"name": "GuardianFarmBend", "type": "iceway"},
+      {"name": "Northern Junction", "type": "iceway"}
     ],
     "type": {
       "name": "Bend"
@@ -116,9 +116,9 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["EelekTunnelBend2", 1],
-      ["DirkloopBend0", 0],
-      ["IMBend", 0]
+      {"name": "EelekTunnelBend2", "type":"iceway"},
+      {"name": "DirkloopBend0", "type":"path"},
+      {"name": "IMBend", "type":"path"}
     ],
     "type": {
       "name": "Bend"
@@ -134,8 +134,8 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["Northern Junction", 0],
-      ["End Portal #3", 0]
+      {"name": "Northern Junction", "type":"path"},
+      {"name": "End Portal #3", "type":"path"}
     ],
     "type": {
       "name": "Bend"
@@ -151,9 +151,9 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["Northern Junction", 0],
-      ["FinnBend", 0],
-      ["Ivarremanski and meeskmooney's Portal", 0]
+      {"name": "Northern Junction", "type":"path"},
+      {"name": "FinnBend", "type":"path"},
+      {"name": "Ivarremanski and meeskmooney's Portal", "type":"path"}
     ],
     "type": {
       "name": "Bend"
@@ -169,9 +169,9 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["IMBend", 0],
-      ["Eelek's Portal", 0],
-      ["Zvox's Portal", 0]
+      {"name": "IMBend", "type":"path"},
+      {"name": "Eelek's Portal", "type":"path"},
+      {"name": "Zvox's Portal", "type":"path"}
     ],
     "type": {
       "name": "Bend"
@@ -188,7 +188,7 @@
       "z": -132
     },
     "neighbours": [
-      ["FinnBend", 0]
+      {"name": "FinnBend", "type":"path"}
     ],
     "type": {
       "name": "Portal"
@@ -205,7 +205,7 @@
       "z": -82
     },
     "neighbours": [
-      ["GelderlandBend", 1]
+      {"name": "GelderlandBend", "type":"iceway"}
     ],
     "type": {
       "name": "Portal"
@@ -221,7 +221,7 @@
       "z": -36
     },
     "neighbours": [
-      ["DirkloopBend0", 0]
+      {"name": "DirkloopBend0", "type":"path"}
     ],
     "type": {
       "name": "Portal"
@@ -238,7 +238,7 @@
       "z": -102
     },
     "neighbours": [
-      ["FinnBend", 0]
+      {"name": "FinnBend", "type":"path"}
     ],
     "type": {
       "name": "Portal"
@@ -256,7 +256,7 @@
       "z": -85
     },
     "neighbours": [
-      ["IMBend", 0]
+      {"name": "IMBend", "type":"path"}
     ],
     "type": {
       "name": "Portal"
@@ -272,8 +272,8 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["Spawn and JarPlayGo portal", 1],
-      ["Industrial Junction", 1]
+      {"name": "Spawn and JarPlayGo portal", "type":"iceway"},
+      {"name": "Industrial Junction", "type":"iceway"}
     ],
     "type": {
       "name": "Bend"
@@ -289,9 +289,9 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["IndustrialBend0", 1],
-      ["IndustrialBend1", 1],
-      ["Villager area", 1]
+      {"name": "IndustrialBend0", "type":"iceway"},
+      {"name": "IndustrialBend1", "type":"iceway"},
+      {"name": "Villager area", "type":"iceway"}
     ],
     "type": {
       "name": "Bend"
@@ -310,7 +310,7 @@
       "z": 225
     },
     "neighbours": [
-      ["Industrial Junction", 1]
+      {"name": "Industrial Junction", "type":"iceway"}
     ],
     "type": {
       "name": "Portal"
@@ -326,9 +326,9 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["Industrial Junction", 1],
-      ["Iron farm", 1],
-      ["ThomasBend0", 1]
+      {"name": "Industrial Junction", "type":"iceway"},
+      {"name": "Iron farm", "type":"iceway"},
+      {"name": "ThomasBend0", "type":"iceway"}
     ],
     "type": {
       "name": "Bend"
@@ -347,7 +347,7 @@
       "z": 246
     },
     "neighbours": [
-      ["IndustrialBend1", 1]
+      {"name": "IndustrialBend1", "type":"iceway"}
     ],
     "type": {
       "name": "Portal"
@@ -363,8 +363,8 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["ThomasBend0", 1],
-      ["Mob and Slime farm", 1]
+      {"name": "ThomasBend0", "type":"iceway"},
+      {"name": "Mob and Slime farm", "type":"iceway"}
     ],
     "type": {
       "name": "Bend"
@@ -382,7 +382,7 @@
       "z": 267
     },
     "neighbours": [
-      ["IndustrialBend2", 1]
+      {"name": "IndustrialBend2", "type":"iceway"}
     ],
     "type": {
       "name": "Portal"
@@ -398,7 +398,7 @@
       "z": 156
     },
     "neighbours": [
-        ["ThomasBend1", 0]
+        {"name": "ThomasBend1", "type":"path"}
     ],
     "type": {
       "name": "Portal"
@@ -414,7 +414,7 @@
       "z": 252
     },
     "neighbours": [
-        ["ThomasMuller04's Base", 0]
+        {"name": "ThomasMuller04's Base", "type":"path"}
     ],
     "type": {
       "name": "Bend"
@@ -430,8 +430,8 @@
       "z": 252
     },
     "neighbours": [
-        ["ThomasMuller04's Base", 0],
-        ["ThomasBend0", 0]
+        {"name": "ThomasMuller04's Base", "type":"path"},
+        {"name": "ThomasBend0", "type":"path"}
     ],
     "type": {
       "name": "Bend"
@@ -447,9 +447,9 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["ThomasBend1", 0],
-      ["IndustrialBend1", 1],
-      ["IndustrialBend2", 1]
+      {"name": "ThomasBend1", "type":"path"},
+      {"name": "IndustrialBend1", "type":"iceway"},
+      {"name": "IndustrialBend2", "type":"iceway"}
     ],
     "type": {
       "name": "Bend"
@@ -465,9 +465,9 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["Spawn and JarPlayGo portal", 0],
-      ["GelderlandBend", 1],
-      ["Dark Oak Forest Portal", 0]
+      {"name": "Spawn and JarPlayGo portal", "type":"path"},
+      {"name": "GelderlandBend", "type":"iceway"},
+      {"name": "Dark Oak Forest Portal", "type":"path"}
     ],
     "type": {
       "name": "Bend"
@@ -483,7 +483,7 @@
       "z": -230
     },
     "neighbours": [
-      ["DarkOakBend", 0]
+      {"name": "DarkOakBend", "type":"path"}
     ],
     "type": {
       "name": "Portal"
@@ -499,9 +499,9 @@
     "displayInList": false,
     "clickable": false,
     "neighbours": [
-      ["DarkOakBend", 1],
-      ["Gelderland's Portal", 1],
-      ["MesaBend", 1]
+      {"name": "DarkOakBend", "type":"iceway"},
+      {"name": "Gelderland's Portal", "type":"iceway"},
+      {"name": "MesaBend", "type":"iceway"}
     ],
     "type": {
       "name": "Bend"
@@ -517,9 +517,9 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["GelderlandBend", 1],
-      ["Mesa and Mushroom Portal", 1],
-      ["Western Junction", 1]
+      {"name": "GelderlandBend", "type":"iceway"},
+      {"name": "Mesa and Mushroom Portal", "type":"iceway"},
+      {"name": "Western Junction", "type":"iceway"}
     ],
     "type": {
       "name": "Bend"
@@ -535,7 +535,7 @@
       "z": 142
     },
     "neighbours": [
-      ["MesaBend", 1]
+      {"name": "MesaBend", "type":"iceway"}
     ],
     "type": {
       "name": "Portal"
@@ -551,9 +551,9 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["MesaBend", 1],
-      ["Stronghold Portal", 1],
-      ["ShadorfBend", 1]
+      {"name": "MesaBend", "type":"iceway"},
+      {"name": "Stronghold Portal", "type":"iceway"},
+      {"name": "ShadorfBend", "type":"iceway"}
     ],
     "type": {
       "name": "Bend"
@@ -568,7 +568,7 @@
       "z": -140
     },
     "neighbours": [
-      ["Western Junction", 1]
+      {"name": "Western Junction", "type":"iceway"}
     ],
     "type": {
       "name": "Portal"
@@ -584,8 +584,8 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["Western Junction", 1],
-      ["Shadorf's and sensei_shibata's Portal", 1]
+      {"name": "Western Junction", "type":"iceway"},
+      {"name": "Shadorf's and sensei_shibata's Portal", "type":"iceway"}
     ],
     "type": {
       "name": "Bend"
@@ -603,8 +603,8 @@
       "z": 681
     },
     "neighbours": [
-      ["ShadorfBend", 1],
-      ["SecondStrongHoldBend01", 0]
+      {"name": "ShadorfBend", "type":"iceway"},
+      {"name": "SecondStrongHoldBend01", "type":"path"}
     ],
     "type": {
       "name": "Portal"
@@ -620,8 +620,8 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["Shadorf's and sensei_shibata's Portal", 0],
-      ["SecondStrongHoldBend02", 0]
+      {"name": "Shadorf's and sensei_shibata's Portal", "type":"path"},
+      {"name": "SecondStrongHoldBend02", "type":"path"}
     ],
     "type": {
       "name": "Bend"
@@ -637,8 +637,8 @@
     "clickable": false,
     "displayInList": false,
     "neighbours": [
-      ["Second Stronghold Portal", 0],
-      ["SecondStrongHoldBend01", 0]
+      {"name": "Second Stronghold Portal", "type":"path"},
+      {"name": "SecondStrongHoldBend01", "type":"path"}
     ],
     "type": {
       "name": "Bend"
@@ -653,7 +653,7 @@
       "z": 764
     },
     "neighbours": [
-      ["SecondStrongHoldBend02", 0]
+      {"name": "SecondStrongHoldBend02", "type":"path"}
     ],
     "type": {
       "name": "Portal"
