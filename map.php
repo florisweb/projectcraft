@@ -18,7 +18,7 @@
 			<div class="shadowBackground"></div>
 		</div>
         
-        <div id="chatHolder" class="hi de" onclick="Chat.toggle();">
+        <div id="chatHolder" class="hide" onclick="Chat.toggle();">
 			<div class="shadowHolder"></div>
 		</div>
 
@@ -76,18 +76,18 @@
 
 		<script type="text/javascript" src="https://florisweb.tk/JS/jQuery.js"></script>
 		<script type="text/javascript" src="https://florisweb.tk/JS/request2.js"></script>
-		<!-- <script type="text/javascript" src="js/main_min.js?antiCache=2"></script> -->
+		<script type="text/javascript" src="js/main_min.js?ac=1"></script>
 
 		<script>
 			// temperarelly so things don't get cached
-			let antiCache = Math.random() * 100000000;
-			$.getScript("js/handyFunctions.js?antiCache=" 	+ antiCache, function() {});
-            $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
-			$.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
-			$.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
-			$.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
-				setup()
-			});
+			// let antiCache = Math.random() * 100000000;
+			// $.getScript("js/handyFunctions.js?antiCache=" 	+ antiCache, function() {});
+   //          $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
+			// $.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
+			// $.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
+			// $.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
+			// 	setup()
+			// });
    		</script>
    		<!-- <script type="text/javascript" src="js/server.js?antiCache=4"></script> -->
    		<!-- <script type="text/javascript" src="js/infomenu.js?antiCache=2"></script> -->
@@ -113,16 +113,17 @@
         ?>
 		executeUrlCommands = null;
 	}
+	document.body.onload = function() {
+		setup();
+	}
 
 	var Server;
 	var Map;
-	var Chat;
 	var InfoMenu;
 
 	function setup() {
 		Server 		= new _server();
 		Map 		= new _map();
-		Chat 		= new _chat();
  		InfoMenu 	= new _InfoMenu_mapJsExtender();
 		
 		Map.onItemClick 		= function(_item) {InfoMenu.openProjectPageByTitle(_item.title)}

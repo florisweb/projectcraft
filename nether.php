@@ -56,17 +56,21 @@
 
 		<script type="text/javascript" src="https://florisweb.tk/JS/jQuery.js"></script>
 		<script type="text/javascript" src="https://florisweb.tk/JS/request2.js"></script>
+		<script type="text/javascript" src="js/main_min.js"></script>
 
 		<script>
 			// temporarily so things don't get cached
-			let antiCache = Math.random() * 100000000;
-			$.getScript("js/handyFunctions.js?antiCache=" 	+ antiCache, function() {});
-            $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
-            $.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
-            $.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
-			$.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
-				setup()
-			});
+			// let antiCache = Math.random() * 100000000;
+			// $.getScript("js/handyFunctions.js?antiCache=" 	+ antiCache, function() {});
+            // $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
+            // $.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
+            // $.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
+			// $.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
+				// setup();
+			// });
+			document.body.onload = function() {
+				setup();
+			}
             
             function executeUrlCommands() {
                 <?php
@@ -87,13 +91,11 @@
 
             var Server;
 			var Map;
-			var Chat;
 			var InfoMenu;
 
 			function setup() {
 				Server 		= new _server();
 				Map 		= new _map();
-				Chat 		= new _chat();
 		 		InfoMenu 	= new _InfoMenu_mapJsExtender();
 				
 				Map.onItemClick 		= function(_item) {InfoMenu.openProjectPageByTitle(_item.title)}
