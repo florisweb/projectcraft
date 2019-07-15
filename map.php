@@ -146,7 +146,7 @@
 		Server.getData("uploads/data.txt").then(function (_data) {
 			InfoMenu.createItemsByList(_data);
 			Map.init(_data, 4);
-			if (executeUrlCommands) executeUrlCommands()
+			if (executeUrlCommands) executeUrlCommands();
 		});
 	}
 
