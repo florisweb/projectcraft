@@ -688,5 +688,20 @@
     "type": {
       "name": "Portal"
     }
+  },
+   {
+    "title": "Wither-killingspot",
+    "builders": [
+    ],
+    "customHead": "MHF_WSkeleton",
+    "coords": {
+      "x": -154,
+      "z": 102
+    },
+    "neighbours": [
+    ],
+    "type": {
+      "name": ""
+    }
   }
 ]
