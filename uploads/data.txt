@@ -417,5 +417,18 @@
     "type": {
       "name": "Area"
     }
+  },
+  {
+    "title": "FrozenButtnut's base",
+    "builders": ["FrozenButtnut"],
+    "description": "",
+    "images": [],
+    "coords": {
+      "x": -4303,
+      "z": 1392
+    },
+    "type": {
+      "name": "Base"
+    }
   }
 ]
