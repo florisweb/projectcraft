@@ -430,5 +430,18 @@
     "type": {
       "name": "Base"
     }
+  },
+  {
+    "title": "Duaf's base [coming soon]",
+    "builders": ["Duaf"],
+    "description": "",
+    "images": [],
+    "coords": {
+      "x": 3000,
+      "z": -322,
+    },
+    "type": {
+      "name": "Base"
+    }
   }
 ]
