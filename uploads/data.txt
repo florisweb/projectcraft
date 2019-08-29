@@ -232,6 +232,74 @@
     }
   },
   {
+    "title": "Galaxiadust's base",
+    "builders": [
+      "galaxiadust "
+    ],
+    "coords": {
+      "x": -1245,
+      "z": -530
+    },
+    "type": {
+      "name": "Base",
+      "radius": 0
+    }
+  },
+  {
+    "title": "FrozenButtnut's base",
+    "builders": ["FrozenButtnut"],
+    "description": "",
+    "images": [],
+    "coords": {
+      "x": -4303,
+      "z": 1392
+    },
+    "type": {
+      "name": "Base"
+    }
+  },
+  {
+    "title": "Duaf's base",
+    "builders": ["Duaf"],
+    "description": "Coming soon!",
+    "images": [],
+    "coords": {
+      "x": 3000,
+      "z": -322
+    },
+    "type": {
+      "name": "Base"
+    }
+  },
+  {
+    "title": "Johnchaser123's base",
+    "builders": [
+      "Johnchaser123"
+    ],
+    "description": "Johnchaser's base, which has a great view, I'm sure :D",
+    "images": [],
+    "coords": {
+      "x": 983,
+      "z": -25
+    },
+    "type": {
+      "name": "Base"
+    }
+  },
+  {
+    "title": "Tony_Chocolony's base",
+    "builders": ["Tony_Chocolony"],
+    "description": "",
+    "images": [],
+    "coords": {
+      "x": 1947,
+      "z": 209
+    },
+    "type": {
+      "name": "Base"
+    }
+  },
+  {
     "title": "Iron farm",
     "builders": [
       "Eelek",
@@ -347,21 +415,6 @@
     }
   },
   {
-    "title": "Johnchaser123's base",
-    "builders": [
-      "Johnchaser123"
-    ],
-    "description": "Johnchaser's base, which has a great view, I'm sure :D",
-    "images": [],
-    "coords": {
-      "x": 983,
-      "z": -25
-    },
-    "type": {
-      "name": "Base"
-    }
-  },
-  {
     "title": "1.14 taiga Village",
     "builders": [],
     "customHead": "villager",
@@ -373,34 +426,6 @@
     },
     "type": {
       "name": "Village"
-    }
-  },
-  {
-    "title": "Tony_Chocolony's base",
-    "builders": ["Tony_Chocolony"],
-    "description": "",
-    "images": [],
-    "coords": {
-      "x": 1947,
-      "z": 209
-    },
-    "type": {
-      "name": "Base"
-    }
-  },
-  {
-    "title": "Jarplaygo's city",
-    "builders": ["jarplaygo"],
-    "description": "",
-    "images": [
-      "uploads/images/jarCity_1.png"
-    ],
-    "coords": {
-      "x": -2992,
-      "z": 977
-    },
-    "type": {
-      "name": "City"
     }
   },
   {
@@ -419,29 +444,18 @@
     }
   },
   {
-    "title": "FrozenButtnut's base",
-    "builders": ["FrozenButtnut"],
+    "title": "Jarplaygo's city",
+    "builders": ["jarplaygo"],
     "description": "",
-    "images": [],
+    "images": [
+      "uploads/images/jarCity_1.png"
+    ],
     "coords": {
-      "x": -4303,
-      "z": 1392
+      "x": -2992,
+      "z": 977
     },
     "type": {
-      "name": "Base"
-    }
-  },
-  {
-    "title": "Duaf's base",
-    "builders": ["Duaf"],
-    "description": "Coming soon!",
-    "images": [],
-    "coords": {
-      "x": 3000,
-      "z": -322
-    },
-    "type": {
-      "name": "Base"
+      "name": "City"
     }
   }
 ]

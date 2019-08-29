@@ -695,8 +695,8 @@
     ],
     "customHead": "MHF_WSkeleton",
     "coords": {
-      "x": -154,
-      "z": 102
+      "x": 32,
+      "z": 2
     },
     "neighbours": [
     ],
