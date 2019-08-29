@@ -693,6 +693,7 @@
     "title": "Wither-killingspot",
     "builders": [
     ],
+    "description": "Exact coords: 32, 121, 2. There's a ladder above the nether hub to get there.",
     "customHead": "MHF_WSkeleton",
     "coords": {
       "x": 32,
