@@ -287,13 +287,26 @@
     }
   },
   {
-    "title": "Tony_Chocolony's base",
-    "builders": ["Tony_Chocolony"],
+    "title": "Tony_Chocolony & ElomNusk's base",
+    "builders": ["Tony_Chocolony", "ElomNusk"],
     "description": "",
     "images": [],
     "coords": {
       "x": 1947,
       "z": 209
+    },
+    "type": {
+      "name": "Base"
+    }
+  },
+  {
+    "title": "kptKoenk's base",
+    "builders": ["kptKoenk"],
+    "description": "He's got all the farms.",
+    "images": [],
+    "coords": {
+      "x": 2800,
+      "z": 1800
     },
     "type": {
       "name": "Base"
