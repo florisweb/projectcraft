@@ -77,6 +77,7 @@
 		<script type="text/javascript" src="https://florisweb.tk/JS/jQuery.js"></script>
 		<script type="text/javascript" src="https://florisweb.tk/JS/request2.js"></script>
 		<script type="text/javascript" src="js/main_min.js?ac=1"></script>
+    <script type="text/javascript" src="js/client.js?ac=1"></script>
 
 		<script>
 			// temperarelly so things don't get cached
@@ -120,11 +121,13 @@
 	var Server;
 	var Map;
 	var InfoMenu;
+  var Client;
 
 	function setup() {
 		Server 		= new _server();
 		Map 		= new _map();
  		InfoMenu 	= new _InfoMenu_mapJsExtender();
+    Client = new _client();
 		
 		Map.onItemClick 		= function(_item) {InfoMenu.openProjectPageByTitle(_item.title)}
 		InfoMenu.onItemClick 	= function(_item) {Map.panToItem(_item)}
@@ -134,6 +137,10 @@
 			Map.init(_data, 4);
 			if (executeUrlCommands) executeUrlCommands();
 		});
+    
+    Server.getData("api/updaterlog.txt").then(function(_data) {
+      Client.init(_data);
+    });
 	}
 
 </script>

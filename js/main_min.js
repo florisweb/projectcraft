@@ -218,6 +218,7 @@ let canvas=document.getElementById("mapCanvas");
 let ctx=canvas.getContext("2d");
 let mapHolder=document.getElementById("mapHolder");
 let clickboxes=[];
+let points = null;
 
 let factor=1;
 
@@ -227,6 +228,7 @@ zoomStepSize: 1,
 animationSpeed: 0
 }
 this.init=function (_points,_factor) {
+points = _points;
 factor=_factor;
 
 for (i=0; i < _points.length; i++) {
@@ -261,6 +263,26 @@ if (_e.key == "_")
 Map.zoomOut();
 if (_e.key == "+" || _e.key == "_")
 _e.preventDefault();
+});
+}
+
+this.redrawPoints = function() {
+points.forEach(function(_point, index) {
+let x=This.MCToDOM(_point.coords.x);
+let z=This.MCToDOM(_point.coords.z);
+let username="ddrl46";
+if (_point.builders && _point.builders.length == 1)
+username=_point.builders;
+if (_point.builders && _point.builders.length > 1)
+username="MHF_Chest";
+if (_point.customHead)
+username=_point.customHead;
+let colour="#006bed";
+if (_point.type.name == "Farm")
+colour="#8200ed";
+if (_point.customPin)
+colour=_point.customPin;
+drawPoint(x,z,_point.type.radius,username,colour,_point.displayPoint);
 });
 }
 
