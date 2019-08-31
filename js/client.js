@@ -26,10 +26,10 @@ function _client() {
     _data["players"].forEach(function(item, index) {
       let img = new Image();
       img.onload = function() {
-        ctx.drawImage(img,Map.MCToDOM(item.x)-16,Map.MCToDOM(item.z)-16,32,32);
+        ctx.drawImage(img, Map.MCToDOM(item.x) - 16, Map.MCToDOM(item.z) - 16, 32, 32);
       };
 
-      img.src = "heads.php?type=avatar&username="+item.username;
+      img.src = "heads.php?type=avatar&username=" + item.username;
       
       console.log("Drawn " + item.username + " at " + item.x + ", " + item.z);
     });
