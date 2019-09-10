@@ -11,13 +11,12 @@
 	</head>
 
 	<body style="overflow: hidden;" class="noselect">
-		<div id="homeScreen">
-			<img style="animation-fill-mode: forwards;" id="homeScreen_backgroundImage" src="<?php
+		<div id="homeScreen" style="background-image: url(<?php
                     $files = glob("uploads/images/*.png");
 					$length = sizeof($files);
 					$index = rand(0, $length-1);
                     echo $files[$index];
-				?>">
+				?>)">
 			<div class="text" id="homescreen_projectCraftLogo">
 				PROJECTCRAFT
 				<div style="font-size: 15px; opacity: 0.5">
