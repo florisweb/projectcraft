@@ -22,8 +22,11 @@ body {
 	
 	z-index: 1000;
 	overflow: hidden;
-	
 
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	
 	box-shadow: 0 -5px 30px 5px rgba(50, 50, 50, 0.3);
 	background: rgb(30, 30, 32);
 
@@ -68,14 +71,9 @@ body.quickStartAnimation #homescreen_projectCraftLogo {
     animation-fill-mode: forwards;
 }
 
-#homeScreen_backgroundImage {
-	position: relative;
-	left: -10vw;
-	width: 120vw;
-	height: auto;
-	opacity: 0.6;
-	animation: homeScreen_backgroundImage 1s 1;
-    animation-delay: 0s;
+#homeScreen_navigationHolder {
+	top: 50%;
+	transform: translate(0%, -50%);
 }
 
 
@@ -122,7 +120,8 @@ body.quickStartAnimation #homescreen_projectCraftLogo {
     	opacity: 0;
     }
     100% {
-    	top: calc(50vh - 100px);
+		top: 50%;
+		transform: translate(0%, -50%);
     	opacity: 1;
     }
 }
