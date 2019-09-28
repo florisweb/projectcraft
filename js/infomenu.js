@@ -118,8 +118,12 @@ function _InfoMenu_mapJsExtender() {
 	let HTML = {
 		builderHeader: 			$(".infoMenuPage .text.subHeader")[0],
 		descriptionHeader: 		$(".infoMenuPage .text.subHeader")[1],
-		imagesHeader: 			$(".infoMenuPage .text.subHeader")[2],
+		miniMapHeader: 			$(".infoMenuPage .text.subHeader")[2],
+		imagesHeader: 			$(".infoMenuPage .text.subHeader")[3],
 		netherPortalButton: 	$(".infoMenuPage .netherPortalButton")[0],
+		
+		miniMapImg: 			$(".infoMenuPage .miniMapHolder .miniMapImg")[0],
+		miniMapHolder: 			$(".infoMenuPage .miniMapHolder")[0],
 	}
 
 
@@ -148,6 +152,7 @@ function _InfoMenu_mapJsExtender() {
 		if (item.builders) setTextToElement(projectPage_builderNames, item.builders.join(", "));
 		
 		setDescriptionText(item.description);
+		addMiniMap(item);
 		addImagesToPage(item.images);
 
 		this.openPageByIndex(1);
@@ -173,6 +178,11 @@ function _InfoMenu_mapJsExtender() {
 		HTML.netherPortalButton.onclick = function() {
 			InfoMenu.goThroughPortal(_item.dimensionLink);
 		};
+
+		HTML.miniMapHeader.style.display = "block";
+		HTML.miniMapHolder.style.display = "block";
+		if (!_item.type.genMiniMap) HTML.miniMapHeader.style.display = "none";
+		if (!_item.type.genMiniMap) HTML.miniMapHolder.style.display = "none";
 	}
 
 
@@ -188,6 +198,18 @@ function _InfoMenu_mapJsExtender() {
 			lineHolder.innerHTML += "<br>";
 			projectPage_description.append(lineHolder);
 		}
+	}
+
+
+	function addMiniMap(_project) {
+		HTML.miniMapImg.setAttribute("src", "");
+		if (!_project || !_project.type.genMiniMap) return false;
+		let size = _project.type.radius * 2; // In MC-blocks
+		let scalar = size / HTML.miniMapHolder.offsetWidth; // Makes sure every real pixel is 1 mc block
+		let mcPxPerRealPixel = 1;
+
+		HTML.miniMapImg.setAttribute("src", "images/miniMap.png");
+		HTML.miniMapImg.style.width = 100 * scalar / mcPxPerRealPixel + "%";
 	}
 
 

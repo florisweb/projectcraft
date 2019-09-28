@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=2">
+		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=3">
         <link rel="stylesheet" type="text/css" href="css/chat.css?antiCache=1">
 		<title>ProjectCraftMC | World Map</title>
 	</head>
@@ -64,6 +64,13 @@
                 
                 <br>
                 <div class="text netherPortalButton">TO THE NETHER</div>
+                <br>
+
+				<div class="text subHeader"><br>MINIMAP</div>
+				<div class="miniMapHolder">
+					<img class="miniMapImg">
+				</div>
+
 
 				<div class="text subHeader"><br>IMAGES</div>
 				<div id="projectPage_imageHolder"></div>
@@ -76,19 +83,19 @@
 
 		<script type="text/javascript" src="https://florisweb.tk/JS/jQuery.js"></script>
 		<script type="text/javascript" src="https://florisweb.tk/JS/request2.js"></script>
-		<script type="text/javascript" src="js/main_min.js?ac=1"></script>
+		<!-- <script type="text/javascript" src="js/main_min.js?ac=1"></script> -->
     <script type="text/javascript" src="js/client.js?ac=1"></script>
 
 		<script>
 			// temperarelly so things don't get cached
-			// let antiCache = Math.random() * 100000000;
-			// $.getScript("js/handyFunctions.js?antiCache=" 	+ antiCache, function() {});
-   //          $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
-			// $.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
-			// $.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
-			// $.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
-			// 	setup()
-			// });
+			let antiCache = Math.random() * 100000000;
+			$.getScript("js/handyFunctions.js?antiCache=" 	+ antiCache, function() {});
+            $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
+			$.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
+			$.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
+			$.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
+				setup()
+			});
    		</script>
    		<!-- <script type="text/javascript" src="js/server.js?antiCache=4"></script> -->
    		<!-- <script type="text/javascript" src="js/infomenu.js?antiCache=2"></script> -->

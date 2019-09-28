@@ -254,13 +254,6 @@ a.discord {
 
 
 
-#infoMenu .infoImage {
-	position: relative;
-	width: 100%;
-	height: auto;
-	margin-bottom: 15px;
-	margin-top: 5px;
-}
 
 #projectPage_titleHolder {
 	position: -webkit-sticky;
@@ -533,14 +526,32 @@ body.infoMenuHidden #coordinatesHolder {
 
 
 
+#infoMenu .infoImage {
+	position: relative;
+	width: 100%;
+	height: auto;
+	margin-bottom: 15px;
+	margin-top: 5px;
+}
 
 
 
 
+#infoMenu .miniMapHolder {
+	position: relative;
+	width: 100%;
+	height: auto;
+	max-height: 390px;
 
-
-
-
+	margin-bottom: 15px;
+	margin-top: 5px;
+	overflow: auto;
+}
+	.miniMapHolder .miniMapImg {
+		position: relative;
+		min-width: 100%;
+		height: auto;
+	}
 
 
 
