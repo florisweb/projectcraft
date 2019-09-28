@@ -1,0 +1,16 @@
+{
+  "short_name": "Projectcraft",
+  "name": "Projectcraft\nInteractive Map</",
+  "icons": [
+    {
+      "src": "images/hand.jpeg",
+      "type": "image/jpeg",
+      "sizes": "100x100"
+    }
+  ],
+  "start_url": "/devFloris",
+  "background_color": "#333",
+  "display": "standalone",
+  "scope": "/devFloris",
+  "theme_color": "#f00"
+}

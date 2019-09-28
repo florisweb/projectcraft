@@ -62,7 +62,7 @@
 
 
   <h3>Map generation [data.txt only]</h3>
-     For project-flags see: <strong>Project & Portal Paramaters - Type</strong>
+     For project-flags see: <i>Project & Portal Paramaters - Type</i>
 
 
   <h4>Main map</h4>
