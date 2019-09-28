@@ -22,8 +22,11 @@
     
   {type}:
     
-    - name STRING REQUIRED
+    - name ENUM REQUIRED
+      ENUM options: BASE, AREA, BUILD
     - radius INT
+    - genMiniMap BOOLEAN default: false
+    - drawOnMap BOOLEAN default: false
     
   [images]:
     
