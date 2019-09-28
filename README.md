@@ -1,5 +1,6 @@
 # Guidelines
-  <h3>Global Parameters</h3>
+
+  <h3>Project & Portal Parameters</h3>
   
     - title STRING REQUIRED
     - builders JSON_ARRAY default: []. REQUIRED
@@ -48,6 +49,39 @@
     
     - name STRING REQUIRED
     - type STRING REQUIRED
+
+
+
+
+
+
+
+
+
+
+
+
+  <h3>Map generation [data.txt only]</h3>
+     For project-flags see <bold>Project & Portal Paramaters - Type</bold>
+
+
+  <h4>Main map</h4>
+    
+    Access: images/map/mainMap.php? --- ?? ---
+    Url: images/map/main
+    FileName: "MapX" + coordX + "Z" + coordY + "Width" + width + "Height" + height
+
+
+  <h4>Mini map</h4>
+    
+    Access: images/map/miniMap.php?projectId
+    Url: images/map/mini
+    FileName: "MapX" + coordX + "Z" + coordY + "Width" + width + "Height" + height
+
+
+
+
+
 
 
 
