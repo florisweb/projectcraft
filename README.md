@@ -62,20 +62,20 @@
 
 
   <h3>Map generation [data.txt only]</h3>
-     For project-flags see <bold>Project & Portal Paramaters - Type</bold>
+     For project-flags see: <strong>Project & Portal Paramaters - Type</strong>
 
 
   <h4>Main map</h4>
     
     Access: images/map/mainMap.php? --- ?? ---
-    Url: images/map/main
+    ImageStoreUrl: images/map/main
     FileName: "MapX" + coordX + "Z" + coordY + "Width" + width + "Height" + height
 
 
   <h4>Mini map</h4>
     
     Access: images/map/miniMap.php?projectId
-    Url: images/map/mini
+    ImageStoreUrl: images/map/mini
     FileName: "MapX" + coordX + "Z" + coordY + "Width" + width + "Height" + height
 
 
