@@ -69,14 +69,16 @@
     
     Access: images/map/mainMap.php? --- ?? ---
     ImageStoreUrl: images/map/main
-    FileName: "MapX" + coordX + "Z" + coordY + "Width" + width + "Height" + height
+    FileName: worldName + "X" + coordX + "Z" + coordZ
+    DefaultSize: 128 x 128
 
 
   <h4>Mini map</h4>
     
     Access: images/map/miniMap.php?projectId
     ImageStoreUrl: images/map/mini
-    FileName: "MapX" + coordX + "Z" + coordY + "Width" + width + "Height" + height
+    FileName: worldName + "X" + coordX + "Z" + coordY + "radius" + radius
+    Size: Radius x Radius
 
 
 
