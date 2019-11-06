@@ -1,5 +1,5 @@
 <?php
-    $players = json_decode(file_get_contents("uploads/players.txt"), true);
+    include "PHP/config.php";
 ?>
 
 <!DOCTYPE html>
@@ -24,26 +24,27 @@
         
         
         <div class="text" id="homescreen_projectCraftLogo">
-            PROJECTCRAFT
+            <?php echo strtoupper($CONFIG["server"]["name"]); ?>
         </div>
         
-        <div class="text-only homescreen_projectCraftInfo" style="animation-delay: 6s; top: 125px;">
-            ProjectCraft is a vanilla SMP server, for Java Edition 1.14, ran by JarPlayGo.
-        </div>
-        
-        <div class="text-only homescreen_projectCraftInfo" style="animation-delay: 8s; top: 150px;">
-            It started in 2016. This is season 3, which went live in December of 2018.
-        </div>
-        
-        <div class="text-only homescreen_projectCraftInfo" style="animation-delay: 10s; top: 175px;">
-            It currently has an active playerbase of <?php echo sizeOf($players); ?> players.
-        </div>
+        <?php
+            $descriptionLines = explode("\n", $CONFIG["server"]["description"]);
+
+            for ($l = 0; $l < sizeof($descriptionLines); $l++)
+            {
+                echo '<div class="text-only homescreen_projectCraftInfo" style="animation-delay: ' . $l . 's; top: 125px;">' .
+                    $descriptionLines[$l] .
+                '</div>';
+            }
+        ?>
+
+    
         
         <div class="avatars homescreen_projectCraftInfo" style="display: grid; animation-delay: 12s; top: 225px;">
         <?php
             $c = 0;
             echo "<div style=\"display: flex;\">";
-            foreach($players as $player) {
+            foreach($CONFIG["server"]["members"] as $player) {
                 if($c > 9) {
                   echo "</div>\r\n<div style=\"display: flex;\">";   
                   $c = 0;
@@ -55,7 +56,7 @@
         ?>
         
         <div class="text-only homescreen_projectCraftInfo" style="position: relative; left: 0px; animation-delay: 15s; bottom 0px; margin-top: 20px;">
-            <a class="discord" href="https://discord.gg/ekXGedb">Come join us on our discord server.</a>
+            <a class="discord" href="<?php echo $CONFIG["server"]["discordLink"]; ?>">Come join us on our discord server.</a>
         </div>
         </div>
     </body>

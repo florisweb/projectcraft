@@ -1,3 +1,7 @@
+<?php
+    include "PHP/config.php";
+?>
+
 <!--
 	CREDITS:
 	- Thanks to Crafatar.com for the avatars and heads.
@@ -7,18 +11,20 @@
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
 		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=2">
-		<title>ProjectCraftMC</title>
+		<title><?php echo $CONFIG["server"]["name"]; ?></title>
 	</head>
 
 	<body style="overflow: hidden;" class="noselect">
-		<div id="homeScreen" style="background-image: url(<?php
-                    $files = glob("uploads/images/*.png");
-					$length = sizeof($files);
-					$index = rand(0, $length-1);
-                    echo $files[$index];
-				?>)">
+		<div id="homeScreen" style="
+			background-image: url(<?php
+                $files = glob("uploads/images/*.png");
+				$length = sizeof($files);
+				$index = rand(0, $length-1);
+                echo $files[$index];
+			?>)">
+
 			<div class="text" id="homescreen_projectCraftLogo">
-				PROJECTCRAFT
+				<?php echo strtoupper($CONFIG["server"]["name"]); ?>
 				<div style="font-size: 15px; opacity: 0.5">
 					Written and maintained by 
 					<a href="https://eelekweb.tk" style="color: #fff">eelekweb.tk</a> 
