@@ -1,10 +1,14 @@
+<?php
+    include "PHP/config.php";
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
 		<link rel="stylesheet" type="text/css" href="css/main.css?x=1">
         <link rel="stylesheet" type="text/css" href="css/nether.css">
-		<title>ProjectCraftMC | Nether Map.</title>
+		<title><?php echo $CONFIG["server"]["name"] . " | Nether Map"; ?></title>
 	</head>
 	<body style="overflow: hidden;" class="noselect">
         <div id="topBar">

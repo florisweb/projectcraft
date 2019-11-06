@@ -1,14 +1,14 @@
-<!--
-	CREDITS:
-	- Thanks to Crafatar.com for the avatars and heads.
--->
+<?php
+    include "PHP/config.php";
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
 		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=3">
         <link rel="stylesheet" type="text/css" href="css/chat.css?antiCache=1">
-		<title>ProjectCraftMC | World Map</title>
+		<title><?php echo $CONFIG["server"]["name"] . " | World Map"; ?></title>
 	</head>
 
 	<body style="overflow: hidden;" class="noselect">

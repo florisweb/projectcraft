@@ -7,7 +7,7 @@
     <head>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
         <link rel="stylesheet" type="text/css" href="css/main.css">
-        <title>ProjectCraftMC | Info.</title>
+        <title><?php echo $CONFIG["server"]["name"] . " | Info"; ?></title>
     </head>
     <body style="overflow-x: hidden; overflow-y: auto; background-color: black;" class="noselect">
         <div id="topBar">
