@@ -207,7 +207,7 @@ if (_info.builders) headName=_info.builders[0];
 if (_info.builders && _info.builders.length > 1) headName="MHF_Exclamation";
 if (_info.customHead) headName=_info.customHead;
 
-return "heads.php?type=avatar&username="+headName;
+return "PHP/heads.php?type=avatar&username="+headName;
 }
 }
 
@@ -343,7 +343,7 @@ img.onload=function () {
 ctx.drawImage(img,x-16,z-56,32,32);
 };
 
-img.src="heads.php?type=head&scale=2&username="+username;
+img.src="PHP/heads.php?type=head&scale=2&username="+username;
 
 ctx.fillStyle="white";
 ctx.beginPath();

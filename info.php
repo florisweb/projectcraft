@@ -48,7 +48,7 @@
                   echo "</div>\r\n<div style=\"display: flex;\">";   
                   $c = 0;
                 }
-                echo "<div class=\"avatar text\"><img style=\"margin-top: 10px;\" src=\"heads.php?type=body&scale=10&username=".$player[0]."\" class=\"avatar\"><br>".$player[0]."</div>\n\r";
+                echo "<div class=\"avatar text\"><img style=\"margin-top: 10px;\" src=\"PHP/heads.php?type=body&scale=10&username=".$player[0]."\" class=\"avatar\"><br>".$player[0]."</div>\n\r";
                 $c++;
             }
             echo "</div>";

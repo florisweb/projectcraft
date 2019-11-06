@@ -29,7 +29,7 @@ function _client() {
         ctx.drawImage(img, Map.MCToDOM(item.x) - 16, Map.MCToDOM(item.z) - 16, 32, 32);
       };
 
-      img.src = "heads.php?type=avatar&username=" + item.username;
+      img.src = "PHP/heads.php?type=avatar&username=" + item.username;
       
       console.log("Drawn " + item.username + " at " + item.x + ", " + item.z);
     });

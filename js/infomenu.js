@@ -233,7 +233,7 @@ function _InfoMenu_mapJsExtender() {
 		if (_info.builders && _info.builders.length > 1) headName = "MHF_Exclamation";
 		if (_info.customHead) headName = _info.customHead;
 		
-		return "heads.php?type=avatar&username=" + headName;
+		return "PHP/heads.php?type=avatar&username=" + headName;
 	}
 }
 

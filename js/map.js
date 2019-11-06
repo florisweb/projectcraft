@@ -110,7 +110,7 @@ this._map = function () {
 			ctx.drawImage(img, x - 16, z - 56, 32, 32);
 		};
         
-		img.src = "heads.php?type=head&scale=2&username=" + username;        
+		img.src = "PHP/heads.php?type=head&scale=2&username=" + username;        
         
 		ctx.fillStyle = "white";
 		ctx.beginPath();

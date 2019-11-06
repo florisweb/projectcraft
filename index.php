@@ -29,12 +29,12 @@
 
 			<div id="homeScreen_navigationHolder"> 
 				<div class="navigationItem" onclick="window.location.replace('info.php')">
-					<img src="heads.php?username=MHF_Question&type=head&scale=10" class="iconHolder">
+					<img src="PHP/heads.php?username=MHF_Question&type=head&scale=10" class="iconHolder">
 					<div class="text itemTitle">INFO</div>
 				</div>
                 
 				<div class="navigationItem" onclick="window.location.replace('map.php')">
-					<img src="heads.php?username=0qt&type=head&scale=10" class="iconHolder">
+					<img src="PHP/heads.php?username=0qt&type=head&scale=10" class="iconHolder">
 					<div class="text itemTitle">MAP</div>
 				</div>
 			</div>
