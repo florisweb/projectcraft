@@ -51,9 +51,9 @@ body.quickStartAnimation #homescreen_projectCraftLogo {
 	animation-duration: .0s;
 }
 
-
+/*
 .homescreen_projectCraftInfo {
-    position: absolute;
+    position: relative;
     left: 50px;
 	width: 100%;
 	text-align: left;
@@ -64,7 +64,7 @@ body.quickStartAnimation #homescreen_projectCraftLogo {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
-
+*/
 #homeScreen_navigationHolder {
 	top: 50%;
 	transform: translate(0%, -50%);
@@ -134,24 +134,37 @@ body.quickStartAnimation #homescreen_projectCraftLogo {
    
 }
 
-.avatars {
-    position: absolute;
-    width: 100%;
-    left: 50px;
-    display: flex;
+
+
+
+
+#info_memberHolder {
+	position: relative;
+	left: 0;
+	width: auto;
+	height: auto;
 }
 
-div.avatar {
-    text-align: center;
-    width: 100px;
-    margin-right: 20px;
-}
+	#info_memberHolder .avatarHolder {
+		position: relative;
+		float: left;
+		width: 120px;
 
-img.avatar {
-    width: 100px;
-    height: 226px;
-    display: block;
-}
+		padding-bottom: 50px;
+	}
+
+		#info_memberHolder .avatarHolder .avatar {
+			position: relative;
+			width: calc(100% - 25% * 2);
+			padding: 0 25%;
+			height: auto;
+		}
+
+		#info_memberHolder .avatarHolder .text {
+			text-align: center;
+		}
+
+
 
 a.discord {
     text-decoration: underline;
@@ -159,6 +172,9 @@ a.discord {
 	font-size: 12px;
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
 
 
 
