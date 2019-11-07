@@ -24,7 +24,7 @@
 
 
 		<div id="mapHolder">
-			<img src="images/map.png" id="backgroundImage">
+			<img src="images/map.png" id="mapImage">
 			<canvas id="mapCanvas" width="3062" height="3062"></canvas>
             <div id="chatlog"></div>
 		</div>

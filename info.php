@@ -15,7 +15,7 @@
             <div class="shadowBackground"></div>
         </div>
         
-        <img style="-webkit-filter: blur(40px); filter: blur(40px); animation-direction: reverse; height: 100vh;" id="homeScreen_backgroundImage" src="<?php
+        <img style="-webkit-filter: blur(40px); filter: blur(40px); animation-direction: reverse; height: 100vh;" id="homeScreen_mapImage" src="<?php
             $files = glob("uploads/images/*");
             $length = sizeof($files);
             $index = rand(0, $length - 1);

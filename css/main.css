@@ -23,21 +23,15 @@ body {
 	z-index: 1000;
 	overflow: hidden;
 
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
+	background-repeat: 		no-repeat;
+	background-size: 		cover;
 	
 	box-shadow: 0 -5px 30px 5px rgba(50, 50, 50, 0.3);
-	background: rgb(30, 30, 32);
-
 	transition: transform 0.3s, opacity 0.3s;
 }
 
-#homeScreen.hide {
-	transform: scale(1.4);
-	opacity: 0;
-	pointer-events: none;
-}
+
+
 
 #homescreen_projectCraftLogo {
 	position: absolute;
@@ -127,7 +121,7 @@ body.quickStartAnimation #homescreen_projectCraftLogo {
 }
 
 
-@keyframes homeScreen_backgroundImage {
+@keyframes homeScreen_mapImage {
     0% {
     	filter: blur(50px);
     }
@@ -350,7 +344,7 @@ a.discord {
 	overflow: auto;
 }
 
-#backgroundImage, #mapCanvas {
+#mapImage, #mapCanvas {
 	position: absolute;
 	left: 0;
 	top: 0;

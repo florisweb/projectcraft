@@ -2,15 +2,11 @@
     include "PHP/config.php";
 ?>
 
-<!--
-	CREDITS:
-	- Thanks to Crafatar.com for the avatars and heads.
--->
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=2">
+		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=5">
 		<title><?php echo $CONFIG["server"]["name"]; ?></title>
 	</head>
 

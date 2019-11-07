@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-		<link rel="stylesheet" type="text/css" href="css/main.css?x=1">
+		<link rel="stylesheet" type="text/css" href="css/main.css?x=2">
         <link rel="stylesheet" type="text/css" href="css/nether.css">
 		<title><?php echo $CONFIG["server"]["name"] . " | Nether Map"; ?></title>
 	</head>

@@ -224,7 +224,7 @@ this._map = function () {
 			scrollTop: percViewPosYMap * endMapSize - (screenHeight / 2) + "px"
 		}, this.settings.animationSpeed);
 
-		$("#backgroundImage").animate({
+		$("#mapImage").animate({
 			width: parseFloat(_percentage) * 100 + "vw"
 		}, this.settings.animationSpeed);
 		$("#mapCanvas")[0].style.width = parseFloat(_percentage) * 100 + "vw";
