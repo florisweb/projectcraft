@@ -1,6 +1,8 @@
 <?php
     global $CONFIGPath;
-    $CONFIGPath = "..//config.json";
+    $root       = realpath($_SERVER["DOCUMENT_ROOT"]);
+    $CONFIGPath = "$root/config.json";
+    // $CONFIGPath = "$root/git/projectcraft/config.json";
 
     global $CONFIG;
 	$CONFIG     = json_decode(file_get_contents($CONFIGPath), true);
