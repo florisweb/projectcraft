@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="css/nether.css">
 		<title><?php echo $CONFIG["server"]["name"] . " | Nether Map"; ?></title>
 	</head>
+
 	<body style="overflow: hidden;" class="noselect">
         <div id="topBar">
 			<img src="images/homeIcon.svg" class="button" onclick="window.location.replace('../')">
@@ -35,9 +36,11 @@
 		<div id="infoMenu" class="h ide">
 			<div class="infoMenuPage">
 				<div class="headerText preventTextOverflow">PORTALS</div>
-				<img class="exitIcon" src="images/exitIcon.png" onclick="InfoMenu.close()">
+				<img class="icon" src="images/exitIcon.png" onclick="InfoMenu.close()">
+				<img class="icon searchIcon" src="images/searchIcon.png" onclick="InfoMenu.search.open()">
 				<div id="projectListHolder"></div>
 			</div>
+
 
 			<div class="infoMenuPage hide" style="color: white">
 				<div class="headerText preventTextOverflow" id="projectPage_titleHolder">PORTAL</div>
@@ -56,24 +59,30 @@
 				<div class="text subHeader"><br>IMAGES</div>
 				<div id="projectPage_imageHolder"></div>
 			</div>
+
+			<div class="infoMenuPage hide">
+				<input class="headerText preventTextOverflow searchInput" placeholder="Search">
+				<img class="icon exitIcon" src="images/exitIcon.png" onclick="InfoMenu.openPageByIndex(0)">
+				<div id="projectSearchListHolder"></div>
+			</div>
 		</div>
 
 		<script type="text/javascript" src="https://florisweb.tk/JS/jQuery.js"></script>
 		<script type="text/javascript" src="https://florisweb.tk/JS/request2.js"></script>
-		<script type="text/javascript" src="js/main_min.js"></script>
 
 		<script>
 			// temporarily so things don't get cached
-			// let antiCache = Math.random() * 100000000;
-			// $.getScript("js/handyFunctions.js?antiCache=" 	+ antiCache, function() {});
-            // $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
-            // $.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
-            // $.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
-			// $.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
-				// setup();
-			// });
-			document.body.onload = function() {
+			let antiCache = Math.random() * 100000000;
+			$.getScript("js/handyFunctions.js?antiCache=" 	+ antiCache, function() {});
+            $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
+            $.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
+            $.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
+			$.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
 				setup();
+			});
+			
+			document.body.onload = function() {
+				// setup();
 			}
             
             function executeUrlCommands() {
