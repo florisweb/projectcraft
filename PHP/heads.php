@@ -1,6 +1,5 @@
 <?php
-    $root = realpath($_SERVER["DOCUMENT_ROOT"]);
-    include "$root/git/projectcraft/PHP/config.php";
+    include "config.php";
 
 	if(!isset($_GET))                  die("No data supplied.");
 	if(!isset($_GET["username"]))      die("No username supplied.");
