@@ -269,20 +269,22 @@ function _InfoMenu_search() {
 		createHTMLItems(items);
 	}
 
+
 	function getItemsBySearchTerm(_value, _items) {
 		let scores = [];
 		for (item of _items)
 		{
 			item.score = getScoreBySearchTermAndItem(_value, item);
-			if (item.score < .3) continue;
+			if (item.score < .2) continue;
 			scores.push(item);
 		}
 		
-		return scores.sort(function(a, b){
+		scores = scores.sort(function(a, b){
 	     	if (a.score < b.score) return 1;
 	    	if (a.score > b.score) return -1;
 	    	return 0;
 	    });
+	    return scores.splice(0, 10);
 	}
 
 	function getScoreBySearchTermAndItem(_value, _item) {
