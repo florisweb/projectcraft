@@ -28,8 +28,10 @@ function _InfoMenu() {
 		pages: 					$(".infoMenuPage")
 	}
 
-	this.openState = true;
-	this.pageIndex = 0;
+	this.openState 	= true;
+	this.pageIndex 	= 0;
+	this.search 	= new _InfoMenu_search();
+
 
 	this.close = function() {
 		this.openState = false;
@@ -70,15 +72,16 @@ function _InfoMenu() {
 		}
 	}
 	
-	this.addItem = function(_info) {
+	this.addItem = function(_info, _parent = HTML.projectList) {
 		let startIndex = HTML.projectList.children.length;
-		let html = '<div class="projectItem">' + 
+		const Id = newId();
+		let html = '<div class="projectItem" id="' + Id + '">' + 
 			'<img class="headHolder">' +
 			'<div class="headerText titleHolder preventTextOverflow"></div>' +
 		'</div>';
-		HTML.projectList.insertAdjacentHTML("beforeend", html);
+		_parent.insertAdjacentHTML("beforeend", html);
 		
-		html = HTML.projectList.children[startIndex];
+		html = document.getElementById(Id);
 
 
 		setTextToElement(html.children[1], _info.title);
@@ -101,7 +104,7 @@ function _InfoMenu() {
 		if (_e.key != "Escape") return;
 		
 		_e.preventDefault();
-		if (InfoMenu.pageIndex == 1) 	return InfoMenu.openPageByIndex(0);
+		if (InfoMenu.pageIndex != 0) 	return InfoMenu.openPageByIndex(0);
 		if (InfoMenu.openState) 		return InfoMenu.close();
 	}
 }
@@ -128,7 +131,7 @@ function _InfoMenu_mapJsExtender() {
 
 
 
-	this.addItem = function (_info) {
+	this.addItem = function (_info, _parent) {
 		if (_info.displayInList === false) return;
 		_info.imageUrl 	= getHeadUrl(_info);
 		_info.typeName 	= _info.type ? _info.type.name : "";
@@ -136,7 +139,7 @@ function _InfoMenu_mapJsExtender() {
 			InfoMenu.openProjectPageByTitle(_info.title);
 		}
 		
-		return Inheriter.addItem(_info);
+		return Inheriter.addItem(_info, _parent);
 	}
 
 
@@ -236,5 +239,73 @@ function _InfoMenu_mapJsExtender() {
 		return "PHP/heads.php?type=avatar&username=" + headName;
 	}
 }
+
+
+function _InfoMenu_search() {
+	let This = {
+		open: open,
+		search: search
+	}
+	const HTML = {
+		projectSearchList: 	projectSearchListHolder,
+		inputField: 		$(".infoMenuPage .searchInput")[0]
+	}
+
+	HTML.inputField.addEventListener("keyup", function () {
+		InfoMenu.search.search(this.value);
+	})
+
+
+	function open() {
+		InfoMenu.openPageByIndex(2);
+		HTML.inputField.value = null;
+		HTML.inputField.focus();
+	}
+
+
+	function search(_searchTerm) {
+		let items = getItemsBySearchTerm(_searchTerm, Server.items);
+		HTML.projectSearchList.innerHTML = "";
+		createHTMLItems(items);
+	}
+
+	function getItemsBySearchTerm(_value, _items) {
+		let scores = [];
+		for (item of _items)
+		{
+			item.score = getScoreBySearchTermAndItem(_value, item);
+			if (item.score < .3) continue;
+			scores.push(item);
+		}
+		
+		return scores.sort(function(a, b){
+	     	if (a.score < b.score) return 1;
+	    	if (a.score > b.score) return -1;
+	    	return 0;
+	    });
+	}
+
+	function getScoreBySearchTermAndItem(_value, _item) {
+		let scores = [];
+
+		for (let i = 0; i < _value.length; i++)
+		{
+			let curSubString = _value.substr(0, i + 1);
+			scores.push(similarity(curSubString, _item.title));
+		}
+	
+		return Math.max(...scores);
+	}
+
+
+	function createHTMLItems(_items) {
+		for (item of _items) InfoMenu.addItem(item, HTML.projectSearchList);
+	}
+
+
+	return This;
+}
+
+
 
 

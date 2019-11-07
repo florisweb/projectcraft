@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=3">
+		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=4">
         <link rel="stylesheet" type="text/css" href="css/chat.css?antiCache=1">
 		<title><?php echo $CONFIG["server"]["name"] . " | World Map"; ?></title>
 	</head>
@@ -47,13 +47,14 @@
 		<div id="infoMenu">
 			<div class="infoMenuPage">
 				<div class="headerText preventTextOverflow">PROJECTS</div>
-				<img class="exitIcon" src="images/exitIcon.png" onclick="InfoMenu.close()">
+				<img class="icon" src="images/exitIcon.png" onclick="InfoMenu.close()">
+				<img class="icon searchIcon" src="images/searchIcon.png" onclick="InfoMenu.search.open()">
 				<div id="projectListHolder"></div>
 			</div>
 
-			<div class="infoMenuPage hide" style="color: white">
+			<div class="infoMenuPage hide">
 				<div class="headerText preventTextOverflow" id="projectPage_titleHolder">PROJECTS</div>
-				<img class="exitIcon" src="images/exitIcon.png" onclick="InfoMenu.openPageByIndex(0)">
+				<img class="icon" src="images/exitIcon.png" onclick="InfoMenu.openPageByIndex(0)">
 
 				<div class="text" id="projectPage_coordHolder"></div>
 				<div class="text subHeader"><br>BUILDERS</div>
@@ -74,6 +75,12 @@
 
 				<div class="text subHeader"><br>IMAGES</div>
 				<div id="projectPage_imageHolder"></div>
+			</div>
+
+			<div class="infoMenuPage hide">
+				<input class="headerText preventTextOverflow searchInput" placeholder="Search">
+				<img class="icon exitIcon" src="images/exitIcon.png" onclick="InfoMenu.openPageByIndex(0)">
+				<div id="projectSearchListHolder"></div>
 			</div>
 		</div>
 

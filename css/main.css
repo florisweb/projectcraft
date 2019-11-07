@@ -561,8 +561,7 @@ body.infoMenuHidden #coordinatesHolder {
 
 
 
-
-#infoMenu .exitIcon {
+#infoMenu .icon {
 	position: -webkit-sticky;
 	position: sticky;
 	float: right;
@@ -579,9 +578,19 @@ body.infoMenuHidden #coordinatesHolder {
 	z-index: 100;
 }
 
-#infoMenu .exitIcon:hover {
+#infoMenu .icon:hover {
 	opacity: 0.8;
 }
+
+#infoMenu .icon.searchIcon {
+	top: 0;
+	right: 35px;
+	width: 22px;
+	transform: rotateZ(-90deg);
+}
+
+
+
 
 
 
@@ -609,6 +618,18 @@ body.infoMenuHidden #coordinatesHolder {
 	pointer-events: none;
 }
 
+
+
+	.infoMenuPage .searchInput {
+		position: relative;
+		top: -10px;
+		width: calc(100% - 50px);
+		height: 25px;
+		/*padding: 0;*/
+		background: none;
+		border: 0;
+		border-bottom: 1px solid rgba(255, 255, 255, .3);
+	}
 
 
 
