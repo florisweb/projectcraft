@@ -9,10 +9,11 @@
 	$type      = filter_var($_GET["type"], FILTER_SANITIZE_STRING);
    
 
-    $uuids     = $CONFIG["server"]["members"];
+    $uuids     = $GLOBALS["CONFIG"]["server"]["members"];
     $uuid_found = false;
     $uuid = "";
-    
+
+
     foreach($uuids as $u)
     {   
         if ($u[0] !== $username || empty($u[1])) continue;
@@ -20,7 +21,6 @@
         $uuid_found = true;
         break;
     }
-
     
     if (!$uuid_found)
     {
