@@ -94,6 +94,7 @@
     },
     "type": {
       "radius": 130,
+      "genMiniMap": true,
       "name": "Area"
     }
   },
