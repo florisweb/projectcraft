@@ -29,6 +29,7 @@
     - genMiniMap BOOLEAN default: false
     - drawOnMap BOOLEAN default: false
     
+
   [images]:
     
     - PATH_STRING
@@ -50,35 +51,6 @@
     - name STRING REQUIRED
     - type STRING REQUIRED
 
-
-
-
-
-
-
-
-
-
-
-
-  <h3>Map generation [data.txt only]</h3>
-     For project-flags see: <i>Project & Portal Paramaters - Type</i>
-
-
-  <h4>Main map</h4>
-    
-    Access: images/map/mainMap.php? --- ?? ---
-    ImageStoreUrl: images/map/main
-    FileName: worldName + "X" + coordX + "Z" + coordZ
-    DefaultSize: 128 x 128
-
-
-  <h4>Mini map</h4>
-    
-    Access: images/map/miniMap.php?projectId
-    ImageStoreUrl: images/map/mini
-    FileName: worldName + "X" + coordX + "Z" + coordY + "radius" + radius
-    Size: Radius x Radius
 
 
 
