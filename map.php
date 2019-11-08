@@ -31,8 +31,8 @@
 	
         
         <div class="coordinatesHolder" id="coordinatesHolder">
-            <span id="current_x"></span>
-            <span id="current_z"></span>
+            <span id="current_x">0</span>
+            <span id="current_z">0</span>
         </div>
 
 		<div class="buttonHolder" id="dimensionButtonHolder">
