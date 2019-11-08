@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="css/main.css?a=16">
         <title><?php echo $CONFIG["server"]["name"] . " | Info"; ?></title>
     </head>
-    <body style="background: #000; overflow: hidden;" class="noselect">
+    <body style="background: #000;" class="noselect">
         <div id="topBar">
             <img src="images/homeIcon.svg" class="button" onclick="window.location.replace('index.php')">
         </div>
@@ -54,8 +54,8 @@
             ?>
         </div>
         
-        <!-- <div class="text-only homescreen_projectCraftInfo" style="position: relative; left: 0px; animation-delay: 15s; bottom: 0px; margin-top: 20px;"> -->
-            <!-- <a class="discord" href="<?php echo $CONFIG["server"]["discordLink"]; ?>">Come join us on our discord server.</a> -->
-        <!-- </div> -->
+        <div class="text-only homescreen_projectCraftInfo" style="position: relative; left: 0px; animation-delay: 15s; bottom: 0px; margin-top: 20px;">
+            <a class="discord" href="<?php echo $CONFIG["server"]["discordLink"]; ?>">Come join us on our discord server.</a>
+        </div>
     </body>
 </html>
