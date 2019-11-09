@@ -4,14 +4,14 @@
 
 	$metaDataList = createMiniMapMetaData();
 
-	for ($x = $CONFIG["world"]["minX"]; $x < $CONFIG["world"]["maxX"]; $x += $CONFIG["world"]["mapTileRadius"])
+	for ($x = $CONFIG["world"]["minX"]; $x < $CONFIG["world"]["maxX"]; $x += $CONFIG["world"]["mapTileWidth"])
 	{
-		for ($z = $CONFIG["world"]["minZ"]; $z < $CONFIG["world"]["maxZ"]; $z += $CONFIG["world"]["mapTileRadius"])
+		for ($z = $CONFIG["world"]["minZ"]; $z < $CONFIG["world"]["maxZ"]; $z += $CONFIG["world"]["mapTileWidth"])
 		{
 			$metaData = array(
-  				"centerX" => $x + $CONFIG["world"]["mapTileRadius"] / 2,
-  				"centerZ" => $z + $CONFIG["world"]["mapTileRadius"] / 2,
-  				"radius" => $CONFIG["world"]["mapTileRadius"],
+  				"centerX" => $x + $CONFIG["world"]["mapTileWidth"] / 2,
+  				"centerZ" => $z + $CONFIG["world"]["mapTileWidth"] / 2,
+  				"radius" => $CONFIG["world"]["mapTileWidth"] / 2,
   				"highQuality" => false
   			);
 
