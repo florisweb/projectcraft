@@ -1,15 +1,17 @@
 <?php
     include "config.php";
 
-	if(!isset($_GET))                  die("No data supplied.");
-	if(!isset($_GET["username"]))      die("No username supplied.");
-	if(!isset($_GET["type"]))          die("No type supplied.");
+	// if(!isset($_GET))                  die("No data supplied.");
+	// if(!isset($_GET["username"]))      die("No username supplied.");
+	// if(!isset($_GET["type"]))          die("No type supplied.");
 
 	$username  = filter_var($_GET["username"], FILTER_SANITIZE_STRING);
 	$type      = filter_var($_GET["type"], FILTER_SANITIZE_STRING);
    
 
-    $uuids     = $GLOBALS["CONFIG"]["server"]["members"];
+    $memberFileUrl     = "../" . $GLOBALS["CONFIG"]["memberData-url"];
+    $uuids         = json_decode(file_get_contents($memberFileUrl, true), true);
+
     $uuid_found = false;
     $uuid = "";
 
@@ -42,8 +44,8 @@
             }
         }
 
-        $CONFIG["server"]["members"] = $uuids;
-        WriteConfig($CONFIG);
+        
+        file_put_contents($memberFileUrl, json_encode($uuids));
     }
 
     
@@ -74,7 +76,7 @@
 
 	echo $avatar;
     
-    if(!file_exists($imageUrl) || hash_file("md5", $imageUrl) !== hash("md5", $avatar))
+    if (!file_exists($imageUrl) || hash_file("md5", $imageUrl) !== hash("md5", $avatar))
     {
         file_put_contents($imageUrl, $avatar);
     }
