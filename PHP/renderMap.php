@@ -11,15 +11,15 @@
 		!isset($_GET["height"])
 	) die("Parameters missing");
 
-	if (!$CONFIG || !$CONFIG["world"]["mapTileWidth"]) die("Internal problem");
-	$mapTileWidth = (int)$CONFIG["world"]["mapTileWidth"];
+	if (!$CONFIG || !$CONFIG["world"]["mapTileSize"]) die("Internal problem");
+	$mapTileSize = (int)$CONFIG["world"]["mapTileSize"];
 
 
 	$world 	= $_GET["world"] == "overworld" ? "overworld" : "nether";
 	$width 	= (int)$_GET["width"];
 	$height = (int)$_GET["height"];
-	$startX = round((int)$_GET["x"] / $mapTileWidth) * $mapTileWidth; // snap the coords to the chunkgrid
-	$startZ = round((int)$_GET["z"] / $mapTileWidth) * $mapTileWidth;
+	$startX = round((int)$_GET["x"] / $mapTileSize) * $mapTileSize; // snap the coords to the chunkgrid
+	$startZ = round((int)$_GET["z"] / $mapTileSize) * $mapTileSize;
 
 	if (
 		$startX < $CONFIG["world"]["minX"] || 
@@ -30,19 +30,19 @@
 
 
 
-	$SCALAR = 10; // x MC blocks / px
-	$newTileSize = ceil($mapTileWidth / $SCALAR);
+	$SCALAR = 1; // x MC blocks / px
+	$newTileSize = ceil($mapTileSize / $SCALAR);
 	$pxWidth = ceil($width / $SCALAR);
 	$pxHeight = ceil($height / $SCALAR);
 	$areamap = @imagecreatetruecolor($pxWidth, $pxHeight);
 
-	for ($z = $startZ; $z < $startZ + $height; $z += $mapTileWidth) 
+	for ($z = $startZ; $z < $startZ + $height; $z += $mapTileSize) 
 	{
-	  for ($x = $startX; $x < $startX + $width; $x += $mapTileWidth) 
+	  for ($x = $startX; $x < $startX + $width; $x += $mapTileSize) 
 	  {	
-	  	$url = "API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileWidth . ".png";
+	  	$url = "API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileSize . ".png";
 	   	if (!file_exists($url)) continue;
-
+	    
 	    $file = file_get_contents($url);
 	    if ($file == null) continue;
 

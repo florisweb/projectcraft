@@ -24,7 +24,7 @@
 
 
 		<div id="mapHolder">
-			<img src="PHP/renderMap.php?world=overworld&x=-2000&z=-2000&width=4000&height=4000" id="mapImage">
+			<img src="PHP/renderMap.php?world=overworld&x=-500&z=-500&width=1000&height=1000" id="mapImage">
 			<canvas id="mapCanvas" width="3062" height="3062"></canvas>
             <div id="chatlog"></div>
 		</div>
