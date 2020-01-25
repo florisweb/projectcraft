@@ -8,9 +8,8 @@
 	if (
 		!$data["data"] || 
 		!$data["metaData"] ||
-		!$data["metaData"]["x"] ||
-		!$data["metaData"]["z"] ||
-		!$data["metaData"]["size"]
+		!isset($data["metaData"]["x"]) ||
+		!isset($data["metaData"]["z"])
 	) die("Parameters missing");
 
 	$metaData = $data["metaData"];
