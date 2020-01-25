@@ -5,14 +5,15 @@
     "discordLink": "https://discord.gg/ekXGedb"
   },
   "world": {
-  	"mapTileWidth": 128,
+  	"mapTileSize": 128,
   	"minX": -1000,
   	"minZ": -1000,
   	"maxX": 1000,
   	"maxZ": 1000
   },
   "API": {
-    "API-key": "3423-sadf"
+    "API-key": "3423-sadf",
+    "imageCompression": 8
   },
   "netherData-url": "uploads/nether.txt",
   "overworldData-url": "uploads/data.txt",

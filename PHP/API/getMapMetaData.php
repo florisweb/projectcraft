@@ -25,7 +25,7 @@
 			$metaData = array(
 				"x" => $project["coords"]["x"] - $project["type"]["radius"] / 2,
 				"z" => $project["coords"]["z"] - $project["type"]["radius"] / 2,
-				"size" => $project["type"]["radius"]
+				"size" => $project["type"]["radius"] * 2
 			);
 			array_push($metaDataList, $metaData);
 		}
