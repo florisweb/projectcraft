@@ -2,7 +2,7 @@
 	require "APIAuthenticate.php";
 	
 	$metaData = array(
-		"compression " => $CONFIG["API"]["imageCompression"],
+		"compression" => $CONFIG["API"]["imageCompression"],
 		"chunkSize" => $CONFIG["world"]["mapTileSize"],
 		"miniMapList" => createMiniMapMetaData()
 	);
