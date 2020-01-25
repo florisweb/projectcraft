@@ -21,7 +21,14 @@
 	$startX = round((int)$_GET["x"] / $mapTileWidth) * $mapTileWidth; // snap the coords to the chunkgrid
 	$startZ = round((int)$_GET["z"] / $mapTileWidth) * $mapTileWidth;
 
-	// echo "<pre>";
+	if (
+		$startX < $CONFIG["world"]["minX"] || 
+		$startZ < $CONFIG["world"]["minZ"] || 
+		$startX + $width > $CONFIG["world"]["maxX"] || )
+		$startZ + $height > $CONFIG["world"]["maxZ"] || 
+	) die("Invalid coordinates");
+
+
 
 	$SCALAR = 10; // x MC blocks / px
 	$pxWidth = ceil($width / $SCALAR);
