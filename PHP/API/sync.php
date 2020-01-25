@@ -1,5 +1,0 @@
-<?php
-  	require "APIAuthenticate.php";
-  	
-
-?>

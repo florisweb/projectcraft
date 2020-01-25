@@ -11,6 +11,9 @@
   	"maxX": 1000,
   	"maxZ": 1000
   },
+  "API": {
+    "API-key": "3423-sadf"
+  },
   "netherData-url": "uploads/nether.txt",
   "overworldData-url": "uploads/data.txt",
   "memberData-url": "uploads/member.txt"
