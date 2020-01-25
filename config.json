@@ -13,7 +13,8 @@
   },
   "API": {
     "API-key": "3423-sadf",
-    "imageCompression": 8
+    "imageCompression": 8,
+    "maxImageWidth": 10000
   },
   "netherData-url": "uploads/nether.txt",
   "overworldData-url": "uploads/data.txt",

@@ -15,8 +15,6 @@
 	$metaData = $data["metaData"];
 	$imgData = $data["data"];
 
-
-
 	$world 			= $metaData["world"] == "nether" ? "nether" : "overworld";
 	$mapTileSize 	= (int)$CONFIG["world"]["mapTileSize"];
 	$size			= (int)$metaData["size"];
@@ -31,6 +29,10 @@
 		$startX + $size 	> $CONFIG["world"]["maxX"] ||
 		$startZ + $size 	> $CONFIG["world"]["maxZ"]
 	) die("Invalid coordinates");
+
+
+	if (sqrt(sizeof($imgData) / 3) > $CONFIG["API"]["maxImageWidth"]) die("File too big. Max " . $CONFIG["API"]["maxImageWidth"] . "px wide");
+
 
 
 	if (!$metaData["isMiniMap"])
