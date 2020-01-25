@@ -12,12 +12,14 @@
 	) die("Parameters missing");
 
 	if (!$CONFIG || !$CONFIG["world"]["mapTileWidth"]) die("Internal problem");
+	$mapTileWidth = (int)$CONFIG["world"]["mapTileWidth"];
+
 
 	$world 	= $_GET["world"] == "overworld" ? "overworld" : "nether";
 	$width 	= (int)$_GET["width"];
 	$height = (int)$_GET["height"];
-	$startX = round((int)$_GET["x"] / $CONFIG["world"]["mapTileWidth"]) * $CONFIG["world"]["mapTileWidth"];
-	$startZ = round((int)$_GET["z"] / $CONFIG["world"]["mapTileWidth"]) * $CONFIG["world"]["mapTileWidth"];
+	$startX = round((int)$_GET["x"] / $mapTileWidth) * $mapTileWidth; // snap the coords to the chunkgrid
+	$startZ = round((int)$_GET["z"] / $mapTileWidth) * $mapTileWidth;
 
 	// echo "<pre>";
 
@@ -26,12 +28,11 @@
 	$pxHeight = ceil($height / $SCALAR);
 	$areamap = @imagecreatetruecolor($pxWidth, $pxHeight);
 
-	for ($z = $startZ; $z < $startZ + $height; $z += $CONFIG["world"]["mapTileWidth"]) 
+	for ($z = $startZ; $z < $startZ + $height; $z += $mapTileWidth) 
 	{
-	  
-	  for ($x = $startX; $x < $startX + $width; $x += $CONFIG["world"]["mapTileWidth"]) 
+	  for ($x = $startX; $x < $startX + $width; $x += $mapTileWidth) 
 	  {	
-	  	$url = "API/generalMap/" . $world . "_" . $x . "_" . $z . "_" . $CONFIG["world"]["mapTileWidth"] . ".png";
+	  	$url = "API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileWidth . ".png";
 	   	if (!file_exists($url)) continue;
 
 	    $file = file_get_contents($url);
@@ -40,7 +41,7 @@
 	    $map = imagecreatefromstring($file);
 	    if ($map == null) continue;
 
-	    $newWidth = ceil($CONFIG["world"]["mapTileWidth"] / $SCALAR);
+	    $newWidth = ceil($mapTileWidth / $SCALAR);
 	    $scaledMap = imagescale(
 	    	$map, 
 	    	$newWidth,
