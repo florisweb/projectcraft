@@ -1,53 +1,82 @@
 <?php
 	require "APIAuthenticate.php"; // Will check if the connecting server is authenticated
 
-
-	$imgData = $_GET["data"];
-	$metaData = $_GET["metaData"];
-
+	$postData = file_get_contents("php://input");
+	if (!$postData) die("Parameters missing");
+	
+	$data = json_decode($postData, true);
 	if (
-		!$imgData ||
-		!$metaData ||
-		!$metaData["world"] ||
-		!$metaData["centerX"] ||
-		!$metaData["centerZ"] ||
-		!$metaData["radius"]
+		!$data["data"] || 
+		!$data["metaData"] ||
+		!$data["metaData"]["x"] ||
+		!$data["metaData"]["z"] ||
+		!$data["metaData"]["size"]
 	) die("Parameters missing");
+
+	$metaData = $data["metaData"];
+	$imgData = $data["data"];
+
 
 
 	$world 			= $metaData["world"] == "overworld" ? "overworld" : "nether";
-	$mapTileWidth 	= (int)$CONFIG["world"]["mapTileWidth"];
-	$radius			= (int)$metaData["radius"];
-	$centerX 		= (int)$metaData["centerX"];
-	$centerZ 		= (int)$metaData["centerZ"];
+	$mapTileSize 	= (int)$CONFIG["world"]["mapTileSize"];
+	$size			= (int)$metaData["size"];
+	$startX 		= (int)$metaData["x"];
+	$startZ 		= (int)$metaData["z"];
 
 	
-	if ($radius <= 0) die("Invalid radius");
+	if ($size <= 0) die("Invalid size");
 	if (
-		$centerX - $radius < $CONFIG["world"]["minX"] || 
-		$centerZ - $radius < $CONFIG["world"]["minZ"] || 
-		$centerX + $radius > $CONFIG["world"]["maxX"] || 
-		$centerZ + $radius > $CONFIG["world"]["maxZ"]
+		$startX				< $CONFIG["world"]["minX"] ||
+		$startZ 			< $CONFIG["world"]["minZ"] ||
+		$startX + $size 	> $CONFIG["world"]["maxX"] ||
+		$startZ + $size 	> $CONFIG["world"]["maxZ"]
 	) die("Invalid coordinates");
 
 
-
-	$isMiniMap = (boolean)$metaData["highQuality"];
-
-	if ($isMiniMap === false)
+	if (!$metaData["isMiniMap"])
 	{
-		$x = round($centerX / $mapTileWidth) * $mapTileWidth; // snap the coords to the chunkgrid
-		$z = round($centerZ / $mapTileWidth) * $mapTileWidth;
+		$x = round($startX / $mapTileSize) * $mapTileSize; // snap the coords to the chunkgrid
+		$z = round($startZ / $mapTileSize) * $mapTileSize;
 
-		$url = "API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileWidth . ".png";
-
-		file_put_contents($url, $imgData);
+		$url = "$root/PHP/API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileSize . ".png";
+		uploadFile($imgData, $url);
 	} else {
-		$url = "API/map/" . $world . "/miniMap/" . $x . "_" . $z . "_" . $radius . ".png";
-		file_put_contents($url, $imgData);
+		$url = "$root/PHP/API/map/" . $world . "/miniMap/" . $x . "_" . $z . "_" . $size . ".png";
+		uploadFile($imgData, $url);
 	}
 
-  	die("succesfully stored image");
 
 
+	function uploadFile($_data, $_url) {
+		$fileData = convertDataToImage($_data);
+
+	  	$file = fopen($_url, "w");
+	  	fwrite($file, $fileData);
+	  	fclose($file);
+	}
+
+	function convertDataToImage($_data) {
+		$channels = 3;
+		$size = sqrt(sizeof($_data) / $channels);
+		$image = @imagecreatetruecolor($size, $size);
+
+	  	for ($i = 0; $i < sizeof($_data); $i += $channels)
+	  	{
+	  		$x = $i / $channels;
+	  		$y = floor($x / $size);
+	  		$x -= $y * $size;
+
+	  		$color = imagecolorallocate($image, $_data[$i], $_data[$i + 1], $_data[$i + 2]);
+	  		imagesetpixel($image, $x, $y, $color);
+	  	}
+
+	  	ob_start();
+		imagepng($image);
+		$contents =  ob_get_contents();
+		ob_end_clean();
+
+
+	  	return $contents;
+	}
 ?>
