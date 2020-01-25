@@ -17,7 +17,7 @@
 
 
 
-	$world 			= $metaData["world"] == "overworld" ? "overworld" : "nether";
+	$world 			= $metaData["world"] == "nether" ? "nether" : "overworld";
 	$mapTileSize 	= (int)$CONFIG["world"]["mapTileSize"];
 	$size			= (int)$metaData["size"];
 	$startX 		= (int)$metaData["x"];
