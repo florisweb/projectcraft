@@ -1,5 +1,7 @@
 # Guidelines
 
+  API layout: https://miro.com/app/board/o9J_kvDj7ik=/
+
   <h3>Project & Portal Parameters</h3>
   
     - title STRING REQUIRED

@@ -4,6 +4,13 @@
     "description": "Helarus is a vanilla SMP server, for Java Edition 1.14.\n",
     "discordLink": "https://discord.gg/ekXGedb"
   },
+  "world": {
+  	"mapTileWidth": 128,
+  	"minX": -1000,
+  	"minZ": -1000,
+  	"maxX": 1000,
+  	"maxZ": 1000
+  },
   "netherData-url": "uploads/nether.txt",
   "overworldData-url": "uploads/data.txt",
   "memberData-url": "uploads/member.txt"
