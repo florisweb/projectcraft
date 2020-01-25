@@ -27,7 +27,7 @@
 		$centerX - $radius < $CONFIG["world"]["minX"] || 
 		$centerZ - $radius < $CONFIG["world"]["minZ"] || 
 		$centerX + $radius > $CONFIG["world"]["maxX"] || 
-		$centerZ - $radius > $CONFIG["world"]["maxZ"]
+		$centerZ + $radius > $CONFIG["world"]["maxZ"]
 	) die("Invalid coordinates");
 
 
@@ -49,5 +49,5 @@
 
   	die("succesfully stored image");
 
-  	
+
 ?>

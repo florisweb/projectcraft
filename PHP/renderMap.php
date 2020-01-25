@@ -1,5 +1,5 @@
 <?php
-    require "config.php";
+    require_once "config.php";
 
 	if (
 		!isset($_GET) || 
@@ -24,13 +24,14 @@
 	if (
 		$startX < $CONFIG["world"]["minX"] || 
 		$startZ < $CONFIG["world"]["minZ"] || 
-		$startX + $width > $CONFIG["world"]["maxX"] || )
-		$startZ + $height > $CONFIG["world"]["maxZ"] || 
+		$startX + $width > $CONFIG["world"]["maxX"] ||
+		$startZ + $height > $CONFIG["world"]["maxZ"] 
 	) die("Invalid coordinates");
 
 
 
 	$SCALAR = 10; // x MC blocks / px
+	$newTileSize = ceil($mapTileWidth / $SCALAR);
 	$pxWidth = ceil($width / $SCALAR);
 	$pxHeight = ceil($height / $SCALAR);
 	$areamap = @imagecreatetruecolor($pxWidth, $pxHeight);
@@ -48,11 +49,10 @@
 	    $map = imagecreatefromstring($file);
 	    if ($map == null) continue;
 
-	    $newWidth = ceil($mapTileWidth / $SCALAR);
 	    $scaledMap = imagescale(
 	    	$map, 
-	    	$newWidth,
-	    	$newWidth,
+	    	$newTileSize,
+	    	$newTileSize
 	    );
 
 	    imagecopymerge(
@@ -61,11 +61,10 @@
 	    	($x - $startX) / $SCALAR, 
 	    	($z - $startZ) / $SCALAR, 
 	    	0, 0, 
-	    	$newWidth,
-	    	$newWidth,
+	    	$newTileSize,
+	    	$newTileSize,
 	    	100
 	    );
-	    
 	  }
 	}
 
