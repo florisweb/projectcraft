@@ -30,11 +30,11 @@
 
 
 
-	$SCALAR = 1; // x MC blocks / px
-	$newTileSize = ceil($mapTileSize / $SCALAR);
-	$pxWidth = ceil($width / $SCALAR);
-	$pxHeight = ceil($height / $SCALAR);
-	$areamap = @imagecreatetruecolor($pxWidth, $pxHeight);
+	$SCALAR 		= 2 / $CONFIG["API"]["imageCompression"]; // x MC blocks / px
+	$newTileSize 	= ceil($mapTileSize / $SCALAR);
+	$pxWidth 		= ceil($width / $SCALAR);
+	$pxHeight	 	= ceil($height / $SCALAR);
+	$areamap 		= @imagecreatetruecolor($pxWidth, $pxHeight);
 
 	for ($z = $startZ; $z < $startZ + $height; $z += $mapTileSize) 
 	{

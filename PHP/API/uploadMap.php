@@ -57,7 +57,7 @@
 	  	fwrite($file, $fileData);
 	  	fclose($file);
 
-	  	AddLog("Uploaded file: " . $url);
+	  	AddLog("[UploadMap.php]: Uploaded file: " . $_url);
 
 		return true;
 	}
