@@ -1,5 +1,6 @@
 <?php
 	require "APIAuthenticate.php"; // Will check if the connecting server is authenticated
+	require_once "../log/log.php";
 
 	$postData = file_get_contents("php://input");
 	if (!$postData) die("Parameters missing");
@@ -41,10 +42,10 @@
 		$z = round($startZ / $mapTileSize) * $mapTileSize;
 
 		$url = "$root/PHP/API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileSize . ".png";
-		uploadFile($imgData, $url);
+		echo uploadFile($imgData, $url);
 	} else {
 		$url = "$root/PHP/API/map/" . $world . "/miniMap/" . $x . "_" . $z . "_" . $size . ".png";
-		uploadFile($imgData, $url);
+		echo uploadFile($imgData, $url);
 	}
 
 
@@ -55,6 +56,10 @@
 	  	$file = fopen($_url, "w");
 	  	fwrite($file, $fileData);
 	  	fclose($file);
+
+	  	AddLog("Uploaded file: " . $url);
+
+		return true;
 	}
 
 	function convertDataToImage($_data) {
