@@ -24,8 +24,17 @@
 
 
 		<div id="mapHolder">
-			<img src="PHP/renderMap.php?world=overworld&x=-500&z=-500&width=1000&height=1000" id="mapImage">
-			<canvas id="mapCanvas" width="3062" height="3062"></canvas>
+			<?php
+				$width = (int)abs($CONFIG["world"]["maxX"] - $CONFIG["world"]["minX"]);
+				$height = (int)abs($CONFIG["world"]["maxZ"] - $CONFIG["world"]["minZ"]);
+
+				echo 	'<img src="PHP/renderMap.php?world=overworld' . 
+						'&x=' . (int)$CONFIG["world"]["minX"] . 
+						'&z=' . (int)$CONFIG["world"]["minZ"] . 
+						'&width=' . $width . 
+						'&height=' . $height . '" id="mapImage">' . 
+						'<canvas id="mapCanvas" width="' . $width . '" height="' . $height . '"></canvas>';
+			?>
             <div id="chatlog"></div>
 		</div>
 	

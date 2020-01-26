@@ -18,8 +18,8 @@
 	$world 	= $_GET["world"] == "overworld" ? "overworld" : "nether";
 	$width 	= (int)$_GET["width"];
 	$height = (int)$_GET["height"];
-	$startX = round((int)$_GET["x"] / $mapTileSize) * $mapTileSize; // snap the coords to the chunkgrid
-	$startZ = round((int)$_GET["z"] / $mapTileSize) * $mapTileSize;
+	$startX = (int)$_GET["x"];
+	$startZ = (int)$_GET["z"];
 
 	if (
 		$startX < $CONFIG["world"]["minX"] || 
@@ -40,7 +40,10 @@
 	{
 	  for ($x = $startX; $x < $startX + $width; $x += $mapTileSize) 
 	  {	
-	  	$url = "API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileSize . ".png";
+		$curX = round($x / $mapTileSize) * $mapTileSize; // snap the coords to the chunkgrid
+		$curZ = round($z / $mapTileSize) * $mapTileSize;
+
+	  	$url = "API/map/" . $world . "/map/" . $curX . "_" . $curZ . "_" . $mapTileSize . ".png";
 	   	if (!file_exists($url)) continue;
 	    
 	    $file = file_get_contents($url);
@@ -58,8 +61,8 @@
 	    imagecopymerge(
 	    	$areamap, 
 	    	$scaledMap, 
-	    	($x - $startX) / $SCALAR, 
-	    	($z - $startZ) / $SCALAR, 
+	    	($curX - $startX) / $SCALAR, 
+	    	($curZ - $startZ) / $SCALAR, 
 	    	0, 0, 
 	    	$newTileSize,
 	    	$newTileSize,
