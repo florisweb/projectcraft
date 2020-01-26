@@ -30,7 +30,8 @@
 
 
 
-	$SCALAR 		= 2 / $CONFIG["API"]["imageCompression"]; // x MC blocks / px
+	$SCALAR 		= 1; //How much of the known data do we send? Higher is more compression: aka a smaller file
+							//2 / $CONFIG["API"]["imageCompression"]; // x MC blocks / px
 	$newTileSize 	= ceil($mapTileSize / $SCALAR);
 	$pxWidth 		= ceil($width / $SCALAR);
 	$pxHeight	 	= ceil($height / $SCALAR);
