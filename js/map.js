@@ -97,7 +97,7 @@ this._map = function () {
 			ctx.beginPath();
 			ctx.strokeStyle = colour;
 			ctx.fillStyle = colour;
-			ctx.arc(x, z, radius / 4, 0, 2 * Math.PI);
+			ctx.arc(x, z, radius / factor, 0, 2 * Math.PI);
 			ctx.stroke();
 			ctx.globalAlpha = 0.2;
 			ctx.fill();
