@@ -169,9 +169,9 @@ this._map = function () {
 		}
 	}
 
-	this.DOMPanTo = function (_x, _z) { // canvas coords
-		let x = _x / canvas.width * canvas.offsetWidth - $("#mapHolder")[0].offsetWidth / 2;
-		let z = _z / canvas.height * canvas.offsetHeight - $("#mapHolder")[0].offsetHeight / 2;
+	this.DOMPanTo = function (_coords) { // canvas coords
+		let x = _coords.x / canvas.width * canvas.offsetWidth - $("#mapHolder")[0].offsetWidth / 2;
+		let z = _coords.z / canvas.height * canvas.offsetHeight - $("#mapHolder")[0].offsetHeight / 2;
 
 		$("#mapHolder").animate({
 			scrollLeft: x + "px",
@@ -187,7 +187,7 @@ this._map = function () {
 
 		if (this.zoomPercentage <= 1.5) this.zoom(2);
 
-		this.DOMPanTo(_x, _z);
+		this.DOMPanTo(this.MCToDOM({x: _x, z: _z}));
 	}
     
     //Handler code for page-specific execution.
@@ -196,7 +196,7 @@ this._map = function () {
 	this.panToItem = function(_point) {
 		if (this.zoomPercentage <= 1.5)
 			this.zoom(2);
-		this.DOMPanTo(this.MCToDOM(_point.coords.x), this.MCToDOM(_point.coords.z));
+		this.DOMPanTo(this.MCToDOM(_point.coords));
 	}
 
 	this.findClickbox = function (_x, _z) {

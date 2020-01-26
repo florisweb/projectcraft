@@ -69,7 +69,7 @@ Requires: nothing.
     - Map.DOMToMC(x):
       Convert DOM coördinates to Minecraft coördinates
     
-    - Map.DOMPanTo(x, z):
+    - Map.DOMPanTo({x: x, z: z}):
       Pan to specified DOM coördinates
     
     - Map.panToItem(item):
