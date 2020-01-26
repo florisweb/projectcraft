@@ -236,7 +236,6 @@ this._map = function () {
 			width: parseFloat(_percentage) * 100 + "vw"
 		}, this.settings.animationSpeed);
 		$("#mapCanvas")[0].style.width = parseFloat(_percentage) * 100 + "vw";
-		$("#mapCanvas")[0].style.height = parseFloat(_percentage) * 100 + "vw";
 
 		this.zoomPercentage = parseFloat(_percentage);
 	}
