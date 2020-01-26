@@ -23,9 +23,10 @@
 			) continue;
 
 			$metaData = array(
-				"x" => $project["coords"]["x"] - $project["type"]["radius"] / 2,
-				"z" => $project["coords"]["z"] - $project["type"]["radius"] / 2,
-				"size" => $project["type"]["radius"] * 2
+				"x" => $project["coords"]["x"] - $project["type"]["radius"],
+				"z" => $project["coords"]["z"] - $project["type"]["radius"],
+				"size" => $project["type"]["radius"] * 2,
+				"world" => "overworld"
 			);
 			array_push($metaDataList, $metaData);
 		}

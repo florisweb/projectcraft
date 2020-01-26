@@ -32,7 +32,14 @@
 	) die("Invalid coordinates");
 
 
-	if (sqrt(sizeof($imgData) / 3) > $CONFIG["API"]["maxImageWidth"]) die("File too big. Max " . $CONFIG["API"]["maxImageWidth"] . "px wide");
+	if (sqrt(sizeof($imgData) / 3) > $CONFIG["API"]["maxImageWidth"])
+	{
+		AddLog(
+			"[UploadMap.php]: Upload rejected, file too big: " . sqrt(sizeof($imgData) / 3) . " pixels wide, " . 
+			"max " . $CONFIG["API"]["maxImageWidth"] . "px wide");
+
+		die("File too big. Max " . $CONFIG["API"]["maxImageWidth"] . "px wide");
+	}
 
 
 
@@ -42,9 +49,19 @@
 		$z = round($startZ / $mapTileSize) * $mapTileSize;
 
 		$url = "$root/PHP/API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileSize . ".png";
+		AddLog("[UploadMap.php]: Uploaded map: " . $_url);
+
 		echo uploadFile($imgData, $url);
 	} else {
+		$project = fetchProject($x, $z, $size);
+		if (!$project)
+		{
+			AddLog("[UploadMap.php]: MiniMap upload rejected, no project at specified location (x: " . $x . " y: " . $y . " size: " . $size . ")");
+			die("MiniMap upload rejected, no project at specified location");
+		}
+
 		$url = "$root/PHP/API/map/" . $world . "/miniMap/" . $x . "_" . $z . "_" . $size . ".png";
+		AddLog("[UploadMap.php]: Uploaded miniMap: " . $project["title"]);
 		echo uploadFile($imgData, $url);
 	}
 
@@ -56,8 +73,6 @@
 	  	$file = fopen($_url, "w");
 	  	fwrite($file, $fileData);
 	  	fclose($file);
-
-	  	AddLog("[UploadMap.php]: Uploaded file: " . $_url);
 
 		return true;
 	}
@@ -84,5 +99,35 @@
 
 
 	  	return $contents;
+	}
+
+
+
+
+	function fetchProject($_x, $_z, $_size) {
+		$radius = $_size / 2;
+		$centerX = $_x + $radius;
+		$centerZ = $_z + $radius;
+
+		$projectList = json_decode(file_get_contents("../../" . $GLOBALS["CONFIG"]["overworldData-url"], true), true);
+
+		foreach ($projectList as $project)
+		{
+			if (
+				!$project["type"] || 
+				!$project["type"]["genMiniMap"] ||
+				!$project["type"]["radius"]
+			) continue;
+
+			if (
+				$project["type"]["radius"] != $radius ||
+				$project["coords"]["x"] != $centerX || 
+				$project["coords"]["z"] != $centerZ
+			) continue;
+
+			return $project;
+		}
+
+		return false;
 	}
 ?>
