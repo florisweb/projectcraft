@@ -19,7 +19,20 @@
 		</div>
 
 		<div id="mapHolder">
-			<canvas id="mapCanvas" width="3062" height="3062"></canvas>
+			<?php
+				$width = (int)abs($CONFIG["world"]["maxX"] - $CONFIG["world"]["minX"]);
+				$height = (int)abs($CONFIG["world"]["maxZ"] - $CONFIG["world"]["minZ"]);
+
+				$world = array(
+					"x" => (int)$CONFIG["world"]["minX"],
+					"z" => (int)$CONFIG["world"]["minZ"],
+					"width" => $width,
+					"height" => $height
+				);
+
+				echo '<canvas id="mapCanvas" width="' . $width . '" height="' . $height . '"></canvas>';
+				echo "<script>const World = JSON.parse('" . json_encode($world) . "');</script>";
+			?>
 		</div>
         
         <div class="coordinatesHolder" id="coordinatesHolder">
@@ -42,9 +55,9 @@
 			</div>
 
 
-			<div class="infoMenuPage hide" style="color: white">
-				<div class="headerText preventTextOverflow" id="projectPage_titleHolder">PORTAL</div>
-				<img class="exitIcon" src="images/exitIcon.png" onclick="InfoMenu.openPageByIndex(0)">
+			<div class="infoMenuPage hide">
+				<div class="headerText preventTextOverflow" id="projectPage_titleHolder">PROJECTS</div>
+				<img class="icon" src="images/exitIcon.png" onclick="InfoMenu.openPageByIndex(0)">
 
 				<div class="text" id="projectPage_coordHolder"></div>
 				<div class="text subHeader"><br>BUILDERS</div>
@@ -54,7 +67,14 @@
 				<div class="text" id="projectPage_description"></div>
                 
                 <br>
-                <div class="text netherPortalButton">TO THE OVERWORLD</div>
+                <div class="text netherPortalButton">TO THE NETHER</div>
+                <br>
+
+				<div class="text subHeader"><br>MINIMAP</div>
+				<div class="miniMapHolder">
+					<img class="miniMapImg">
+				</div>
+
 
 				<div class="text subHeader"><br>IMAGES</div>
 				<div id="projectPage_imageHolder"></div>
@@ -119,7 +139,7 @@
                     
                     drawLines(_data);
 
-					Map.init(_data, 1);
+					Map.init(_data, 8);
                     
 					if (executeUrlCommands) executeUrlCommands();
 				});

@@ -42,7 +42,6 @@
 						'&height=' . $height . '" id="mapImage">' . 
 						'<canvas id="mapCanvas" width="' . $width . '" height="' . $height . '"></canvas>';
 				echo "<script>const World = JSON.parse('" . json_encode($world) . "');</script>";
-//3062
 			?>
             <div id="chatlog"></div>
 		</div>
