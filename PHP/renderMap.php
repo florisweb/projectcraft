@@ -29,12 +29,12 @@
 	) die("Invalid coordinates");
 
 
-
-	$SCALAR 		= 1; //How much of the known data do we send? Higher is more compression: aka a smaller file
-							//2 / $CONFIG["API"]["imageCompression"]; // x MC blocks / px
-	$newTileSize 	= ceil($mapTileSize / $SCALAR);
-	$pxWidth 		= ceil($width / $SCALAR);
-	$pxHeight	 	= ceil($height / $SCALAR);
+	$scalar 			= 1; //How much of the known data do we send? Higher is more compression: aka a smaller file
+	$compression 		= $CONFIG["API"]["imageCompression"] * $scalar;
+	
+	$newTileSize 	= ceil($mapTileSize / $compression);
+	$pxWidth 		= ceil($width / $compression);
+	$pxHeight	 	= ceil($height / $compression);
 	$areamap 		= @imagecreatetruecolor($pxWidth, $pxHeight);
 
 	for ($z = $startZ; $z < $startZ + $height; $z += $mapTileSize) 
@@ -62,8 +62,8 @@
 	    imagecopymerge(
 	    	$areamap, 
 	    	$scaledMap, 
-	    	($curX - $startX) / $SCALAR, 
-	    	($curZ - $startZ) / $SCALAR, 
+	    	($curX - $startX) / $compression, 
+	    	($curZ - $startZ) / $compression, 
 	    	0, 0, 
 	    	$newTileSize,
 	    	$newTileSize,
