@@ -25,23 +25,27 @@ this._map = function () {
 		this.panToItem(_points[0]);
         
         document.getElementById("mapCanvas").addEventListener("click", function (e) {
-        	let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
-        	let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
-        	let x = mouseX * canvas.width;
-        	let y = mouseY * canvas.height;
-
-        	Map.handleClick(x, y);
+        	let coords = Map.DOMToMC(eventToCoords(e));
+        	
+        	Map.handleClick(coords.x, coords.z);
         });
 
-        document.addEventListener("mousemove", function (e) {
-        	let mouseX = (e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
-        	let mouseY = (e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
-        	let x = Map.DOMToMC(mouseX * canvas.width);
-        	let y = Map.DOMToMC(mouseY * canvas.height);
-
-        	document.getElementById("current_x").innerHTML = Math.round(x);
-        	document.getElementById("current_z").innerHTML = Math.round(y);
+        document.getElementById("mapCanvas").addEventListener("mousemove", function (e) {
+        	let coords = Map.DOMToMC(eventToCoords(e));
+        	
+        	document.getElementById("current_x").innerHTML = Math.round(coords.x);
+        	document.getElementById("current_z").innerHTML = Math.round(coords.z);
         });
+
+        function eventToCoords(_e) {
+        	let mouseXPerc = (_e.x + mapHolder.scrollLeft) / (mapHolder.scrollWidth - 390 * InfoMenu.openState);
+        	let mouseZPerc = (_e.y + mapHolder.scrollTop) / mapHolder.scrollHeight;
+
+        	return {
+        		x: mouseXPerc * canvas.width,
+        		z: mouseZPerc * canvas.height
+        	}
+        }
         
         document.addEventListener("keydown", function (_e) {
         	if (_e.key == "+")
@@ -54,8 +58,7 @@ this._map = function () {
 	}
 
 	function registerPoint(_point) {
-		let x = This.MCToDOM(_point.coords.x);
-		let z = This.MCToDOM(_point.coords.z);
+		let coords = This.MCToDOM(_point.coords);
 
 		let username = "ddrl46";
 		if (_point.builders && _point.builders.length == 1)
@@ -71,17 +74,16 @@ this._map = function () {
 		if (_point.customPin)
 			colour = _point.customPin;
 		
-        drawPoint(x, z, _point.type.radius, username, colour, _point.displayPoint);
+        drawPoint(coords.x, coords.z, _point.type.radius, username, colour, _point.displayPoint);
 
-		if (_point.clickable == false || _point.displayPoint == false)
-			return;
+		if (_point.clickable == false || _point.displayPoint === false) return;
 
 		clickboxes.push({
-            point: _point,
-			x: x - 24,
-			y: z - 60,
-			rx: x + 24,
-			ry: z
+            point: 	_point,
+			x: 		_point.coords.x - 24,
+			z: 		_point.coords.z - 60,
+			rx: 	_point.coords.x + 24,
+			rz: 	_point.coords.z
 		});
 	}
 
@@ -102,8 +104,7 @@ this._map = function () {
 			ctx.globalAlpha = 1;
 		}
         
-        if(display == false)
-            return;
+        if (display === false) return;
 
 		let img = new Image();
 		img.onload = function () {
@@ -154,12 +155,18 @@ this._map = function () {
 		ctx.stroke();
 	}
 
-	this.MCToDOM = function (_mc) {
-		return _mc / factor + 1531;
+	this.MCToDOM = function(_mc) {
+		return {
+			x: (_mc.x - World.x) / factor,
+			z: (_mc.z - World.z) / factor,
+		}
 	}
 
-	this.DOMToMC = function (_dom) {
-		return (_dom - 1531) * factor;
+	this.DOMToMC = function(_dom) {
+		return {
+			x: _dom.x * factor + World.x,
+			z: _dom.z * factor + World.z,
+		}
 	}
 
 	this.DOMPanTo = function (_x, _z) { // canvas coords
@@ -172,17 +179,15 @@ this._map = function () {
 		}, 500);
 	}
 
-	this.handleClick = function (_x, _y) {
-		let box = this.findClickbox(_x, _y);
-		if (box == null)
-			return;
+	this.handleClick = function (_x, _z) {
+		let box = this.findClickbox(_x, _z);
+		if (box == null) return;
 
         this.onItemClick(box.point);
 
-		if (this.zoomPercentage <= 1.5)
-			this.zoom(2);
+		if (this.zoomPercentage <= 1.5) this.zoom(2);
 
-		this.DOMPanTo(_x, _y);
+		this.DOMPanTo(_x, _z);
 	}
     
     //Handler code for page-specific execution.
@@ -194,13 +199,16 @@ this._map = function () {
 		this.DOMPanTo(this.MCToDOM(_point.coords.x), this.MCToDOM(_point.coords.z));
 	}
 
-	this.findClickbox = function (_x, _y) {
+	this.findClickbox = function (_x, _z) {
 		for (c in clickboxes) {
-			if (_x < clickboxes[c].x || _y < clickboxes[c].y || _x > clickboxes[c].rx || _y > clickboxes[c].ry)
-				continue;
+			if (
+				_x < clickboxes[c].x || 
+				_z < clickboxes[c].z || 
+				_x > clickboxes[c].rx || 
+				_z > clickboxes[c].rz
+			) continue;
 
 			return clickboxes[c];
-			break;
 		}
 
 		return null;

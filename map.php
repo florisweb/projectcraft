@@ -28,12 +28,21 @@
 				$width = (int)abs($CONFIG["world"]["maxX"] - $CONFIG["world"]["minX"]);
 				$height = (int)abs($CONFIG["world"]["maxZ"] - $CONFIG["world"]["minZ"]);
 
+				$world = array(
+					"x" => (int)$CONFIG["world"]["minX"],
+					"z" => (int)$CONFIG["world"]["minZ"],
+					"width" => $width,
+					"height" => $height
+				);
+
 				echo 	'<img src="PHP/renderMap.php?world=overworld' . 
 						'&x=' . (int)$CONFIG["world"]["minX"] . 
 						'&z=' . (int)$CONFIG["world"]["minZ"] . 
 						'&width=' . $width . 
 						'&height=' . $height . '" id="mapImage">' . 
 						'<canvas id="mapCanvas" width="' . $width . '" height="' . $height . '"></canvas>';
+				echo "<script>const World = JSON.parse('" . json_encode($world) . "');</script>";
+//3062
 			?>
             <div id="chatlog"></div>
 		</div>
@@ -144,26 +153,26 @@
 	var Server;
 	var Map;
 	var InfoMenu;
-  var Client;
+  	var Client;
 
 	function setup() {
 		Server 		= new _server();
 		Map 		= new _map();
  		InfoMenu 	= new _InfoMenu_mapJsExtender();
-    Client = new _client();
+    	Client 		= new _client();
 		
 		Map.onItemClick 		= function(_item) {InfoMenu.openProjectPageByTitle(_item.title)}
 		InfoMenu.onItemClick 	= function(_item) {Map.panToItem(_item)}
 
 		Server.getData("uploads/data.txt").then(function (_data) {
 			InfoMenu.createItemsByList(_data);
-			Map.init(_data, 4);
+			Map.init(_data, 1);
 			if (executeUrlCommands) executeUrlCommands();
 		});
     
-    Server.getData("api/updaterlog.txt").then(function(_data) {
-      Client.init(_data);
-    });
+    	// Server.getData("api/updaterlog.txt").then(function(_data) {
+     //  		Client.init(_data);
+    	// });
 	}
 
 </script>
