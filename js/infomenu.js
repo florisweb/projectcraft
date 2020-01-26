@@ -186,6 +186,8 @@ function _InfoMenu_mapJsExtender() {
 		HTML.miniMapHolder.style.display = "block";
 		if (!_item.type.genMiniMap) HTML.miniMapHeader.style.display = "none";
 		if (!_item.type.genMiniMap) HTML.miniMapHolder.style.display = "none";
+
+
 	}
 
 
@@ -211,7 +213,7 @@ function _InfoMenu_mapJsExtender() {
 		let scalar = size / HTML.miniMapHolder.offsetWidth; // Makes sure every real pixel is 1 mc block
 		let mcPxPerRealPixel = 1;
 
-		HTML.miniMapImg.setAttribute("src", "images/miniMap.png");
+		HTML.miniMapImg.setAttribute("src", "PHP/renderMiniMap.php?projectTitle=" + _project.title);
 		HTML.miniMapImg.style.width = 100 * scalar / mcPxPerRealPixel + "%";
 	}
 
