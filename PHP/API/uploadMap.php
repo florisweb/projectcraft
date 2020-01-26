@@ -49,20 +49,29 @@
 		$z = round($startZ / $mapTileSize) * $mapTileSize;
 
 		$url = "$root/PHP/API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileSize . ".png";
-		AddLog("[UploadMap.php]: Uploaded map: " . $_url);
-
 		echo uploadFile($imgData, $url);
+		AddLog("[UploadMap.php]: Uploaded map: " . $url);
+
 	} else {
-		$project = fetchProject($x, $z, $size);
+		$realSize = sqrt(sizeof($imgData) / 3);
+		$snappedSize = ceil($size / $mapTileSize) * $mapTileSize;
+		if (floor(sqrt(sizeof($imgData) / 3)) != $snappedSize) 
+		{
+			AddLog("[UploadMap.php]: MiniMap upload rejected, given size did not match actual size (real: " . $realSize . "px, supposed.snapped: " . $snappedSize . "px, supposed.actual: " . $size . "px (wide))");
+			die("MiniMap upload rejected, given size did not match actual size");
+		}
+
+		$project = fetchProject($startX, $startZ, $size);
 		if (!$project)
 		{
-			AddLog("[UploadMap.php]: MiniMap upload rejected, no project at specified location (x: " . $x . " y: " . $y . " size: " . $size . ")");
+			AddLog("[UploadMap.php]: MiniMap upload rejected, no project at specified location (x: " . $startX . " z: " . $startZ . " size: " . $size . ")");
 			die("MiniMap upload rejected, no project at specified location");
 		}
 
-		$url = "$root/PHP/API/map/" . $world . "/miniMap/" . $x . "_" . $z . "_" . $size . ".png";
-		AddLog("[UploadMap.php]: Uploaded miniMap: " . $project["title"]);
+
+		$url = "$root/PHP/API/map/" . $world . "/miniMap/" . $startX . "_" . $startZ . "_" . $size . ".png";
 		echo uploadFile($imgData, $url);
+		AddLog("[UploadMap.php]: Uploaded miniMap from project `" . $project["title"] . "`");
 	}
 
 
