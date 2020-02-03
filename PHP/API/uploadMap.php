@@ -29,7 +29,10 @@
 		$startZ 			< $CONFIG["world"]["minZ"] ||
 		$startX + $size 	> $CONFIG["world"]["maxX"] ||
 		$startZ + $size 	> $CONFIG["world"]["maxZ"]
-	) die("Invalid coordinates");
+	) {
+		AddLog("[UploadMap.php]: MiniMap upload rejected, invalid coords X: " . $startX . " Z: " . $startZ);
+		die("Invalid coordinates");
+	}
 
 
 	if (sqrt(sizeof($imgData) / 3) > $CONFIG["API"]["maxImageWidth"])
@@ -55,7 +58,7 @@
 	} else {
 		$realSize = sqrt(sizeof($imgData) / 3);
 		$snappedSize = ceil($size / $mapTileSize) * $mapTileSize;
-		if (floor(sqrt(sizeof($imgData) / 3)) != $snappedSize) 
+		if (floor(sqrt(sizeof($imgData) / 3)) != $snappedSize && $realSize != $size) 
 		{
 			AddLog("[UploadMap.php]: MiniMap upload rejected, given size did not match actual size (real: " . $realSize . "px, supposed.snapped: " . $snappedSize . "px, supposed.actual: " . $size . "px (wide))");
 			die("MiniMap upload rejected, given size did not match actual size");
