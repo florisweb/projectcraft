@@ -1,7 +1,7 @@
 {
   "server": {
     "name": "Helarus SMP",
-    "description": "Helarus is a vanilla SMP server, for Java Edition 1.14.\n",
+    "description": "Helarus is a vanilla SMP server, for Java Edition 1.15.\n",
     "discordLink": "https://discord.gg/ekXGedb"
   },
   "world": {

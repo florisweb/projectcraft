@@ -1,13 +1,19 @@
 #Config file
 
-#The url to the webserver.
-api-url: https://example.com/
+#Webserver API url
+api-fetch-url: "http://example.com/"
+api-upload-url: "http://example.com/"
 
-#Number of seconds between each update.
-delay-time: 5
+#API key
+api-key: "example"
 
-#Enable logging.
+#The time in seconds between map updates. (Default is 24 hours).
+render-update-time: 86400
+
+#The time in seconds between memory clean updates. (Default is every hour).
+#  The plugin saves edited chunks in memory, and this can fill up memory.
+#  Cleaning the memory is essentially moving edited chunks to the chunkCache.json
+memory-clean-update-time: 3600
+
+#Enable verbose (detailed) logging. (Use true or false)
 logging: false
-
-#Send chat messsages to server.
-send-chat: false
