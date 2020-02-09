@@ -117,8 +117,6 @@ public class Mapper {
 	}
 	
 	public void updateMap() throws IOException, ParseException {
-		plugin.getServer().broadcastMessage("" + ChatColor.DARK_BLUE + ChatColor.BOLD + "[Map Updater] " + ChatColor.RED + "Updating map, this may be laggy.");
-		
 		plugin.updating = true;
 		
 		JSONParser parser = new JSONParser();
@@ -127,10 +125,12 @@ public class Mapper {
 		JSONObject apidata = (JSONObject) parser.parse(plugin.getDataFromWebserver(plugin.getConfig().getString("api-fetch-url")));
 		JSONArray minimaps = (JSONArray) apidata.get("miniMapList");
 		
-		int totalWorkload = minimaps.size() + current.size();
-		double done = 0.0;
-		
 		if(!current.isEmpty()) {
+			plugin.getServer().broadcastMessage("" + ChatColor.DARK_BLUE + ChatColor.BOLD + "[Map Updater] " + ChatColor.RED + "Updating map, this may be laggy.");
+			
+			int totalWorkload = minimaps.size() + current.size();
+			double done = 0.0;
+			
 	    	for (SuperChunk c : current) {
 				JSONArray data = new JSONArray();
 				data.addAll(preGenerateMap(c.getWorld(), c.getX(), c.getZ(), plugin.CHUNKSIZE));	    		
@@ -151,52 +151,50 @@ public class Mapper {
 				done++;
 				if(plugin.debugLogging) plugin.getLogger().info("Updating: " + Math.round((done / totalWorkload) * 100) + "%");
 			}
-		}
-		
-		plugin.watchdog.clearChunkCache();
-		
-		plugin.getServer().getWorlds().get(0).setAutoSave(false);
-		for(int m = 0; m < minimaps.size(); m++) {
-			JSONObject minimapObj = (JSONObject) minimaps.get(m);
-			int sideLength = Integer.parseInt(minimapObj.get("size").toString());
-			int x = Integer.parseInt(minimapObj.get("x").toString());
-			int z = Integer.parseInt(minimapObj.get("z").toString());
-			JSONArray data = new JSONArray();
+	    	
+			plugin.watchdog.clearChunkCache();
+			
+			plugin.getServer().getWorlds().get(0).setAutoSave(false);
+			for(int m = 0; m < minimaps.size(); m++) {
+				JSONObject minimapObj = (JSONObject) minimaps.get(m);
+				int sideLength = Integer.parseInt(minimapObj.get("size").toString());
+				int x = Integer.parseInt(minimapObj.get("x").toString());
+				int z = Integer.parseInt(minimapObj.get("z").toString());
+				JSONArray data = new JSONArray();
 
-			data.addAll(generateMap(plugin.getServer().getWorlds().get(0), x, z, sideLength));
+				data.addAll(generateMap(plugin.getServer().getWorlds().get(0), x, z, sideLength));
+				
+				JSONObject metaData = new JSONObject();
+				metaData.put("x", x);
+				metaData.put("z", z);
+				metaData.put("size", sideLength);
+				metaData.put("world", "normal");
+				metaData.put("isMiniMap", true);
+				
+				JSONObject complete = new JSONObject();
+				complete.put("data", data);
+				complete.put("metaData", metaData);
+				
+				plugin.sendDataToWebserver(complete.toJSONString(), plugin.getConfig().getString("api-upload-url"));
+				done++;
+				if(plugin.debugLogging) plugin.getLogger().info("Updating: " + Math.round((done / totalWorkload) * 100) + "%");
+			}
+			plugin.getServer().getWorlds().get(0).setAutoSave(false);
 			
-			JSONObject metaData = new JSONObject();
-			metaData.put("x", x);
-			metaData.put("z", z);
-			metaData.put("size", sideLength);
-			metaData.put("world", "normal");
-			metaData.put("isMiniMap", true);
-			
-			JSONObject complete = new JSONObject();
-			complete.put("data", data);
-			complete.put("metaData", metaData);
-			
-			plugin.sendDataToWebserver(complete.toJSONString(), plugin.getConfig().getString("api-upload-url"));
-			done++;
-			if(plugin.debugLogging) plugin.getLogger().info("Updating: " + Math.round((done / totalWorkload) * 100) + "%");
+			plugin.getServer().broadcastMessage("" + ChatColor.DARK_BLUE + ChatColor.BOLD + "[Map Updater]" + ChatColor.GREEN + " Map updated.");
 		}
-		plugin.getServer().getWorlds().get(0).setAutoSave(false);
 		
-		plugin.getServer().broadcastMessage("" + ChatColor.DARK_BLUE + ChatColor.BOLD + "[Map Updater]" + ChatColor.GREEN + " Map updated.");
 		plugin.updating = false;
 		System.gc();
 	}
 	
 	private ArrayList<Integer> preGenerateMap(World w, int startX, int startZ, int size) {
-		w.setAutoSave(false);
 		ArrayList<Integer> img = new ArrayList<Integer>();
 		for(int z = 0; z < size; z += 128) {
 			for(int x = 0; x < size; x += 128) {
 				img.addAll(z * 128 + x, generateMap(w, startX + x, startZ + z, 128));
 			}
 		}
-		
-		w.setAutoSave(true);
 		
 		return img;
 	}
