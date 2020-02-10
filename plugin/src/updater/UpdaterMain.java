@@ -17,6 +17,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class UpdaterMain extends JavaPlugin {
 	
 	Mapper mapper;
@@ -26,6 +28,8 @@ public class UpdaterMain extends JavaPlugin {
 	
 	boolean updating = false;
 	boolean debugLogging = false;
+	
+	final String PREFIX = "" + ChatColor.DARK_BLUE + ChatColor.BOLD + "[Map Updater] ";
 
 	@Override
 	public void onEnable() {
@@ -83,7 +87,7 @@ public class UpdaterMain extends JavaPlugin {
 
 		out.close();
 		
-		if(conn.getResponseCode() > 226) {
+		if(conn.getResponseCode() >= HttpsURLConnection.HTTP_BAD_REQUEST) {
 			throw new ConnectException("Couldn't send data to the webserver. (" + conn.getResponseCode() + " " + conn.getResponseMessage() + ")");
 		}
 
@@ -99,7 +103,7 @@ public class UpdaterMain extends JavaPlugin {
 		conn.setDoInput(true);
 		conn.setDoOutput(true);
 
-		if (conn.getResponseCode() > 200) {
+		if (conn.getResponseCode() >= HttpsURLConnection.HTTP_BAD_REQUEST) {
 			throw new ConnectException("Couldn't get data from the webserver. (" + conn.getResponseCode() + " " + conn.getResponseMessage() + ")");
 		}
 
@@ -136,13 +140,22 @@ public class UpdaterMain extends JavaPlugin {
 			getServer().getScheduler().runTaskAsynchronously(this, new Runnable() {
 				public void run() {
 					try {
-						mapper.updateMap();
+						mapper.updateMap(true);
 					} catch (IOException | ParseException e) {
 						e.printStackTrace();
 					}
 				}
 			});
 			return true;
+		}
+		
+		if(cmd.getName().equalsIgnoreCase("clearcache")) {
+			try {
+				watchdog.clearChunkCache();
+				sender.sendMessage(PREFIX + ChatColor.GREEN + "Cleared the chunk cache.");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		if(cmd.getName().equalsIgnoreCase("loadmap")) {
@@ -164,16 +177,21 @@ public class UpdaterMain extends JavaPlugin {
 					startZ = tmp;
 				}
 				
-				for(int z = startZ; z < endZ; z += 128) {
-					for(int x = startX; x < endX; x += 128) {
+				startX = Math.floorDiv(startX, CHUNKSIZE) * CHUNKSIZE;
+				startZ = Math.floorDiv(startZ, CHUNKSIZE) * CHUNKSIZE;
+				endX = (int) (Math.ceil(endX * 1.0d / CHUNKSIZE) * CHUNKSIZE);
+				endZ = (int) (Math.ceil(endZ * 1.0d / CHUNKSIZE) * CHUNKSIZE);
+				
+				for(int z = startZ; z < endZ; z += CHUNKSIZE) {
+					for(int x = startX; x < endX; x += CHUNKSIZE) {
 						watchdog.registerChunk(getServer().getWorlds().get(0), x, z);
 					}
 				}
 				
-				sender.sendMessage("Registered (" + startX + ", " + startZ + ") to (" + endX + ", " + endZ + ").");
+				sender.sendMessage(PREFIX + ChatColor.GREEN + "Registered (" + startX + ", " + startZ + ") to (" + endX + ", " + endZ + ").");
 				return true;
 			} else {
-				sender.sendMessage("Use /loadmap <startX> <startZ> <endX> <endZ>.");
+				sender.sendMessage(PREFIX + ChatColor.RED + "Use /loadmap <startX> <startZ> <endX> <endZ>.");
 				return true;
 			}
 		}
