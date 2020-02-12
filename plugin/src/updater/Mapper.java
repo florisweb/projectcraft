@@ -10,6 +10,7 @@ import java.util.HashMap;
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.scheduler.BukkitTask;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -22,6 +23,7 @@ public class Mapper {
 	
 	private UpdaterMain plugin;
 	private Runnable mapper;
+	private BukkitTask mapperTask;
 	
 	private ArrayList<Color> colorIndex;
 	private HashMap<Material, Integer> materialIndex;
@@ -42,17 +44,23 @@ public class Mapper {
 			public void run() {
 				if(plugin.updating) return;
 				try {
-					updateMap();
-				} catch(Exception e) {
+					updateMap(false);
+				} catch (Exception e) {
 					plugin.getLogger().severe("An error occured whilst updating the map.");
 					e.printStackTrace();
+					startMapper();
 				}
 			}
 		};
 		
-		long delaytime = plugin.getConfig().getInt("render-update-time") * 20L;
-		plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin, mapper, delaytime, delaytime);
+		startMapper();
 	};
+	
+	private void startMapper() {
+		if(mapperTask != null) mapperTask.cancel();
+		long delaytime = plugin.getConfig().getInt("render-update-time") * 20L;
+		mapperTask = plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin, mapper, delaytime, delaytime);
+	}
 	
 	private void loadColors() throws IOException, ParseException {
 		FileReader fileReader = new FileReader(plugin.getDataFolder() + "/BlockMapColors.json");
@@ -116,7 +124,7 @@ public class Mapper {
 		}
 	}
 	
-	public void updateMap() throws IOException, ParseException {
+	public void updateMap(boolean force) throws IOException, ParseException {
 		plugin.updating = true;
 		
 		JSONParser parser = new JSONParser();
@@ -125,8 +133,8 @@ public class Mapper {
 		JSONObject apidata = (JSONObject) parser.parse(plugin.getDataFromWebserver(plugin.getConfig().getString("api-fetch-url")));
 		JSONArray minimaps = (JSONArray) apidata.get("miniMapList");
 		
-		if(!current.isEmpty()) {
-			plugin.getServer().broadcastMessage("" + ChatColor.DARK_BLUE + ChatColor.BOLD + "[Map Updater] " + ChatColor.RED + "Updating map, this may be laggy.");
+		if(!current.isEmpty() || force) {
+			plugin.getServer().broadcastMessage(plugin.PREFIX + ChatColor.RED + "Updating map, this may be laggy.");
 			
 			int totalWorkload = minimaps.size() + current.size();
 			double done = 0.0;
@@ -181,7 +189,7 @@ public class Mapper {
 			}
 			plugin.getServer().getWorlds().get(0).setAutoSave(false);
 			
-			plugin.getServer().broadcastMessage("" + ChatColor.DARK_BLUE + ChatColor.BOLD + "[Map Updater]" + ChatColor.GREEN + " Map updated.");
+			plugin.getServer().broadcastMessage(plugin.PREFIX + ChatColor.GREEN + "Map updated.");
 		}
 		
 		plugin.updating = false;
