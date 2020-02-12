@@ -25,6 +25,8 @@
 
 		<div id="mapHolder">
 			<?php
+				$config = array();
+
 				$width = (int)abs($CONFIG["world"]["maxX"] - $CONFIG["world"]["minX"]);
 				$height = (int)abs($CONFIG["world"]["maxZ"] - $CONFIG["world"]["minZ"]);
 
@@ -34,6 +36,7 @@
 					"width" => $width,
 					"height" => $height
 				);
+				$config["world"] = $world;
 
 				echo 	'<img src="PHP/renderMap.php?world=overworld' . 
 						'&x=' . (int)$CONFIG["world"]["minX"] . 
@@ -41,7 +44,10 @@
 						'&width=' . $width . 
 						'&height=' . $height . '" id="mapImage">' . 
 						'<canvas id="mapCanvas" width="' . $width . '" height="' . $height . '"></canvas>';
-				echo "<script>const World = JSON.parse('" . json_encode($world) . "');</script>";
+				
+
+
+				echo "<script>const Config = JSON.parse('" . json_encode($config) . "');</script>";
 			?>
             <div id="chatlog"></div>
 		</div>
@@ -52,11 +58,18 @@
             <span id="current_z">0</span>
         </div>
 
-		<div class="buttonHolder" id="dimensionButtonHolder">
-			<div class="text netherPortalButton" onclick="window.location.replace('nether.php')">
-				NETHER
-			</div>
-		</div>
+        <?php
+        	if (!$CONFIG["nether"]["disabled"])
+        	{
+				echo '<div class="buttonHolder" id="dimensionButtonHolder">
+					<div class="text netherPortalButton" onclick="window.location.replace(\'nether.php\')">
+						NETHER
+					</div>
+				</div>';
+			} else {
+				echo '<style>.netherPortalButton {display: none !important}</style>';
+			}
+		?>
 
 
 

@@ -157,15 +157,15 @@ this._map = function () {
 
 	this.MCToDOM = function(_mc) {
 		return {
-			x: (_mc.x - World.x) / factor,
-			z: (_mc.z - World.z) / factor,
+			x: (_mc.x - Config.world.x) / factor,
+			z: (_mc.z - Config.world.z) / factor,
 		}
 	}
 
 	this.DOMToMC = function(_dom) {
 		return {
-			x: _dom.x * factor + World.x,
-			z: _dom.z * factor + World.z,
+			x: _dom.x * factor + Config.world.x,
+			z: _dom.z * factor + Config.world.z,
 		}
 	}
 

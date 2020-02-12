@@ -1,18 +1,21 @@
 {
   "server": {
     "name": "Helarus SMP",
-    "description": "Helarus is a vanilla SMP server, for Java Edition 1.15.\n",
+    "description": "Helarus is a vanilla SMP server, for Java Edition 1.14.\n",
     "discordLink": "https://discord.gg/ekXGedb"
   },
   "world": {
   	"mapTileSize": 128,
-  	"minX": -1000,
-  	"minZ": -1000,
-  	"maxX": 1000,
-  	"maxZ": 1000
+  	"minX": -2048,
+  	"minZ": -1024,
+  	"maxX": 2048,
+  	"maxZ": 1024
+  },
+  "nether": {
+    "disabled": true
   },
   "API": {
-    "API-key": "3423-sadf",
+    "API-key": "960ece1a150c28653dfa13b4073634b5",
     "imageCompression": 1,
     "maxImageWidth": 10000
   },

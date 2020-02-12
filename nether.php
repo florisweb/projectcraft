@@ -1,5 +1,6 @@
 <?php
     include "PHP/config.php";
+    if ($CONFIG["nether"]["disabled"]) Header("Location: map.php");
 ?>
 
 <!DOCTYPE html>
