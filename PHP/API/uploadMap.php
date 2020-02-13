@@ -1,6 +1,7 @@
 <?php
-	require "APIAuthenticate.php"; // Will check if the connecting server is authenticated
+	require_once "APIAuthenticate.php"; // Will check if the connecting server is authenticated
 	require_once "../log/log.php";
+	require_once "heatMap.php";
 
 	$postData = file_get_contents("php://input");
 	if (!$postData) die("Parameters missing");
@@ -54,7 +55,8 @@
 		$url = "$root/PHP/API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileSize . ".png";
 		echo uploadFile($imgData, $url);
 		AddLog("[UploadMap.php]: Uploaded map: " . $url);
-
+		$HEATMAP->updateChunk($x, $z, $mapTileSize);
+		
 	} else {
 		$realSize = sqrt(sizeof($imgData) / 3);
 		$snappedSize = ceil($size / $mapTileSize) * $mapTileSize;
