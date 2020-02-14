@@ -17,7 +17,10 @@
   "API": {
     "API-key": "960ece1a150c28653dfa13b4073634b5",
     "imageCompression": 1,
-    "maxImageWidth": 10000
+    "maxImageWidth": 10000,
+    "heatMap": {
+      "updateLifeTime": 86400
+    }
   },
   "netherData-url": "uploads/nether.txt",
   "overworldData-url": "uploads/data.txt",

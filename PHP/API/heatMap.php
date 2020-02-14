@@ -14,46 +14,43 @@
     	public function updateChunk($_chunkX, $_chunkZ, $_chunkSize) {
     		$chunks = $this->readData();
     		$chunkIndex = $this->getChunkIndexByData($_chunkX, $_chunkZ, $_chunkSize);
-
-    		$chunk = $chunks[(int)$chunkIndex];
+    		
+            $chunk = $chunks[(int)$chunkIndex];
     		if (!is_int($chunkIndex)) 
     		{
     			$chunk = array(
 	    			"x" => (int)$_chunkX,
 	    			"z" => (int)$_chunkZ,
 	    			"size" => (int)$_chunkSize,
-	    			"lastUpdate" => time(),
-	    			"updates" => 0
+	    			"updates" => array()
 	    		);
 	    		$chunkIndex = sizeof($chunks);
     		}
 
-    		$chunk["updates"]++;
-      		$chunk["lastUpdate"] = time();
-
+    		array_push($chunk["updates"], time());
     		$chunks[$chunkIndex] = $chunk;
     		$this->writeData($chunks);
     	}
 
     	public function getHeatMap() {
-    		$maxUpdates 	= $this->getHighestChunkUpdates();
+            $chunks = $this->readData();
+           
+            for ($i = 0; $i < sizeof($chunks); $i++)
+            {
+                $curChunk = $chunks[$i];
+                for ($u = 0; $u < sizeof($curChunk["updates"]); $u++)
+                {
+                    if (time() - $curChunk["updates"][$u] < $GLOBALS["CONFIG"]["API"]["heatMap"]["updateLifeTime"]) continue;
+                    array_splice($chunks[$i]["updates"], $u, 1);
+                }
 
-    		$chunks = $this->readData();
-    		for ($i = 0; $i < sizeof($chunks); $i++)
-    		{
-    			$chunks[$i]["relativeHeat"] = $chunks[$i]["updates"] / $maxUpdates;
-    		}
+                $chunks[$i]["relativeHeat"] = sizeof($curChunk["updates"]) / 144 * 10; // max updates
+            }
 
-    		return $chunks;
-    	}
-    	
-    
-    	private function getHighestChunkUpdates() {
-    		$data = $this->readData();
-    		$maxUpdates = 0;
-    		for ($i = 0; $i < sizeof($data); $i++) if ($maxUpdates < $data[$i]["updates"]) $maxUpdates = $data[$i]["updates"];
-    		return $maxUpdates;
-    	}
+            $this->writeData($chunks);
+
+            return $chunks;
+        }
 
 
 
@@ -71,12 +68,12 @@
     		return false;
     	}
 
- 
 
 
     	private function writeData($_data) {
         	file_put_contents($this->path, json_encode($_data));
     	}
+
     	private function readData() {
     		if (!file_exists($this->path)) return array();
         	$data = file_get_contents($this->path);
@@ -86,8 +83,10 @@
 
 
     
-    // $HEATMAP->updateChunk(0, 0, 128);
+    $HEATMAP->updateChunk(0, 0, 128);
 
-    // echo "<pre>";
-    // var_dump($HEATMAP->getHeatMap());
+    echo "<pre>";
+    var_dump(
+        $HEATMAP->getHeatMap()
+    );
 ?>
