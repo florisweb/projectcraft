@@ -1,5 +1,5 @@
 <?php
-	require_once "../config.php";
+	require_once __DIR__ . "/../config.php";
     
     global $HEATMAP;
     $HEATMAP = new HeatMap();
@@ -8,7 +8,7 @@
     	private $path;
 
     	public function __construct() {
-    		$this->path = "map/overworld/heatMap.json";
+    		$this->path = __DIR__ . "/map/overworld/heatMap.json";
     	}
 
     	public function updateChunk($_chunkX, $_chunkZ, $_chunkSize) {
@@ -44,7 +44,11 @@
                     array_splice($chunks[$i]["updates"], $u, 1);
                 }
 
-                $chunks[$i]["relativeHeat"] = sizeof($curChunk["updates"]) / 144 * 10; // max updates
+                $timeSinceLastUpdate = time() - $curChunk["updates"][sizeof($curChunk["updates"]) - 1];
+                $recensyScore = (60 * 60 - $timeSinceLastUpdate) / 3600 * .2; // extra score when the last update is in the last hour
+                if ($recensyScore < 0) $recensyScore = 0;
+
+                $chunks[$i]["relativeHeat"] = sizeof($curChunk["updates"]) / 144 + $recensyScore; // max updates
             }
 
             $this->writeData($chunks);
@@ -80,13 +84,4 @@
         	return json_decode($data, true);
     	}
     }
-
-
-    
-    $HEATMAP->updateChunk(0, 0, 128);
-
-    echo "<pre>";
-    var_dump(
-        $HEATMAP->getHeatMap()
-    );
 ?>

@@ -23,6 +23,7 @@ this._map = function () {
 		}
         
 		this.panToItem(_points[0]);
+		this.drawHeatMap(Config.heatMaps);
         
         document.getElementById("mapCanvas").addEventListener("click", function (e) {
         	let coords = Map.DOMToMC(eventToCoords(e));
@@ -56,6 +57,31 @@ this._map = function () {
         		_e.preventDefault();
         });
 	}
+
+
+	this.drawHeatMap = function(_heatMaps) {
+		for (item of _heatMaps) 
+		{
+			drawHeatMapTile(
+				item.x - Config.world.x,
+				item.z - Config.world.z,
+				item.size,
+				item.relativeHeat
+			);
+		}
+	}
+
+	function drawHeatMapTile(_x, _z, _size, _opacity = .5) {
+		if (_opacity > .5) _opacity = .5;
+		ctx.strokeStyle = "#f00";
+		ctx.fillStyle = "rgba(255, 0, 0, " + _opacity + ")";
+		ctx.fillRect(_x, _z, _size, _size);
+		ctx.fill();
+		ctx.stroke();
+	}
+
+
+
 
 	function registerPoint(_point) {
 		let coords = This.MCToDOM(_point.coords);

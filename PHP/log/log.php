@@ -1,7 +1,6 @@
 <?php
 	global $LOGPath;
-	$root       = realpath($_SERVER["DOCUMENT_ROOT"]);
-    $LOGPath 	= "$root/PHP/log/log.json";
+    $LOGPath 	= __DIR__ . "/log.json";
 	
 	$CONFIG     = json_decode(file_get_contents($CONFIGPath), true);
 

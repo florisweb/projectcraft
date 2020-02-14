@@ -1,5 +1,6 @@
 <?php
     include "PHP/config.php";
+    include "PHP/API/heatMap.php";
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +26,9 @@
 
 		<div id="mapHolder">
 			<?php
-				$config = array();
+				$config = array(
+					"heatMaps" => $HEATMAP->getHeatMap()
+				);
 
 				$width = (int)abs($CONFIG["world"]["maxX"] - $CONFIG["world"]["minX"]);
 				$height = (int)abs($CONFIG["world"]["maxZ"] - $CONFIG["world"]["minZ"]);

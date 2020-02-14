@@ -26,7 +26,7 @@
 		$startX = $project["coords"]["x"] - $size / 2;
 		$startZ = $project["coords"]["z"] - $size / 2;
 
-		$url = "$root/PHP/API/map/" . $world . "/miniMap/" . $startX . "_" . $startZ . "_" . $size . ".png";
+		$url = __DIR__ . "/API/map/" . $world . "/miniMap/" . $startX . "_" . $startZ . "_" . $size . ".png";
 		
 		if (!file_exists($url)) continue;
 

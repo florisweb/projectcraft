@@ -1,7 +1,7 @@
 <?php
-	require_once "APIAuthenticate.php"; // Will check if the connecting server is authenticated
-	require_once "../log/log.php";
-	require_once "heatMap.php";
+	require_once __DIR__ . "/APIAuthenticate.php"; // Will check if the connecting server is authenticated
+	require_once __DIR__ . "/../log/log.php";
+	require_once __DIR__ . "/heatMap.php";
 
 	$postData = file_get_contents("php://input");
 	if (!$postData) die("Parameters missing");
@@ -52,7 +52,7 @@
 		$x = round($startX / $mapTileSize) * $mapTileSize; // snap the coords to the chunkgrid
 		$z = round($startZ / $mapTileSize) * $mapTileSize;
 
-		$url = "$root/PHP/API/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileSize . ".png";
+		$url = __DIR__ . "/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileSize . ".png";
 		echo uploadFile($imgData, $url);
 		AddLog("[UploadMap.php]: Uploaded map: " . $url);
 		$HEATMAP->updateChunk($x, $z, $mapTileSize);
@@ -74,7 +74,7 @@
 		}
 
 
-		$url = "$root/PHP/API/map/" . $world . "/miniMap/" . $startX . "_" . $startZ . "_" . $size . ".png";
+		$url = __DIR__ . "/map/" . $world . "/miniMap/" . $startX . "_" . $startZ . "_" . $size . ".png";
 		echo uploadFile($imgData, $url);
 		AddLog("[UploadMap.php]: Uploaded miniMap from project `" . $project["title"] . "`");
 	}
