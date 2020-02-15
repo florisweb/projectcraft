@@ -1,8 +1,13 @@
 this._map = function () {
 	let This = this;
+	let mapHolder = document.getElementById("mapHolder");
 	let canvas = document.getElementById("mapCanvas");
 	let ctx = canvas.getContext("2d");
-	let mapHolder = document.getElementById("mapHolder");
+	ctx.circle = function(_x, _z, _radius) {
+		ctx.beginPath();
+		ctx.arc(_x, _z, _radius, 0, 2 * Math.PI);
+	}
+	
 	let clickboxes = [];
 
 	//The factor for the overworld is 4, the factor for the nether is 1.
@@ -69,7 +74,7 @@ this._map = function () {
 	}
 
 	function drawHeatMapTile(_x, _z, _size, _opacity = .5) {
-		if (_opacity > .5) _opacity = .5;
+		_opacity *= .75;
 		ctx.strokeStyle = "#f00";
 		ctx.fillStyle = "rgba(255, 0, 0, " + _opacity + ")";
 		ctx.fillRect(_x, _z, _size, _size);
@@ -119,33 +124,31 @@ this._map = function () {
         drawPointToCanvas(coords.x, coords.z, _point.type.radius, username, colour, _point.displayPoint);
 	}
 
-	function drawPointToCanvas(x, z, radius, username, colour, display) {
+	function drawPointToCanvas(x, z, radius, username, colour, displayPin) {
 		let r = 20;
-		ctx.fillStyle = "white";
-		ctx.strokeStyle = "white";
-		ctx.lineWidth = 2;
 
-		if (radius) {
-			ctx.beginPath();
-			ctx.strokeStyle = colour;
-			ctx.fillStyle = colour;
-			ctx.arc(x, z, radius / factor, 0, 2 * Math.PI);
-			ctx.stroke();
-			ctx.globalAlpha = 0.2;
-			ctx.fill();
-			ctx.globalAlpha = 1;
-		}
-        
-        if (display === false) return;
+		if (radius) drawRadius(x, z, radius, colour);
+        if (displayPin === false) return;
+		drawNeedle(x, z, r);
+
+		let gradient = ctx.createLinearGradient(x - r, z - r, x + r, z + r);
+		gradient.addColorStop(0, colour);
+		gradient.addColorStop(1, "#030303");
+		
+		ctx.fillStyle = gradient;
+		ctx.circle(x, z - 2 * r, r);
+		ctx.fill();
+
 
 		let img = new Image();
+		img.src = "PHP/heads.php?type=head&scale=2&username=" + username;
 		img.onload = function () {
 			ctx.drawImage(img, x - 16, z - 56, 32, 32);
-		};
-        
-		img.src = "PHP/heads.php?type=head&scale=2&username=" + username;        
-        
-		ctx.fillStyle = "white";
+		}
+	}
+
+	function drawNeedle(x, z, r) {
+		ctx.fillStyle = "#fff";
 		ctx.beginPath();
 		ctx.moveTo(x, z);
 		ctx.lineTo(x - r, z - 2 * r - 1);
@@ -153,25 +156,29 @@ this._map = function () {
 		ctx.fill();
 
 		let grd = ctx.createLinearGradient(x, z - 2 * r - 1, x + 0.5 * r, z);
-		grd.addColorStop(0, "white")
+		grd.addColorStop(0, "#fff")
 		grd.addColorStop(1, "#aaa");
 		ctx.fillStyle = grd;
+		
 		ctx.beginPath();
 		ctx.moveTo(x, z);
 		ctx.lineTo(x + r, z - 2 * r - 1);
 		ctx.lineTo(x, z - 2 * r - 1);
 		ctx.fill();
+	}
 
-		let grd2 = ctx.createLinearGradient(x - r, z - r, x + r, z + r);
-		grd2.addColorStop(0, colour);
-
-		grd2.addColorStop(1, "#030303");
-		ctx.fillStyle = grd2;
+	function drawRadius(_x, _z, _radius, _colour) {
 		ctx.beginPath();
-		ctx.arc(x, z - 2 * r, r, 0, 2 * Math.PI);
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = _colour;
+		ctx.fillStyle = _colour;
+		ctx.globalAlpha = 0.2;
+
+		ctx.circle(_x, _z, _radius);
+		ctx.closePath();
 		ctx.fill();
-		ctx.fillStyle = "#ffffff";
-		ctx.textAlign = "center";
+		ctx.globalAlpha = 1;
+		ctx.stroke();
 	}
 
 

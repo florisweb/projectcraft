@@ -119,7 +119,7 @@
 		<script type="text/javascript" src="https://florisweb.tk/JS/jQuery.js"></script>
 		<script type="text/javascript" src="https://florisweb.tk/JS/request2.js"></script>
 		<!-- <script type="text/javascript" src="js/main_min.js?ac=1"></script> -->
-    <script type="text/javascript" src="js/client.js?ac=1"></script>
+    <script type="text/javascript" src="js/client.js?a=1"></script>
 
 		<script>
 			// temperarelly so things don't get cached
@@ -128,9 +128,7 @@
             $.getScript("js/chat.js?antiCache=" 			+ antiCache, function() {});
 			$.getScript("js/map.js?antiCache=" 				+ antiCache, function() {});
 			$.getScript("js/server.js?antiCache=" 			+ antiCache, function() {});
-			$.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {
-				setup()
-			});
+			$.getScript("js/infomenu.js?antiCache=" 		+ antiCache, function() {});
    		</script>
    		<!-- <script type="text/javascript" src="js/server.js?antiCache=4"></script> -->
    		<!-- <script type="text/javascript" src="js/infomenu.js?antiCache=2"></script> -->
@@ -180,16 +178,17 @@
 
 
 	function renderMap() {
+		console.log("Render");
 		Map.clear();
-		Server.getData("uploads/data.txt").then(function (_data) {
-			InfoMenu.createItemsByList(_data);
-			Map.drawPoints(_data);
-
-			if (executeUrlCommands) executeUrlCommands();
-		});
-
 		Server.getHeatMaps().then(function (_data) {
 			Map.drawHeatMap(_data);
+		
+			Server.getData("uploads/data.txt").then(function (_data) {
+				InfoMenu.createItemsByList(_data);
+				Map.drawPoints(_data);
+
+				if (executeUrlCommands) executeUrlCommands();
+			});
 		});
 	}
 </script>
