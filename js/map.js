@@ -74,7 +74,7 @@ this._map = function () {
 	}
 
 	function drawHeatMapTile(_x, _z, _size, _opacity = .5) {
-		_opacity *= .75;
+		_opacity *= .7;
 		ctx.strokeStyle = "#f00";
 		ctx.fillStyle = "rgba(255, 0, 0, " + _opacity + ")";
 		ctx.fillRect(_x, _z, _size, _size);

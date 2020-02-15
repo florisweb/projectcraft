@@ -45,10 +45,13 @@
                 }
 
                 $timeSinceLastUpdate = time() - $curChunk["updates"][sizeof($curChunk["updates"]) - 1];
-                $recensyScore = (60 * 60 - $timeSinceLastUpdate) / 3600 * .2; // extra score when the last update is in the last hour
+                $recensyLength = 60 * 60 * 2; // seconds;
+                $recensyScore = ($recensyLength - $timeSinceLastUpdate) / $recensyLength * .2; 
+                                // extra score when the last update is in the last hour
                 if ($recensyScore < 0) $recensyScore = 0;
 
-                $chunks[$i]["relativeHeat"] = sizeof($curChunk["updates"]) / 144 + $recensyScore; // max updates
+                $chunks[$i]["relativeHeat"] = sizeof($curChunk["updates"]) / 144 * 5 + $recensyScore; // max updates
+                if ($chunks[$i]["relativeHeat"] > 1) $chunks[$i]["relativeHeat"] = 1;
             }
 
             $this->writeData($chunks);
