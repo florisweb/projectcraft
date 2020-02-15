@@ -59,7 +59,7 @@
 		
 	} else {
 		$realSize = sqrt(sizeof($imgData) / 3);
-		$snappedSize = ceil($size / $mapTileSize) * $mapTileSize;
+		$snappedSize = floor($size / 16) * 16;
 		if (floor(sqrt(sizeof($imgData) / 3)) != $snappedSize && $realSize != $size) 
 		{
 			AddLog("[UploadMap.php]: MiniMap upload rejected, given size did not match actual size (real: " . $realSize . "px, supposed.snapped: " . $snappedSize . "px, supposed.actual: " . $size . "px (wide))");
