@@ -648,11 +648,19 @@ body.infoMenuHidden #coordinatesHolder {
 	margin-bottom: 15px;
 	margin-top: 5px;
 	overflow: auto;
+
+	background: rgb(30, 50, 80);
 }
 	.miniMapHolder .miniMapImg {
 		position: relative;
 		min-width: 100%;
 		height: auto;
+		transition: all .3s;
+	}
+
+	body.heatMapMode .miniMapHolder .miniMapImg {
+		opacity: .8;
+		filter: grayscale(70%);
 	}
 
 
