@@ -1,6 +1,20 @@
 <?php
     include "PHP/config.php";
     if ($CONFIG["nether"]["disabled"]) Header("Location: map.php");
+
+    $config = array();
+	$width = (int)abs($CONFIG["world"]["maxX"] - $CONFIG["world"]["minX"]);
+	$height = (int)abs($CONFIG["world"]["maxZ"] - $CONFIG["world"]["minZ"]);
+
+	$world = array(
+		"x" => (int)$CONFIG["world"]["minX"],
+		"z" => (int)$CONFIG["world"]["minZ"],
+		"width" => $width,
+		"height" => $height
+	);
+	$config["world"] = $world;
+
+	echo "<script>const Config = JSON.parse('" . json_encode($config) . "');</script>";
 ?>
 
 <!DOCTYPE html>
@@ -21,18 +35,7 @@
 
 		<div id="mapHolder">
 			<?php
-				$width = (int)abs($CONFIG["world"]["maxX"] - $CONFIG["world"]["minX"]);
-				$height = (int)abs($CONFIG["world"]["maxZ"] - $CONFIG["world"]["minZ"]);
-
-				$world = array(
-					"x" => (int)$CONFIG["world"]["minX"],
-					"z" => (int)$CONFIG["world"]["minZ"],
-					"width" => $width,
-					"height" => $height
-				);
-
 				echo '<canvas id="mapCanvas" width="' . $width . '" height="' . $height . '"></canvas>';
-				echo "<script>const World = JSON.parse('" . json_encode($world) . "');</script>";
 			?>
 		</div>
         
@@ -132,22 +135,29 @@
 				Map 		= new _map();
 		 		InfoMenu 	= new _InfoMenu_mapJsExtender();
 				
+				Map.init(8);
 				Map.onItemClick 		= function(_item) {InfoMenu.openProjectPageByTitle(_item.title)}
 				InfoMenu.onItemClick 	= function(_item) {Map.panToItem(_item)}
-
-				Server.getData("uploads/nether.txt").then(function (_data) {		
-					InfoMenu.createItemsByList(_data);
-                    
-                    drawLines(_data);
-
-					Map.init(_data, 8);
-                    
-					if (executeUrlCommands) executeUrlCommands();
-				});
 				InfoMenu.goThroughPortal = function(_title) {
 					window.location.replace("map.php?project=" + _title);
 				}
+
+				renderMap();
 			}
+
+
+			function renderMap() {
+				Map.clear();
+				Server.getData("uploads/nether.txt").then(function (_data) {
+					InfoMenu.createItemsByList(_data);
+					Map.drawPoints(_data);
+					drawLines(_data);
+
+					if (executeUrlCommands) executeUrlCommands();
+				});
+			}
+
+
             
             function drawLines(data) {
             	for (let i = 0; i < data.length; i++) {

@@ -15,13 +15,8 @@ this._map = function () {
 	}
 
 	//Initialize function.
-	this.init = function (_points, _factor) {
+	this.init = function (_factor) {
 		factor = _factor;
-        
-        this.drawHeatMap(Config.heatMaps);
-        this.drawPoints(_points);
-		this.panToItem(_points[0]);
-		
         
         document.getElementById("mapCanvas").addEventListener("click", function (e) {
         	let coords = Map.DOMToMC(eventToCoords(e));
@@ -56,6 +51,10 @@ this._map = function () {
         });
 	}
 
+
+	this.clear = function() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	}
 
 	this.drawHeatMap = function(_heatMaps) {
 		for (item of _heatMaps) 

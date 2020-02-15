@@ -1,6 +1,20 @@
 <?php
     include "PHP/config.php";
-    include "PHP/API/heatMap.php";
+
+    $config = array();
+
+	$width = (int)abs($CONFIG["world"]["maxX"] - $CONFIG["world"]["minX"]);
+	$height = (int)abs($CONFIG["world"]["maxZ"] - $CONFIG["world"]["minZ"]);
+
+	$world = array(
+		"x" => (int)$CONFIG["world"]["minX"],
+		"z" => (int)$CONFIG["world"]["minZ"],
+		"width" => $width,
+		"height" => $height
+	);
+	$config["world"] = $world;
+
+	echo "<script>const Config = JSON.parse('" . json_encode($config) . "');</script>";
 ?>
 
 <!DOCTYPE html>
@@ -26,31 +40,12 @@
 
 		<div id="mapHolder">
 			<?php
-				$config = array(
-					"heatMaps" => $HEATMAP->getHeatMap()
-				);
-
-				$width = (int)abs($CONFIG["world"]["maxX"] - $CONFIG["world"]["minX"]);
-				$height = (int)abs($CONFIG["world"]["maxZ"] - $CONFIG["world"]["minZ"]);
-
-				$world = array(
-					"x" => (int)$CONFIG["world"]["minX"],
-					"z" => (int)$CONFIG["world"]["minZ"],
-					"width" => $width,
-					"height" => $height
-				);
-				$config["world"] = $world;
-
 				echo 	'<img src="PHP/renderMap.php?world=overworld' . 
 						'&x=' . (int)$CONFIG["world"]["minX"] . 
 						'&z=' . (int)$CONFIG["world"]["minZ"] . 
 						'&width=' . $width . 
 						'&height=' . $height . '" id="mapImage">' . 
 						'<canvas id="mapCanvas" width="' . $width . '" height="' . $height . '"></canvas>';
-				
-
-
-				echo "<script>const Config = JSON.parse('" . json_encode($config) . "');</script>";
 			?>
             <div id="chatlog"></div>
 		</div>
@@ -176,18 +171,25 @@
  		InfoMenu 	= new _InfoMenu_mapJsExtender();
     	Client 		= new _client();
 		
+		Map.init(1);
 		Map.onItemClick 		= function(_item) {InfoMenu.openProjectPageByTitle(_item.title)}
 		InfoMenu.onItemClick 	= function(_item) {Map.panToItem(_item)}
 
-		Server.getData("uploads/data.txt").then(function (_data) {
-			InfoMenu.createItemsByList(_data);
-			Map.init(_data, 1);
-			if (executeUrlCommands) executeUrlCommands();
-		});
-    
-    	// Server.getData("api/updaterlog.txt").then(function(_data) {
-     //  		Client.init(_data);
-    	// });
+		renderMap();
 	}
 
+
+	function renderMap() {
+		Map.clear();
+		Server.getData("uploads/data.txt").then(function (_data) {
+			InfoMenu.createItemsByList(_data);
+			Map.drawPoints(_data);
+
+			if (executeUrlCommands) executeUrlCommands();
+		});
+
+		Server.getHeatMaps().then(function (_data) {
+			Map.drawHeatMap(_data);
+		});
+	}
 </script>
