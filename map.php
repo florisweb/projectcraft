@@ -21,7 +21,7 @@
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=4">
+		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=5">
         <link rel="stylesheet" type="text/css" href="css/chat.css?antiCache=1">
 		<title><?php echo $CONFIG["server"]["name"] . " | World Map"; ?></title>
 	</head>
@@ -77,6 +77,7 @@
 				<div class="headerText preventTextOverflow">PROJECTS</div>
 				<img class="icon" src="images/exitIcon.png" onclick="InfoMenu.close()">
 				<img class="icon searchIcon" src="images/searchIcon.png" onclick="InfoMenu.search.open()">
+				<img class="icon heatMapIcon" src="images/heatMapIcon_on.png" onclick="toggleHeatMap()">
 				<div id="projectListHolder"></div>
 			</div>
 
@@ -173,22 +174,34 @@
 		Map.onItemClick 		= function(_item) {InfoMenu.openProjectPageByTitle(_item.title)}
 		InfoMenu.onItemClick 	= function(_item) {Map.panToItem(_item)}
 
-		renderMap();
+		renderMap(heatMapEnabled);
 	}
 
 
-	function renderMap() {
-		console.log("Render");
+	let heatMapEnabled = true;
+	function toggleHeatMap() {
+		heatMapEnabled = !heatMapEnabled;
+		renderMap(heatMapEnabled);
+		$(".heatMapIcon")[0].src = "images/heatMapIcon_off.png";
+		if (heatMapEnabled) $(".heatMapIcon")[0].src = "images/heatMapIcon_on.png";
+	}
+
+
+	function renderMap(_renderHeatMap = true) {
 		Map.clear();
-		Server.getHeatMaps().then(function (_data) {
+		if (!_renderHeatMap) renderProjects();
+		if (_renderHeatMap) Server.getHeatMaps().then(function (_data) {
 			Map.drawHeatMap(_data);
-		
+			renderProjects();
+		});
+
+		function renderProjects() {
 			Server.getData("uploads/data.txt").then(function (_data) {
 				InfoMenu.createItemsByList(_data);
 				Map.drawPoints(_data);
 
 				if (executeUrlCommands) executeUrlCommands();
 			});
-		});
+		}
 	}
 </script>
