@@ -1,0 +1,3 @@
+[submodule "MCPlugin"]
+	path = MCPlugin
+	url = https://github.com/Eelek/UpdaterPlugin
