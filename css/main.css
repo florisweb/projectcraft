@@ -368,12 +368,104 @@ a.discord {
 	width: 100%;
 	height: auto;
 }
+
 #mapCanvas {
 	padding-right: 390px;
 	transition: padding-right 0.3s;
 }
 body.infoMenuHidden #mapCanvas {
 	padding-right: 0;
+}
+
+
+body.heatMapMode #mapCanvas {
+	animation: mapCanvas_enableHeatMapMode 1.8s 1;
+}
+body:not(.heatMapMode) #mapCanvas {
+	animation: mapCanvas_disbleHeatMapMode 1s 1;
+}
+
+@keyframes mapCanvas_enableHeatMapMode {
+    0% {
+    	opacity: 1;
+    }
+    10%, 40% {
+    	opacity: 0;
+    }
+    100% {
+    	opacity: 1;
+    }
+}
+
+@keyframes mapCanvas_disbleHeatMapMode {
+    0% {
+    	opacity: 1;
+    }
+    20%, 80% {
+    	opacity: 0;
+    }
+    100% {
+    	opacity: 1;
+    }
+}
+
+
+
+body.heatMapMode #mapImage {
+	animation: mapImage_enableHeatMapMode 2s 1;
+	animation-fill-mode: forwards;
+}
+body:not(.heatMapMode) #mapImage {
+	animation: mapImage_disbleHeatMapMode 1.5s 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes mapImage_enableHeatMapMode {
+    0% {
+    	opacity: 1;
+    }
+    35% {
+    	opacity: 0;
+    	transform: scale(1.1);
+    	filter: none;
+    }
+    35.1% {
+    	transform: scale(1);
+    }
+    40% {
+    	opacity: 0;
+    	transform: scale(1);
+    }
+
+    80%, 100% {
+    	opacity: .5;
+    	filter: grayscale(100%);
+    }
+}
+
+@keyframes mapImage_disbleHeatMapMode {
+    0% {
+    	opacity: .5;
+    	filter: grayscale(100%);
+    	transform: scale(1);
+    }
+    35% {
+    	opacity: 0;
+    	transform: scale(.9);
+    	filter: grayscale(100%);
+    }
+    35.1% {
+    	transform: scale(1);
+    }
+    40% {
+    	opacity: 0;
+    	transform: scale(1);
+    }
+
+    80%, 100% {
+    	opacity: 1;
+    	filter: none;
+    }
 }
 
 
@@ -556,11 +648,19 @@ body.infoMenuHidden #coordinatesHolder {
 	margin-bottom: 15px;
 	margin-top: 5px;
 	overflow: auto;
+
+	background: rgb(30, 50, 80);
 }
 	.miniMapHolder .miniMapImg {
 		position: relative;
 		min-width: 100%;
 		height: auto;
+		transition: all .3s;
+	}
+
+	body.heatMapMode .miniMapHolder .miniMapImg {
+		opacity: .8;
+		filter: grayscale(70%);
 	}
 
 
