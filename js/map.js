@@ -18,12 +18,10 @@ this._map = function () {
 	this.init = function (_points, _factor) {
 		factor = _factor;
         
-		for (i = 0; i < _points.length; i++) {
-			registerPoint(_points[i]);
-		}
-        
+        this.drawHeatMap(Config.heatMaps);
+        this.drawPoints(_points);
 		this.panToItem(_points[0]);
-		this.drawHeatMap(Config.heatMaps);
+		
         
         document.getElementById("mapCanvas").addEventListener("click", function (e) {
         	let coords = Map.DOMToMC(eventToCoords(e));
@@ -81,9 +79,28 @@ this._map = function () {
 	}
 
 
+	this.drawPoints = function(_points) {
+		clickboxes = [];
+		for (point of _points) {
+			drawPoint(point);
+			registerClickBox(point);
+		}
+	}
 
 
-	function registerPoint(_point) {
+	function registerClickBox(_point) {
+		if (_point.clickable == false || _point.displayPoint === false) return;
+
+		clickboxes.push({
+            point: 	_point,
+			x: 		_point.coords.x - 24,
+			z: 		_point.coords.z - 60,
+			rx: 	_point.coords.x + 24,
+			rz: 	_point.coords.z
+		});
+	}
+
+	function drawPoint(_point) {
 		let coords = This.MCToDOM(_point.coords);
 
 		let username = "ddrl46";
@@ -100,20 +117,10 @@ this._map = function () {
 		if (_point.customPin)
 			colour = _point.customPin;
 		
-        drawPoint(coords.x, coords.z, _point.type.radius, username, colour, _point.displayPoint);
-
-		if (_point.clickable == false || _point.displayPoint === false) return;
-
-		clickboxes.push({
-            point: 	_point,
-			x: 		_point.coords.x - 24,
-			z: 		_point.coords.z - 60,
-			rx: 	_point.coords.x + 24,
-			rz: 	_point.coords.z
-		});
+        drawPointToCanvas(coords.x, coords.z, _point.type.radius, username, colour, _point.displayPoint);
 	}
 
-	function drawPoint(x, z, radius, username, colour, display) {
+	function drawPointToCanvas(x, z, radius, username, colour, display) {
 		let r = 20;
 		ctx.fillStyle = "white";
 		ctx.strokeStyle = "white";
@@ -167,6 +174,9 @@ this._map = function () {
 		ctx.fillStyle = "#ffffff";
 		ctx.textAlign = "center";
 	}
+
+
+
 
 	this.drawLine = function(startX, startZ, endX, endZ, colour) {
 		ctx.fillStyle = "white";
