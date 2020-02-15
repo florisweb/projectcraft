@@ -77,7 +77,7 @@
 				<div class="headerText preventTextOverflow">PROJECTS</div>
 				<img class="icon" src="images/exitIcon.png" onclick="InfoMenu.close()">
 				<img class="icon searchIcon" src="images/searchIcon.png" onclick="InfoMenu.search.open()">
-				<img class="icon heatMapIcon" src="images/heatMapIcon_on.png" onclick="toggleHeatMap()">
+				<img class="icon heatMapIcon" src="images/heatMapIcon_off.png" onclick="toggleHeatMap()">
 				<div id="projectListHolder"></div>
 			</div>
 
@@ -178,12 +178,17 @@
 	}
 
 
-	let heatMapEnabled = true;
+	let heatMapEnabled = false;
 	function toggleHeatMap() {
 		heatMapEnabled = !heatMapEnabled;
 		renderMap(heatMapEnabled);
-		$(".heatMapIcon")[0].src = "images/heatMapIcon_off.png";
-		if (heatMapEnabled) $(".heatMapIcon")[0].src = "images/heatMapIcon_on.png";
+		
+		$(".heatMapIcon")[0].src = "images/heatMapIcon_off.png"; 
+		document.body.classList.remove("heatMapMode");
+		
+		if (!heatMapEnabled) return;
+		$(".heatMapIcon")[0].src = "images/heatMapIcon_on.png";
+		document.body.classList.add("heatMapMode");
 	}
 
 
