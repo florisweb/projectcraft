@@ -6,22 +6,23 @@
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=5">
+		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=6">
 		<title><?php echo $CONFIG["server"]["name"]; ?></title>
 	</head>
 
-	<body style="overflow: hidden;" class="noselect">
-		<div id="homeScreen" style="
+	<body class="noselect">
+		<div id="homeScreen">
+			<div class="background" style="
 			background-image: url(<?php
                 $files = glob("uploads/images/*");
 				$length = sizeof($files);
 				$index = rand(0, $length - 1);
                 echo $files[$index];
-			?>)">
+			?>)"></div>
 
 			<div class="text" id="homescreen_projectCraftLogo">
 				<?php echo strtoupper($CONFIG["server"]["name"]); ?>
-				<div style="font-size: 15px; opacity: 0.5">
+				<div style="font-size: 15px; opacity: .8">
 					Written and maintained by 
 					<a href="https://eelekweb.tk" style="color: #fff">eelekweb.tk</a> 
 					and 
@@ -30,15 +31,19 @@
 			</div>
 
 			<div id="homeScreen_navigationHolder"> 
-				<div class="navigationItem" onclick="window.location.replace('info.php')">
-					<img src="PHP/heads.php?username=MHF_Question&type=head&scale=10" class="iconHolder">
-					<div class="text itemTitle">INFO</div>
-				</div>
+				<a href="info.php" style='text-decoration: none'>
+					<div class="navigationItem">
+						<img src="PHP/heads.php?username=MHF_Question&type=head&scale=10" class="iconHolder">
+						<div class="text itemTitle">INFO</div>
+					</div>
+				</a>
                 
-				<div class="navigationItem" onclick="window.location.replace('map.php')">
-					<img src="PHP/heads.php?username=0qt&type=head&scale=10" class="iconHolder">
-					<div class="text itemTitle">MAP</div>
-				</div>
+                <a href="map.php" style='text-decoration: none'>
+					<div class="navigationItem">
+						<img src="PHP/heads.php?username=0qt&type=head&scale=10" class="iconHolder">
+						<div class="text itemTitle">MAP</div>
+					</div>
+				</a>
 			</div>
 		</div>
         

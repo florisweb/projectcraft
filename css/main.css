@@ -23,118 +23,52 @@ body {
 	z-index: 1000;
 	overflow: hidden;
 
-	background-repeat: 		no-repeat;
-	background-size: 		cover;
-	
-	box-shadow: 0 -5px 30px 5px rgba(50, 50, 50, 0.3);
 	transition: transform 0.3s, opacity 0.3s;
 }
+
+	#homeScreen .background {
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+
+		background-repeat: 		no-repeat;
+		background-size: 		cover;
+
+		animation: homeScreen_animateBackground .5s 1;
+		animation-fill-mode: forwards;
+	}
+
+
+	@keyframes homeScreen_animateBackground {
+	    0% {
+	    	opacity: 0;
+	    	transform: scale(1);
+	    }
+	    100% {
+	    	opacity: 1;
+	    	transform: scale(1.2);
+	    }
+	}
+
+
+
 
 
 
 
 #homescreen_projectCraftLogo {
 	position: absolute;
+	/*top: 45vh;*/
+	top: 35vh;
+	transform: translateY(-50%);
 
 	width: 100%;
 	text-align: center;
 	font-size: 80px;
 	font-weight: bolder;
-
-	animation: homeScreen_showLogo 2.5s 1;
-	animation-fill-mode: forwards;
-	-webkit-animation-fill-mode: forwards;
+	color: rgba(255, 255, 255, .9);
+	filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, .6));
 }
-
-body.quickStartAnimation #homescreen_projectCraftLogo {
-	/*animation: homeScreen_showLogo 2.5s 1;*/
-	animation-duration: .0s;
-}
-
-/*
-.homescreen_projectCraftInfo {
-    position: relative;
-    left: 50px;
-	width: 100%;
-	text-align: left;
-	font-size: 14px;
-    opacity: 0;
-    animation-name: homescreen_info;
-    animation-duration: 3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-}
-*/
-#homeScreen_navigationHolder {
-	top: 50%;
-	transform: translate(0%, -50%);
-}
-
-
-@keyframes homeScreen_showLogo {
-    0% {
-    	opacity: 0; 
-    }
-    50% {
-    	opacity: 1;
-
-    }
-    85% {
-    	opacity: 1;
-    	top: calc(50vh - 80px);
-    	font-size: 80px;
-    }
-    100% {
-    	opacity: .6;
-    	font-size: 50px;
-    	top: 40px;
-    }
-}
-
-@keyframes homescreen_info {
-   0% {
-       opacity: 0;
-   }
-   
-   100% {
-       opacity: 1;
-   }
-}
-
-
-
-@keyframes homeScreen_navigationHolderIn {
-    0% {
-    	opacity: 0; 
-    }
-    50% {
-    }
-    85% {
-    	top: 100vh;
-    	opacity: 0;
-    }
-    100% {
-		top: 50%;
-		transform: translate(0%, -50%);
-    	opacity: 1;
-    }
-}
-
-
-@keyframes homeScreen_mapImage {
-    0% {
-    	filter: blur(50px);
-    }
-    40% {
-    	filter: blur(50px);
-    }
-    100% {
-    	filter: blur(0px);
-    }
-   
-}
-
-
 
 
 
@@ -184,15 +118,12 @@ a.discord {
 	#homeScreen_navigationHolder {
 		position: absolute;
 		left: 10vw;
+		top: 75vh;
+
 		width: 80vw;
 		height: 260px;
-		padding-bottom: 100px;
 
-		animation: homeScreen_navigationHolderIn 2.5s 1;
-		animation-fill-mode: forwards;
-	}
-	body.quickStartAnimation #homeScreen_navigationHolder {
-		animation-duration: 1.5s;
+		transform: translateY(-50%);
 	}
 
 		#homeScreen_navigationHolder .navigationItem {
@@ -201,13 +132,37 @@ a.discord {
 
 			margin-left: calc((100% - 200px * 2) / 3);
 			width: 200px;
-			height: 250px;
+			height: 200px;
+
+			background: rgba(30, 30, 30, .7);
+			border-radius: 10px;
+
+			-webkit-backdrop-filter: blur(5px);
+    
 			transition: all 0.3s;
-			cursor: pointer;
+
+			opacity: 0;
+
+			animation: homeScreen_popNavigationItemsIn .5s 1;
+			animation-fill-mode: forwards;
+			animation-delay: .4s;
 		}
 
+			@keyframes homeScreen_popNavigationItemsIn {
+			    0% {
+			    	opacity: 0;
+			    	transform: scale(1.3);
+			    }
+			    100% {
+			    	opacity: 1;
+			    	transform: scale(1);
+			    }
+			}
+
+
+
 		#homeScreen_navigationHolder .navigationItem:hover {
-			transform: scale(1.04);
+			transform: scale(1.05);
 		}
 
 
@@ -216,30 +171,23 @@ a.discord {
 				float: left;
 				top: 0;
 				width: calc(100% - 25px * 2);
-				height: calc(100% - 25px * 2 - 50px);
+				height: auto;
 
-				padding: 25px;
-				background: rgba(200, 200, 200, 0.9);
-				border-bottom: 10px solid rgba(150, 150, 150, 0.9);
+				margin: 25px;
 
 				transition: all 0.2s;
 			}
 
-			.navigationItem:hover .iconHolder {
-				top: -5px;
-				margin-bottom: -5px;
-				background: rgb(200, 200, 200);
-				border-bottom: 15px solid rgba(150, 150, 150, 0.9);
-			}
 
 			.navigationItem .itemTitle {
 				position: relative;
 				float: left;
-				margin-top: 5px;
+				margin-top: 15px;
 				width: 100%;
 				height: 30px;
 
 
+				filter: drop-shadow(5px 5px 20px #000);
 				text-align: center;
 				color: rgba(230, 230, 230, 0.9);
 				font-size: 25px;
