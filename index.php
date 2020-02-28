@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=6">
+		<link rel="stylesheet" type="text/css" href="css/main.css?antiCache=7">
 		<title><?php echo $CONFIG["server"]["name"]; ?></title>
 	</head>
 

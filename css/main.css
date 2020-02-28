@@ -58,8 +58,7 @@ body {
 
 #homescreen_projectCraftLogo {
 	position: absolute;
-	/*top: 45vh;*/
-	top: 35vh;
+	top: 30vh;
 	transform: translateY(-50%);
 
 	width: 100%;
@@ -118,7 +117,7 @@ a.discord {
 	#homeScreen_navigationHolder {
 		position: absolute;
 		left: 10vw;
-		top: 75vh;
+		top: 70vh;
 
 		width: 80vw;
 		height: 260px;
@@ -517,8 +516,8 @@ body.infoMenuHidden #coordinatesHolder {
 	height: 100vh;
 	
 
-	box-shadow: 0 -5px 30px 5px rgba(50, 50, 50, 0.3);
-	background: rgba(30, 30, 32, 0.8);
+	box-shadow: 0 -5px 30px 5px rgba(50, 50, 50, .3);
+	background: rgba(40, 40, 42, .9);
 	-webkit-backdrop-filter: blur(40px);
 	backdrop-filter: blur(40px);
 
@@ -555,12 +554,6 @@ body.infoMenuHidden #coordinatesHolder {
 
 .text {
 	position: relative;
-	color: rgba(255, 255, 255, 0.6);
-	font-size: 15px;
-	font-family: Arial, Helvetica, sans-serif;
-}
-
-.text-only {
 	color: rgba(255, 255, 255, 0.6);
 	font-size: 15px;
 	font-family: Arial, Helvetica, sans-serif;
