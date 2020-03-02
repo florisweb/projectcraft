@@ -29,37 +29,39 @@
                 position: absolute;
                 float: left;
 
-                width: calc(40vw - 60px * 2 - 2px);
-                height: calc(100vh - 60px * 2);
-                
-                background: rgba(40, 40, 42, .9);
+                width: calc(40vw - 60px * 2);
+                height: calc((40vw - 60px * 2) * 1.6);
+                max-height: calc(95vh - 60px * 2);
+
                 padding: 60px;
 
                 overflow: hidden;
                 transition: all .3s;
+
+                cursor: pointer;
             }
+
             #blogHolder .page.hide {
                 pointer-events: none;
             }
 
             #blogHolder .page:nth-child(2n - 1) {
-                background: url("images/bookPageLeft.png");
+                background-image: url("images/bookPageLeft.png");
                 background-repeat: no-repeat;
-                background-size: 100% auto;
-
-                /*margin-left: 25%;*/
-                /*transform: translateX(-50%);*/
+                background-size: 100% 100%;
             }
+
             #blogHolder .page:nth-child(2n - 1).hide {
-                opacity: 0;
-                /*transform: rotateY(90deg) translateX(-50%);;*/
+                top: 100vh;
             }
 
             #blogHolder .page:nth-child(2n) {
-                left: calc(50% - 13px);
-                background: url("images/bookPageRight.png");
+                left: calc(50% - 10px);
+                
+                background-image: url("images/bookPageRight.png");
                 background-repeat: no-repeat;
-                background-size: 100% auto;
+                background-size: 100% 100%;
+
                 transform-origin: top left;
             }
 
@@ -67,11 +69,6 @@
                 transform: rotateY(180deg);
                 opacity: 0;
             }
-
-
-
-
-
 
 
 
