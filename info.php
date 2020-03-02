@@ -26,53 +26,63 @@
             }
 
             #blogHolder .page {
-                position: relative;
+                position: absolute;
                 float: left;
+
                 width: calc(40vw - 60px * 2 - 2px);
                 height: calc(100vh - 60px * 2);
                 
                 background: rgba(40, 40, 42, .9);
                 padding: 60px;
+
                 overflow: hidden;
                 transition: all .3s;
-
-                max-height: 100vh;
             }
             #blogHolder .page.hide {
-                /*transform: rotateY(85deg) translateX(-50%);*/
-                display: none;
-
+                pointer-events: none;
             }
 
             #blogHolder .page:nth-child(2n - 1) {
                 background: url("images/bookPageLeft.png");
                 background-repeat: no-repeat;
                 background-size: 100% auto;
+
+                /*margin-left: 25%;*/
+                /*transform: translateX(-50%);*/
+            }
+            #blogHolder .page:nth-child(2n - 1).hide {
+                opacity: 0;
+                /*transform: rotateY(90deg) translateX(-50%);;*/
             }
 
             #blogHolder .page:nth-child(2n) {
-                margin-left: -10px;
+                left: calc(50% - 13px);
                 background: url("images/bookPageRight.png");
                 background-repeat: no-repeat;
                 background-size: 100% auto;
+                transform-origin: top left;
             }
 
-           /* #blogHolder .page:nth-child(2n):not(.hide) {
-
-            }*/
-
-
-                #blogHolder a {
-                    opacity: .8;
-                }
-
-                 #blogHolder h4 {
-                    line-height: 10px;
-                }
-
-            .blogText {
-                /*color: #333;*/
+            #blogHolder .page:nth-child(2n).hide {
+                transform: rotateY(180deg);
+                opacity: 0;
             }
+
+
+
+
+
+
+
+
+            #blogHolder a {
+                opacity: .8;
+            }
+
+             #blogHolder h4 {
+                line-height: 10px;
+            }
+
         </style>
     </head>
 
@@ -148,27 +158,6 @@
         </div>
         
         <script type="text/javascript">
-            window.onload = function() {
-                if (getCookie("visit") != "") document.body.classList.add("quickStartAnimation");
-                document.cookie = "visit=true";
-            }
-            
-            function getCookie(cname) {
-                var name = cname + "=";
-                var ca = document.cookie.split(';');
-                for(var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                        c = c.substring(1);
-                    }
-                    
-                    if (c.indexOf(name) == 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                }
-                return "";
-            }
-
 
             let Page = new function() {
                 let This = {
