@@ -22,6 +22,7 @@
                 height: 100vh;
 
                 color: #333;
+                line-height: 20px;
             }
 
             #blogHolder .page {
@@ -62,8 +63,11 @@
 
 
                 #blogHolder a {
-                    line-height: 20px;
                     opacity: .8;
+                }
+
+                 #blogHolder h4 {
+                    line-height: 10px;
                 }
 
             .blogText {
@@ -85,22 +89,43 @@
            <div id="blogHolder" class="text">
     
                 <?php
-                    // $descriptionLines = explode("\n", $CONFIG["server"]["description"]);
+                    // Use [newLine] for a new line
+
+
                     $data = file_get_contents("uploads/testBlog.html");
                     $charsPerPage = 1000;
-                    for ($i = 0; $i < strlen($data) / $charsPerPage; $i++)
-                    {
-                        $text = substr($data, $charsPerPage * $i, $charsPerPage);
-                        echo '<div class="page hide">' . $text . '</div>';
-                    }
-                    
+                    $sentences = explode(".", $data);
 
-                    // for ($l = 0; $l < sizeof($descriptionLines); $l++)
-                    // {
-                    //     echo '<br><div class="text blogText" style="animation-delay: ' . $l / 4 . 's">' .
-                    //         $descriptionLines[$l] .
-                    //     '</div>';
-                    // }
+
+                    $curChars = 0;
+                    $pageText = "";
+                    foreach ($sentences as $sentence)
+                    {
+                        $newLine = explode("[newPage]", $sentence);
+                        
+                        if (strlen($sentence) + $curChars < $charsPerPage && sizeof($newLine) == 1)
+                        {
+                            $pageText .= $sentence . ".";
+                            $curChars += strlen($sentence);
+                            continue;
+                        }
+
+                        if (sizeof($newLine) != 1) $pageText .= $newLine[0];
+
+
+                        echo '<div class="page hide">' . $pageText . '</div>';
+                        
+                        $pageText = "";
+                        $curChars = 0;
+                        
+                        if (sizeof($newLine) != 1)
+                        {
+                            $pageText = $newLine[1] . ".";
+                            $curChars = strlen($pageText);
+                        }
+                    }
+
+                    if ($curChars !== 0) echo '<div class="page hide">' . $pageText . '</div>';
                 ?>
 
             
@@ -170,6 +195,9 @@
 
                 return This;
             }
+
+
+            setTimeout(Page.openPage, 100, 0);
         </script>
     </body>
 </html>
