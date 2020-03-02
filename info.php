@@ -144,9 +144,6 @@
                         ?>
                     </div>
                 </div>
-            
-
-
            </div>
         </div>
         
@@ -176,22 +173,40 @@
             let Page = new function() {
                 let This = {
                     curPage: 0,
-                    openPage: openPage
+                    openPage: openPage,
+                    openNextPage: next,
+                    openPrevPage: previous,
                 };
                 const HTML = {
                     pages: $("#blogHolder .page")
                 }
+                
+                for (let i = 0; i < HTML.pages.length; i++)
+                {
+                    HTML.pages[i].onclick = function() {
+                        if (i % 2 == 0) return previous();
+                        next();
+                    }
+                }
+
+                function next() {
+                    openPage(This.curPage + 1);
+                }
+                function previous() {
+                    openPage(This.curPage - 1);
+                }
 
 
                 function openPage(_index) {
+                    if (_index > HTML.pages.length || _index < 0) return;
+                    
                     let curPages = $("#blogHolder .page:not(.hide)");
                     for (page of curPages) page.classList.add("hide");
 
                     HTML.pages[_index * 2].classList.remove("hide");
                     HTML.pages[_index * 2 + 1].classList.remove("hide");
+                    This.curPage = _index;
                 }
-
-
 
                 return This;
             }
