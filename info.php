@@ -204,66 +204,37 @@
                 }
 
 
+                let animating = false;
                 function openPage(_index, _nextPage = true) {
-                    if (_index > HTML.pages.length - 1 || _index < 0) return;
+                    if (_index > HTML.pages.length - 1 || _index < 0 || animating) return;
+                    animating = true;
                         
-
-
                     let openPages = $("#blogHolder .page:not(.hide)");
-
-                    if (_nextPage) 
+                    if (openPages.length)
                     {
+                       let flipPage = openPages[1];
+                       let stationairyPage = openPages[0];
+                       if (!_nextPage) 
+                       {
+                            flipPage = openPages[0];
+                            stationairyPage = openPages[1];
+                       }
 
-                        if (openPages.length)
-                        {
-                            openPages[1].classList.add("flip");
+                        flipPage.classList.add("flip");
 
-                            setTimeout(function() {
-                                openPages[0].classList.add("hide");
+                        setTimeout(function() {
+                            stationairyPage.classList.add("hide");
 
-                                openPages[1].classList.add("hide");
-                                removeFlip(openPages[1]);
-                            }, 500);
-                        }
-                    
-                        
-                    } else {
+                            flipPage.classList.add("hide");
+                            removeFlip(flipPage);
 
-                        if (openPages.length)
-                        {
-                            openPages[0].classList.add("flip");
-                            openPages[0].classList.add("hide");
+                            animating = false;
+                        }, 500);
+                    } else animating = false;
 
-                            setTimeout(function() {
-                                openPages[1].classList.add("hide");
-
-                                
-                                removeFlip(openPages[0]);
-                            }, 500);
-                        }
-                    }
-                    
-                    // setTimeout(function() {
-                        HTML.pages[_index * 2].classList.remove("hide");    
-                        HTML.pages[_index * 2 + 1].classList.remove("hide");
-                    // }, 450);
-
-
-
-
-                    // HTML.pages[_index * 2 + 1].style.transition = "none";
-                    
-
-
-
-                    // HTML.pages[_index * 2].classList.remove("hide");
-
-                    // setTimeout(function() {
-                    //     HTML.pages[_index * 2 + 1].style.transition = "";
-                        
-                    //     for (page of curPages) page.classList.add("hide");
-                    // }, 500)
-                    
+                
+                    HTML.pages[_index * 2].classList.remove("hide");    
+                    HTML.pages[_index * 2 + 1].classList.remove("hide");
 
                     This.curPage = _index;
                 }
