@@ -36,38 +36,56 @@
                 padding: 60px;
 
                 overflow: hidden;
-                transition: all .3s;
+                transition: all .5s;
+
+                z-index: 11;
 
                 cursor: pointer;
             }
 
-            #blogHolder .page.hide {
+
+            #blogHolder .page:not(#placeHolderPage).hide {
                 pointer-events: none;
+                opacity: 0;
             }
 
             #blogHolder .page:nth-child(2n - 1) {
+                margin-right: -7px;
+
                 background-image: url("images/bookPageLeft.png");
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
+
+                transform-origin: bottom right;
             }
 
-            #blogHolder .page:nth-child(2n - 1).hide {
-                top: 100vh;
+            #blogHolder .page:nth-child(2n - 1).flip {
+                transform: rotateY(180deg);
+                opacity: .2;
             }
+
+
 
             #blogHolder .page:nth-child(2n) {
-                left: calc(50% - 10px);
-                
+                left: calc(50%);
+                margin-left: -7px;
+
                 background-image: url("images/bookPageRight.png");
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
 
-                transform-origin: top left;
+                transform-origin: bottom left;
+            }
+            
+            #blogHolder .page:nth-child(2n).flip {
+                transform: rotateY(-180deg);
+                opacity: .2;
             }
 
-            #blogHolder .page:nth-child(2n).hide {
-                transform: rotateY(180deg);
-                opacity: 0;
+
+
+            #blogHolder #placeHolderPage.page {
+                z-index: 10;
             }
 
 
@@ -151,6 +169,9 @@
                         ?>
                     </div>
                 </div>
+
+                <div class="page hide" id="placeHolderPage">
+                </div>
            </div>
         </div>
         
@@ -176,22 +197,84 @@
                 }
 
                 function next() {
-                    openPage(This.curPage + 1);
+                    openPage(This.curPage + 1, true);
                 }
                 function previous() {
-                    openPage(This.curPage - 1);
+                    openPage(This.curPage - 1, false);
                 }
 
 
-                function openPage(_index) {
-                    if (_index > HTML.pages.length || _index < 0) return;
-                    
-                    let curPages = $("#blogHolder .page:not(.hide)");
-                    for (page of curPages) page.classList.add("hide");
+                function openPage(_index, _nextPage = true) {
+                    if (_index > HTML.pages.length - 1 || _index < 0) return;
+                        
 
-                    HTML.pages[_index * 2].classList.remove("hide");
-                    HTML.pages[_index * 2 + 1].classList.remove("hide");
+
+                    let openPages = $("#blogHolder .page:not(.hide)");
+
+                    if (_nextPage) 
+                    {
+
+                        if (openPages.length)
+                        {
+                            openPages[1].classList.add("flip");
+
+                            setTimeout(function() {
+                                openPages[0].classList.add("hide");
+
+                                openPages[1].classList.add("hide");
+                                removeFlip(openPages[1]);
+                            }, 500);
+                        }
+                    
+                        
+                    } else {
+
+                        if (openPages.length)
+                        {
+                            openPages[0].classList.add("flip");
+                            openPages[0].classList.add("hide");
+
+                            setTimeout(function() {
+                                openPages[1].classList.add("hide");
+
+                                
+                                removeFlip(openPages[0]);
+                            }, 500);
+                        }
+                    }
+                    
+                    // setTimeout(function() {
+                        HTML.pages[_index * 2].classList.remove("hide");    
+                        HTML.pages[_index * 2 + 1].classList.remove("hide");
+                    // }, 450);
+
+
+
+
+                    // HTML.pages[_index * 2 + 1].style.transition = "none";
+                    
+
+
+
+                    // HTML.pages[_index * 2].classList.remove("hide");
+
+                    // setTimeout(function() {
+                    //     HTML.pages[_index * 2 + 1].style.transition = "";
+                        
+                    //     for (page of curPages) page.classList.add("hide");
+                    // }, 500)
+                    
+
                     This.curPage = _index;
+                }
+
+                function removeFlip(_element) {
+                    _element.style.transition = "none";
+                    _element.classList.remove("flip");
+
+                    setTimeout(function() {
+                        _element.style.transition = "";
+                    }, 10);
                 }
 
                 return This;
