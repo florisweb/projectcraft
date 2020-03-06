@@ -71,30 +71,31 @@ body {
 
 
 
-#info_memberHolder {
+.memberHolder {
 	position: relative;
 	left: 0;
 	width: auto;
 	height: auto;
 }
 
-	#info_memberHolder .avatarHolder {
+	.memberHolder .avatarHolder {
 		position: relative;
 		float: left;
-		width: 120px;
-
-		padding-bottom: 50px;
+		width: calc(25%);
+		padding: 0 4.17%;
+		padding-top: 50px;
 	}
 
-		#info_memberHolder .avatarHolder .avatar {
+		.memberHolder .avatarHolder .avatar {
 			position: relative;
 			width: calc(100% - 25% * 2);
 			padding: 0 25%;
 			height: auto;
 		}
 
-		#info_memberHolder .avatarHolder .text {
+		.memberHolder .avatarHolder .text {
 			text-align: center;
+			color: #333;
 		}
 
 

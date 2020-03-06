@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-        <link rel="stylesheet" type="text/css" href="css/main.css?antiCache=6">
+        <link rel="stylesheet" type="text/css" href="css/main.css?antiCache=7">
         <title><?php echo $CONFIG["server"]["name"] . " - Info"; ?></title>
         <script type="text/javascript" src="js/jQuery.js"></script>
 
@@ -50,8 +50,6 @@
             }
 
             #blogHolder .page:nth-child(2n - 1) {
-                margin-right: -7px;
-
                 background-image: url("images/bookPageLeft.png");
                 background-repeat: no-repeat;
                 background-size: 100% 100%;
@@ -65,10 +63,16 @@
             }
 
 
+            #blogHolder.closed .page:nth-child(2n) {
+                left: 25%;
+                z-index: 100;
+            }
+
+
+
 
             #blogHolder .page:nth-child(2n) {
-                left: calc(50%);
-                margin-left: -7px;
+                left: 50%;
 
                 background-image: url("images/bookPageRight.png");
                 background-repeat: no-repeat;
@@ -81,6 +85,7 @@
                 transform: rotateY(-180deg);
                 opacity: .2;
             }
+
 
 
 
@@ -111,11 +116,10 @@
                 echo $files[$index];
             ?>)"></div>
 
-           <div id="blogHolder" class="text">
+           <div id="blogHolder" class="text closed">
     
                 <?php
                     // Use [newLine] for a new line
-
 
                     $data = file_get_contents("uploads/testBlog.html");
                     $charsPerPage = 1000;
@@ -153,22 +157,30 @@
                     if ($curChars !== 0) echo '<div class="page hide">' . $pageText . '</div>';
                 ?>
 
-            
-                <div class="page hide">
-                    <div id='info_memberHolder'>
-                        <?php
-                            $c = 0;
-                            $members = json_decode(file_get_contents($CONFIG["memberData-url"]), true);
-                            foreach($members as $player) {
-                                echo    "<div class='avatarHolder'>" . 
-                                            "<img src='PHP/heads.php?type=body&scale=10&username=" . $player[0] . "'' class='avatar'>" . 
-                                            "<div class='text'>" . $player[0] . "</div>" . 
-                                        "</div>";
-                                $c++;
-                            }
-                        ?>
-                    </div>
-                </div>
+         
+                <?php
+                    $members = json_decode(file_get_contents($CONFIG["memberData-url"]), true);
+                    
+                    for ($i = 0; $i < sizeof($members); $i += 6)
+                    {
+                        echo '<div class="page memberHolder hide">';
+                        if ($i == 0) echo "<h1>Members</h1>";
+                        
+                        for ($ri = 0; $ri < 6; $ri++)
+                        {
+                            $index = $i + $ri;
+                            if (!$members[$index]) continue;
+
+                            echo "<div class='avatarHolder'>" . 
+                                    "<img src='PHP/heads.php?type=body&scale=10&username=" . $members[$index][0] . "'' class='avatar'>" . 
+                                    "<div class='text'>" . $members[$index][0] . "</div>" . 
+                                "</div>";
+                        }
+
+                        echo '</div>';
+                    }
+                ?>
+    
 
                 <div class="page hide" id="placeHolderPage">
                 </div>
@@ -177,16 +189,21 @@
         
         <script type="text/javascript">
 
-            let Page = new function() {
+            let Book = new function() {
                 let This = {
                     curPage: 0,
                     openPage: openPage,
                     openNextPage: next,
                     openPrevPage: previous,
+                    openBook: openBook
                 };
                 const HTML = {
-                    pages: $("#blogHolder .page")
+                    pages: $("#blogHolder .page"),
+                    blogHolder: $("#blogHolder")[0],
                 }
+
+                HTML.pages[0].classList.add("flip");
+             
                 
                 for (let i = 0; i < HTML.pages.length; i++)
                 {
@@ -195,6 +212,18 @@
                         next();
                     }
                 }
+
+
+                function openBook() {
+                    HTML.blogHolder.classList.remove("closed");
+                    setTimeout(function() {
+                        HTML.pages[0].classList.remove("flip");
+                        Book.openPage(0);
+                    }, 500);
+                }
+
+
+
 
                 function next() {
                     openPage(This.curPage + 1, true);
@@ -206,7 +235,7 @@
 
                 let animating = false;
                 function openPage(_index, _nextPage = true) {
-                    if (_index > HTML.pages.length - 1 || _index < 0 || animating) return;
+                    if (_index * 2 > HTML.pages.length - 1 || _index < 0 || animating) return;
                     animating = true;
                         
                     let openPages = $("#blogHolder .page:not(.hide)");
@@ -252,52 +281,8 @@
             }
 
 
-            setTimeout(Page.openPage, 100, 0);
+            setTimeout(Book.openBook, 2000, 0);
         </script>
     </body>
 </html>
 
-
-
-
-<!-- 
-
-
-
-
-<?php
-    include "PHP/config.php";
-?>
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-        <link rel="stylesheet" type="text/css" href="css/main.css?a=16">
-        <title><?php echo $CONFIG["server"]["name"] . " | Info"; ?></title>
-    </head>
-    <body style="background: #000;" class="noselect">
-        <div id="topBar">
-            <img src="images/homeIcon.svg" class="button" onclick="window.location.replace('index.php')">
-        </div>
-        
-       
-        <div id="homeScreen" style="
-            background-image: url(<?php
-                $files = glob("uploads/images/*");
-                $length = sizeof($files);
-                $index = rand(0, $length - 1);
-                echo $files[$index];
-            ?>); z-index: -1; opacity: .4"></div>
-        
-        
-        <div class="text" id="homescreen_projectCraftLogo">
-            <?php echo strtoupper($CONFIG["server"]["name"]); ?>
-        </div>
-        
-      
-        <div class="text-only homescreen_projectCraftInfo" style="position: relative; left: 0px; animation-delay: 15s; bottom: 0px; margin-top: 20px;">
-            <a class="discord" href="<?php echo $CONFIG["server"]["discordLink"]; ?>">Come join us on our discord server.</a>
-        </div>
-    </body>
-</html> -->
