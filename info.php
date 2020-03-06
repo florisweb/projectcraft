@@ -66,8 +66,22 @@
             #blogHolder.closed .page:nth-child(2n) {
                 left: 25%;
                 z-index: 100;
+
+                animation: homeScreen_openBook .5s 1;
             }
 
+
+
+            @keyframes homeScreen_openBook {
+                0% {
+                    transform: scale(.1);
+                    transform-origin: center center;
+                }
+                100% {
+                    transform-origin: center center;
+                    transform: scale(1);
+                }
+            }
 
 
 
