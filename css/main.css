@@ -238,11 +238,11 @@ a.discord {
 
 #topBar .shadowBackground {
 	position: absolute;
-	left: 0;
+	left: -50px;
 	top: -100px;
-	width: 100%;
+	width: calc(100% + 50px * 2);
 	height: 100px;
-	box-shadow: 0 50px 50px 0px rgba(0, 0, 0, .7);
+	box-shadow: 0 50px 50px 0px rgba(0, 0, 0, .4);
 }
 
 #topBar .button {

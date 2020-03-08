@@ -6,13 +6,12 @@
 <html>
     <head>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' name='viewport'/>
-        <link rel="stylesheet" type="text/css" href="css/main.css?antiCache=7">
+        <link rel="stylesheet" type="text/css" href="css/main.css?antiCache=8">
         <title><?php echo $CONFIG["server"]["name"] . " - Info"; ?></title>
         <script type="text/javascript" src="js/jQuery.js"></script>
 
 
         <style>
-
             #blogHolder {
                 position: relative;
                 top: 20px;
@@ -20,6 +19,8 @@
                 
                 width: 80vw;
                 height: 100vh;
+
+                z-index: 100;
 
                 color: #333;
                 line-height: 20px;
@@ -130,6 +131,14 @@
                 echo $files[$index];
             ?>)"></div>
 
+
+            <div id="topBar">
+                <img src="images/homeIcon.svg" class="button" onclick="window.location.replace('index.php')">
+                <div class="shadowBackground"></div>
+            </div>
+
+
+
            <div id="blogHolder" class="text closed">
     
                 <?php
@@ -200,6 +209,11 @@
                 </div>
            </div>
         </div>
+        
+
+
+
+
         
         <script type="text/javascript">
 
