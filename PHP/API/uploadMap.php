@@ -2,84 +2,28 @@
 	require_once __DIR__ . "/APIAuthenticate.php"; // Will check if the connecting server is authenticated
 	require_once __DIR__ . "/../log/log.php";
 	require_once __DIR__ . "/heatMap.php";
+	require_once __DIR__ . "/../config.php";
 
 	$postData = file_get_contents("php://input");
-	if (!$postData) die("Parameters missing");
-	
+	if (!$postData) 
+	{
+		AddLog("[UploadMap.php] Upload rejected due to lack of data. (BJSON)");
+		die("Parameters missing");
+	}
 	$data = json_decode($postData, true);
-	if (
-		!$data["data"] || 
-		!$data["metaData"] ||
-		!isset($data["metaData"]["x"]) ||
-		!isset($data["metaData"]["z"])
-	) die("Parameters missing");
 
-	$metaData = $data["metaData"];
-	$imgData = $data["data"];
-
-	$world 			= $metaData["world"] == "nether" ? "nether" : "overworld";
-	$mapTileSize 	= (int)$CONFIG["world"]["mapTileSize"];
-	$size			= (int)$metaData["size"];
-	$startX 		= (int)$metaData["x"];
-	$startZ 		= (int)$metaData["z"];
-
-	
-	if ($size <= 0) die("Invalid size");
-	if (
-		$startX				< $CONFIG["world"]["minX"] ||
-		$startZ 			< $CONFIG["world"]["minZ"] ||
-		$startX + $size 	> $CONFIG["world"]["maxX"] ||
-		$startZ + $size 	> $CONFIG["world"]["maxZ"]
-	) {
-		AddLog("[UploadMap.php]: MiniMap upload rejected, invalid coords X: " . $startX . " Z: " . $startZ);
-		die("Invalid coordinates");
-	}
-
-
-	if (sqrt(sizeof($imgData) / 3) > $CONFIG["API"]["maxImageWidth"])
+	if (!$data)
 	{
-		AddLog(
-			"[UploadMap.php]: Upload rejected, file too big: " . sqrt(sizeof($imgData) / 3) . " pixels wide, " . 
-			"max " . $CONFIG["API"]["maxImageWidth"] . "px wide");
-
-		die("File too big. Max " . $CONFIG["API"]["maxImageWidth"] . "px wide");
+		AddLog("[UploadMap.php] Upload rejected due to lack of data. (AJSON)");
+		die("Parameters missing");
 	}
-
-
-
-	if (!$metaData["isMiniMap"])
+	if (sizeof($data) % 3 != 0) 
 	{
-		$x = round($startX / $mapTileSize) * $mapTileSize; // snap the coords to the chunkgrid
-		$z = round($startZ / $mapTileSize) * $mapTileSize;
-
-		$url = __DIR__ . "/map/" . $world . "/map/" . $x . "_" . $z . "_" . $mapTileSize . ".png";
-		echo uploadFile($imgData, $url);
-		AddLog("[UploadMap.php]: Uploaded map: " . $url);
-		$HEATMAP->updateChunk($x, $z, $mapTileSize);
-		
-	} else {
-		$realSize = sqrt(sizeof($imgData) / 3);
-		$snappedSize = floor($size / 16) * 16;
-		if (floor(sqrt(sizeof($imgData) / 3)) != $snappedSize && $realSize != $size) 
-		{
-			AddLog("[UploadMap.php]: MiniMap upload rejected, given size did not match actual size (real: " . $realSize . "px, supposed.snapped: " . $snappedSize . "px, supposed.actual: " . $size . "px (wide))");
-			die("MiniMap upload rejected, given size did not match actual size");
-		}
-
-		$project = fetchProject($startX, $startZ, $size);
-		if (!$project)
-		{
-			AddLog("[UploadMap.php]: MiniMap upload rejected, no project at specified location (x: " . $startX . " z: " . $startZ . " size: " . $size . ")");
-			die("MiniMap upload rejected, no project at specified location");
-		}
-
-
-		$url = __DIR__ . "/map/" . $world . "/miniMap/" . $startX . "_" . $startZ . "_" . $size . ".png";
-		echo uploadFile($imgData, $url);
-		AddLog("[UploadMap.php]: Uploaded miniMap from project `" . $project["title"] . "`");
+		AddLog("[UploadMap.php] Upload rejected because of invalid length: " . sizeof($data));
+		die("Invalid length");
 	}
 
-
+	uploadFile($data, __DIR__ . "/../../" . $GLOBALS["mapImage-url"]);
 
 	function uploadFile($_data, $_url) {
 		$fileData = convertDataToImage($_data);
@@ -92,56 +36,53 @@
 	}
 
 	function convertDataToImage($_data) {
-		$channels = 3;
-		$size = sqrt(sizeof($_data) / $channels);
-		$image = @imagecreatetruecolor($size, $size);
+	    $map = false;
+	   	if (file_exists(__DIR__ . "/../../" . $GLOBALS["mapImage-url"])) 
+   		{
+   			$file = file_get_contents(__DIR__ . "/../../" . $GLOBALS["mapImage-url"]);
+    		if (!is_null($file)) 
+    		{
+    			$map = imagecreatefromstring($file);
+    		}
+   		}
 
-	  	for ($i = 0; $i < sizeof($_data); $i += $channels)
+   		$mapWidth = $GLOBALS["CONFIG"]["world"]["maxX"] - $GLOBALS["CONFIG"]["world"]["minX"];
+	    $mapHeight = $GLOBALS["CONFIG"]["world"]["maxZ"] - $GLOBALS["CONFIG"]["world"]["minZ"];
+	    if ($map == null || $map == false) 
+	    {
+	    	$map = @imagecreatetruecolor($mapWidth, $mapHeight); // temp
+	    }
+
+	  	for ($i = 0; $i < sizeof($_data); $i += 3)
 	  	{
-	  		$x = $i / $channels;
-	  		$y = floor($x / $size);
-	  		$x -= $y * $size;
+	  		$colorObj = sRGBToRGBA($_data[$i + 2]);
+	  		$color = imagecolorallocatealpha($map, $colorObj[0], $colorObj[1], $colorObj[2], 1); //alphachannel werkt niet?!
 
-	  		$color = imagecolorallocate($image, $_data[$i], $_data[$i + 1], $_data[$i + 2]);
-	  		imagesetpixel($image, $x, $y, $color);
+	  		$x = $_data[$i] - $GLOBALS["CONFIG"]["world"]["minX"];
+	  		$z = $_data[$i + 1] - $GLOBALS["CONFIG"]["world"]["minZ"];
+
+	  		if ($x < 0 || $x >= $mapWidth) continue;
+	  		if ($z < 0 || $z >= $mapHeight) continue;
+	  		imagesetpixel($map, $x, $z, $color);
 	  	}
 
 	  	ob_start();
-		imagepng($image);
+		imagepng($map);
 		$contents =  ob_get_contents();
 		ob_end_clean();
-
 
 	  	return $contents;
 	}
 
 
+	function sRGBToRGBA($obj)
+	{
+		$color = [];
+		$color[] = ($obj >> 16) & 0xFF; // R
+		$color[] = ($obj >> 8)  & 0xFF; // G
+		$color[] = $obj         & 0xFF; // B
+		$color[] = ($obj >> 24) & 0xFF; // A
 
-
-	function fetchProject($_x, $_z, $_size) {
-		$radius = $_size / 2;
-		$centerX = $_x + $radius;
-		$centerZ = $_z + $radius;
-
-		$projectList = json_decode(file_get_contents("../../" . $GLOBALS["CONFIG"]["overworldData-url"], true), true);
-
-		foreach ($projectList as $project)
-		{
-			if (
-				!$project["type"] || 
-				!$project["type"]["genMiniMap"] ||
-				!$project["type"]["radius"]
-			) continue;
-
-			if (
-				$project["type"]["radius"] != $radius ||
-				$project["coords"]["x"] != $centerX || 
-				$project["coords"]["z"] != $centerZ
-			) continue;
-
-			return $project;
-		}
-
-		return false;
+		return $color;
 	}
 ?>
